@@ -1,12 +1,14 @@
 import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from './themes/theme';
 
 function App() {
   return (
-    <div style={{ "fontFamily": 'Inter, sans-serif' }}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <h1>Hello</h1>
-    </div>
+    </ThemeProvider>
   );
 }
 
