@@ -1,6 +1,3 @@
-// create a custom checkbox component using material ui and typescript
-
-// src/Components/UI/CustomCheckbox.tsx
 import React from 'react';
 import { Checkbox, FormControlLabel } from '@mui/material';
 
