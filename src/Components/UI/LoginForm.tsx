@@ -41,7 +41,7 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
           Thanks to come back on Coraly
         </Typography>
       </Box>
-      <Box component='form' sx={{ width: '320px', height: '273px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '32px' }}>
+      <Box component='form' sx={{ width: '320px', height: '273px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '20px' }}>
         <TextInput
           label="Email"
           name="email"
@@ -67,7 +67,12 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
           InputStyles={styles}
         />
         <Box sx={{ width: '320px', display: 'flex', justifyContent: 'space-between' }}>
-          <CustomCheckbox label="Remember me" value={false} onChange={() => { }} />
+          <CustomCheckbox
+            label="Remember me"
+            value={false}
+            onChange={() => { }}
+            checkedStyle={{ '&.Mui-checked': { color: '#312E43' } }}
+          />
           <CustomButton onClick={() => console.log('')}
             color='success'
             variant='text'
@@ -78,8 +83,17 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
           onClick={() => console.log('')}
           color='secondary'
           variant='contained'
+          btnStyles={{ width: '320px', height: '40px', borderRadius: '8px', fontSize: '14px', lineHeight: '18px' }}
         >
           Login</CustomButton>
+
+        <Typography variant="body1" component="p" sx={{ width: '320px', fontSize: '14px', lineHeight: '18px', display: 'flex', alignItems: 'center', order: 1, color: `${theme.text.primary.neutral}` }}>
+          Don't have an account? <CustomButton onClick={() => console.log('')}
+            color='success'
+            variant='text'
+            btnStyles={{ fontSize: '14px', lineHeight: '18px', textTransform: 'none' }}
+          >Sign up</CustomButton>
+        </Typography>
       </Box>
     </Box>
   );

@@ -6,17 +6,17 @@ interface AuthenticationPageSplitProps {
   leftSide: React.ReactNode;
   rightSide: React.ReactNode;
   leftClassName?: any;
-  rightClassName?: any;
+  rightStyles?: any;
 }
 
 function AuthenticationPageSplit(props: AuthenticationPageSplitProps): JSX.Element {
   return (
-    <Box sx={{ height: '100vh', width: '100vw', border: '1px solid red', display: 'flex' }}>
+    <Box sx={{ height: '100vh', width: '100vw', display: 'flex' }}>
       <Box sx={props.leftClassName}>
         <img src={Logo} alt={Logo} />
         {props.leftSide}
       </Box>
-      <div>{props.rightSide}</div>
+      <Box sx={props.rightStyles}>{props.rightSide}</Box>
     </Box>
   )
 

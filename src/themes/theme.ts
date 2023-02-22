@@ -104,7 +104,6 @@ export const theme = createTheme({
       fontWeight: 400,
       lineHeight: 1.2,
       letterSpacing: "0.00938em",
-      color: "#6F6D7B",
     },
     body2: {
       fontSize: "0.875rem",
