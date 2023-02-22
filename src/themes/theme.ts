@@ -2,37 +2,23 @@ import { createTheme } from "@mui/material/styles";
 
 declare module "@mui/material/styles" {
   interface Theme {
-    status: {
-      danger: string;
-    },
-
-    reset: {
-      main: string;
-    },
-
     text: {
       primary: {
-        color: string;
+        main: string;
         light: string;
         dark: string;
+        neutral: string;
       }
     },
   }
 
   interface ThemeOptions {
-    status?: {
-      danger?: React.CSSProperties["color"];
-    },
-
-    reset?: {
-      main?: React.CSSProperties["color"];
-    },
-
     text?: {
       primary?: {
-        color?: React.CSSProperties["color"];
+        main?: React.CSSProperties["color"];
         light?: React.CSSProperties["color"];
         dark?: React.CSSProperties["color"];
+        neutral?: React.CSSProperties["color"];
       }
     },
   }
@@ -41,9 +27,10 @@ declare module "@mui/material/styles" {
 export const theme = createTheme({
   text: {
     primary: {
-      color: "#464356",
+      main: "#464356",
       light: "#5A5869",
-      dark: "#312E43"
+      dark: "#312E43",
+      neutral: "#6F6D7B",
     }
   },
 
@@ -117,6 +104,7 @@ export const theme = createTheme({
       fontWeight: 400,
       lineHeight: 1.2,
       letterSpacing: "0.00938em",
+      color: "#6F6D7B",
     },
     body2: {
       fontSize: "0.875rem",

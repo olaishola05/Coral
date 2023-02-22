@@ -3,18 +3,18 @@ import { Checkbox, FormControlLabel } from '@mui/material';
 
 interface CustomCheckboxProps {
   label: string;
-  value: boolean;
+  value?: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const CustomCheckbox: React.FC<CustomCheckboxProps> = ({ label, value, onChange }, ...rest) => {
+const CustomCheckbox: React.FC<CustomCheckboxProps> = ({ label, value, onChange }) => {
   return (
     <FormControlLabel
       control={
         <Checkbox
           checked={value}
           onChange={onChange}
-          {...rest}
+          inputProps={{ 'aria-label': 'controlled' }}
         />
       }
       label={label}
