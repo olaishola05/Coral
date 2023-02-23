@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 
 interface CustomButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
   children: React.ReactNode;
   color?: 'primary' | 'secondary' | 'success';
   variant?: 'text' | 'outlined' | 'contained';

@@ -18,13 +18,21 @@ interface CustomSnackbarProps {
     vertical: 'top' | 'bottom';
     horizontal: 'left' | 'center' | 'right';
   };
+  snackError?: any;
+  snackSuccess?: any;
 }
 
 const CustomSnackbar: React.FC<CustomSnackbarProps> = (props) => {
   const { open, message, severity, handleClose, anchorOrigin } = props;
   return (
-    <Snackbar anchorOrigin={anchorOrigin} open={open} autoHideDuration={6000} onClose={handleClose}>
-      <Alert onClose={handleClose} severity={severity}>
+    <Snackbar
+      anchorOrigin={anchorOrigin}
+      open={open}
+      autoHideDuration={3000}
+      onClose={handleClose}
+      sx={severity === 'success' ? props.snackSuccess : props.snackError}
+    >
+      <Alert onClose={handleClose} severity={severity} sx={severity === 'success' ? props.snackSuccess : props.snackError}>
         {message}
       </Alert>
     </Snackbar>

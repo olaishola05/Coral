@@ -8,7 +8,7 @@ interface TextInputProps {
   placeholder?: string;
   variant?: 'standard' | 'filled' | 'outlined';
   type?: string;
-  required?: boolean;
+  required: boolean;
   color?: 'primary' | 'secondary';
   name?: string;
   InputStyles?: any;

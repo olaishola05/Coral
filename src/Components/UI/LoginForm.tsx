@@ -7,12 +7,11 @@ import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import CustomCheckbox from './CustomCheckbox';
 import { formData } from '../../types/appTypes';
-import { RememberMe } from '@mui/icons-material';
 
 
 interface LoginFormProps {
   onChange: (data: formData) => void;
-  submit: (event: React.FormEvent<HTMLFormElement>) => void;
+  submit: () => void;
 }
 
 const styles = {
@@ -26,17 +25,30 @@ const styles = {
 }
 
 const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
-  const [formData, setFormData] = React.useState({
+  const theme = useTheme();
+  const [data, setData] = React.useState({
     email: '',
     password: '',
-    rememberMe: false
-  });
-  const theme = useTheme();
+    // rememberMe: false
+  })
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    props.onChange(formData);
-    props.submit(event);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // setData({ ...data, [event.target.name]: event.target.name === 'rememberMe' ? event.target.checked : event.target.value });
+
+    setData((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value
+    }));
+    props.onChange(data);
+  };
+
+  const handleSubmit = () => {
+    props.submit();
+    setData({
+      email: '',
+      password: '',
+      // rememberMe: false
+    })
   };
 
   return (
@@ -52,12 +64,12 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
           Thanks to come back on Coraly
         </Typography>
       </Box>
-      <Box component='form' sx={{ width: '320px', height: '273px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '20px' }} onClick={handleSubmit}>
+      <Box component='form' sx={{ width: '320px', height: '273px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '20px' }}>
         <TextInput
           label="Email"
           name="email"
-          value={formData.email}
-          onChange={(event) => setFormData({ ...formData, email: event.target.value })}
+          value={data.email}
+          onChange={(event) => handleChange(event)}
           placeholder="Enter your email"
           type='email'
           required
@@ -68,8 +80,8 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
         <TextInput
           label="Password"
           name="password"
-          value={formData.password}
-          onChange={(event) => setFormData({ ...formData, password: event.target.value })}
+          value={data.password}
+          onChange={(event) => handleChange(event)}
           placeholder="Enter your password"
           type='password'
           required
@@ -80,8 +92,9 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
         <Box sx={{ width: '320px', display: 'flex', justifyContent: 'space-between' }}>
           <CustomCheckbox
             label="Remember me"
-            value={formData.rememberMe}
-            onChange={(event) => setFormData({ ...formData, rememberMe: event.target.checked })}
+            name="rememberMe"
+            // checked={data.rememberMe}
+            onChange={(event) => handleChange(event)}
             checkedStyle={{ '&.Mui-checked': { color: '#312E43' } }}
           />
           <CustomButton onClick={() => console.log('')}
@@ -91,11 +104,11 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
           >Forgot password</CustomButton>
         </Box>
         <CustomButton
-          onClick={() => console.log('')}
           color='secondary'
           variant='contained'
           btnStyles={{ width: '320px', height: '40px', borderRadius: '8px', fontSize: '14px', lineHeight: '18px' }}
           type='submit'
+          onClick={handleSubmit}
         >
           Login</CustomButton>
 

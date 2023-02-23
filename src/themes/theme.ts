@@ -10,6 +10,14 @@ declare module "@mui/material/styles" {
         neutral: string;
       }
     },
+
+    snack: {
+      snackError: string;
+      snackSuccess: string;
+      width: string;
+      height: string;
+
+    }
   }
 
   interface ThemeOptions {
@@ -21,6 +29,13 @@ declare module "@mui/material/styles" {
         neutral?: React.CSSProperties["color"];
       }
     },
+
+    snack?: {
+      snackError?: React.CSSProperties["color"];
+      snackSuccess?: React.CSSProperties["color"];
+      width?: string;
+      height?: string;
+    }
   }
 }
 
@@ -32,6 +47,13 @@ export const theme = createTheme({
       dark: "#312E43",
       neutral: "#6F6D7B",
     }
+  },
+
+  snack: {
+    snackError: "#FFE8DA",
+    snackSuccess: "#D6FCDA",
+    width: "360px",
+    height: "56px",
   },
 
   palette: {

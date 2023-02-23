@@ -5,9 +5,11 @@ import Dashboard from './Dashboard/Dashboard';
 import Login from './Login/Login';
 
 function Root() {
+
+  const isLoggedIn = localStorage.getItem('token') ? true : false;
   return (
     <div>
-      {false ? <Dashboard /> : <Login />}
+      {isLoggedIn ? <Dashboard /> : <Login />}
       <Outlet />
     </div>
   )

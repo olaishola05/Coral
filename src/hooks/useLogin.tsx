@@ -8,11 +8,6 @@ interface LoginData {
 
 interface LoginResponse {
   token: string;
-  user: {
-    id: string;
-    name: string;
-    email: string;
-  };
 }
 
 function useLogin(url: string) {

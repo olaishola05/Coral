@@ -9,20 +9,23 @@ type checkedStyle = {
 };
 interface CustomCheckboxProps {
   label: string;
-  value: boolean;
+  checked?: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   checkedStyle?: checkedStyle;
+  name: string;
 }
 
-const CustomCheckbox: React.FC<CustomCheckboxProps> = ({ label, value, onChange, checkedStyle }) => {
+const CustomCheckbox: React.FC<CustomCheckboxProps> = ({ label, checked, onChange, checkedStyle, name }) => {
   return (
     <FormControlLabel
       control={
         <Checkbox
-          checked={value}
+          checked={checked}
+          name={name}
           onChange={onChange}
           inputProps={{ 'aria-label': 'controlled' }}
           sx={checkedStyle}
+          required
         />
       }
       label={label}
