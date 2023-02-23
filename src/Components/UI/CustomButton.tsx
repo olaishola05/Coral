@@ -7,6 +7,7 @@ interface CustomButtonProps {
   color?: 'primary' | 'secondary' | 'success';
   variant?: 'text' | 'outlined' | 'contained';
   btnStyles?: any;
+  type?: 'submit' | 'reset' | 'button';
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({ onClick, children, color, variant, btnStyles }) => {

@@ -1,5 +1,5 @@
-export type errorResponse = {
-  message: string;
-  status: number;
-  statusText: string;
+export type formData = {
+  email: string;
+  password: string;
+  rememberMe: boolean;
 };

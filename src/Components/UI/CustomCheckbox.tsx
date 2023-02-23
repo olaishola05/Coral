@@ -9,7 +9,7 @@ type checkedStyle = {
 };
 interface CustomCheckboxProps {
   label: string;
-  value?: boolean;
+  value: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   checkedStyle?: checkedStyle;
 }
