@@ -58,8 +58,8 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             type='email'
             required
             color='secondary'
+            InputStyles={{ width: '320px' }}
             size='small'
-            InputStyles={styles}
             onBlur={formik.handleBlur}
             error={!emailValid}
             helperText={formik.errors.email}
@@ -78,9 +78,9 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             type='password'
             required
             color='secondary'
+            InputStyles={{ width: '320px' }}
             size='small'
             onBlur={formik.handleBlur}
-            InputStyles={styles}
             error={!passwordValid}
             helperText={formik.errors.password}
           />

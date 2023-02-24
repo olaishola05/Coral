@@ -39,7 +39,6 @@ const SignupForm = () => {
           value={data.workspace}
           size='small'
           color='secondary'
-          InputStyles={{ width: '100%', fontSize: '12px', fontWeight: 'normal', color: '#5A5869' }}
         />
 
         <TextInput
@@ -52,7 +51,6 @@ const SignupForm = () => {
           value={data.email}
           size='small'
           color='secondary'
-          InputStyles={{ width: '100%', fontSize: '12px', fontWeight: 'normal', color: '#5A5869' }}
         />
 
 

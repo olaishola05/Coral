@@ -10,6 +10,7 @@ import Login from './Pages/Login/Login';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import EmailVerify from './Pages/Signup/EmailVerify';
 import CompleteProfile from './Pages/Signup/CompleteProfile';
+import PasswordReset from './Pages/Login/PasswordReset';
 
 const queryClient = new QueryClient()
 
@@ -25,7 +26,7 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="email-verification" element={<EmailVerify />} />
           <Route path="complete-profile" element={<CompleteProfile />} />
-          <Route path={"/forgetpassword"} element={'forget pssword'} />
+          <Route path={"forget-password"} element={<PasswordReset />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
 
