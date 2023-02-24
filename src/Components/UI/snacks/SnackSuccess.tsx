@@ -3,9 +3,9 @@ import { useTheme } from '@mui/material/styles'
 import CustomSnackbar from '../CustomSnackbar'
 
 interface SnackSuccessProps {
-  message: string
+  message?: string
   toggle: () => void
-  value: boolean
+  value?: boolean
 }
 
 const SnackSuccess: React.FC<SnackSuccessProps> = ({ message, toggle, value }) => {

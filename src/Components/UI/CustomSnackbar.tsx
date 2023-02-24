@@ -10,10 +10,10 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 });
 
 interface CustomSnackbarProps {
-  open: boolean;
-  message: string;
+  open?: boolean;
+  message?: string;
   severity?: 'success' | 'info' | 'warning' | 'error';
-  handleClose: () => void;
+  handleClose?: () => void | undefined;
   anchorOrigin?: {
     vertical: 'top' | 'bottom';
     horizontal: 'left' | 'center' | 'right';

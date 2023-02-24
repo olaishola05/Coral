@@ -51,7 +51,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
           Thanks to come back on Coraly
         </Typography>
       </Box>
-      <Box component='form' sx={{ width: '320px', height: '273px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '20px' }} onClick={formik.handleSubmit}>
+      <Box component='form' sx={{ width: '320px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '20px' }} onClick={formik.handleSubmit}>
         <Box>
           <TextInput
             label="Email"
@@ -103,13 +103,12 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
           <CustomButton onClick={() => console.log('')}
             color='success'
             variant='text'
-            btnStyles={{ fontSize: '14px', lineHeight: '18px', textTransform: 'none' }}
+            btnStyles={{ color: 'secondary', width: '150px', fontSty: 'normal', fontWeight: '600', lineHeight: '21px' }}
           >Forgot password</CustomButton>
         </Box>
         <CustomButton
           color='secondary'
           variant='contained'
-          btnStyles={{ width: '320px', height: '40px', borderRadius: '8px', fontSize: '14px', lineHeight: '18px' }}
           type='submit'
           disabled={isSubmitting}
         >
@@ -120,7 +119,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
           Don't have an account? <CustomButton onClick={() => console.log('')}
             color='success'
             variant='text'
-            btnStyles={{ fontSize: '14px', lineHeight: '18px', textTransform: 'none' }}
+            btnStyles={{ width: '114px', color: 'secondary' }}
           >Sign up now</CustomButton>
         </Typography>
       </Box>

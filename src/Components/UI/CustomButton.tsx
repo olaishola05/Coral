@@ -17,7 +17,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({ onClick, children, color, v
       variant={variant}
       onClick={onClick}
       color={color}
-      sx={btnStyles}
+      sx={{ width: '100%', height: '40px', borderRadius: '8px', fontSize: '14px', lineHeight: '18px', textTransform: 'none', color: 'white', ...btnStyles }}
     >
       {children}
     </Button>
