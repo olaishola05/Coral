@@ -16,20 +16,22 @@ const Login = () => {
 
   const [value, toggle] = useToggle(false)
   const [msg, setMsg] = useMessage()
-  const [error, setError] = React.useState<any>(null)
+  const [error, setError] = React.useState<boolean>()
+  const [success, setSuccess] = React.useState<boolean>(false)
   const loginMutation = useLogin('https://reqres.in/api/login')
 
   const handleSubmit = () => {
     loginMutation.mutate(data, {
       onSuccess: (data) => {
         setMsg('Utente autenticato con successo');
+        setSuccess(true);
         // localStorage.setItem('token', data.token);
         toggle();
       },
       onError: (error) => {
         setMsg('Credenziali non valide');
         toggle();
-        setError(error);
+        setError(true);
       }
     });
   };
@@ -38,6 +40,7 @@ const Login = () => {
     <AuthenticationPageSplit
       value={value}
       error={error}
+      success={success}
       message={msg}
       toggle={toggle}
       leftClassName={{ width: '520px', display: 'flex', alignItems: 'flex-start', flexDirection: 'column', gap: '70px', padding: '100px 100px 150px' }}
