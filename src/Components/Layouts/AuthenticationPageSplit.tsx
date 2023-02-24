@@ -10,10 +10,10 @@ interface AuthenticationPageSplitProps {
   leftClassName?: any;
   rightStyles?: any;
   error?: any;
-  message: string;
-  toggle: () => void;
-  value: boolean;
-  success: boolean;
+  message?: string;
+  toggle?: () => void;
+  value?: boolean;
+  success?: boolean;
 }
 
 function AuthenticationPageSplit(props: AuthenticationPageSplitProps): JSX.Element {
@@ -21,11 +21,11 @@ function AuthenticationPageSplit(props: AuthenticationPageSplitProps): JSX.Eleme
   return (
     <Box sx={{ height: '100vh', width: '100vw', display: 'flex' }}>
       <Box>
-        <Box sx={leftClassName}>
+        <Box sx={{ display: 'flex', alignItems: 'flex-start', flexDirection: 'column', gap: '70px', ...leftClassName }}>
           <img src={Logo} alt={Logo} />
           {leftSide}
         </Box>
-        {error && <SnackbarError value={value} message={message} toggle={toggle} />}  {success && <SnackSuccess value={false} message={message} toggle={toggle} />}
+        {/* {error && <SnackbarError value={value} message={message} toggle={toggle} />}  {success && <SnackSuccess value={false} message={message} toggle={toggle} />} */}
       </Box>
       <Box sx={rightStyles}>{rightSide}</Box>
     </Box>

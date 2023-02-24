@@ -24,7 +24,7 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({ label, checked, onChang
           name={name}
           onChange={onChange}
           inputProps={{ 'aria-label': 'controlled' }}
-          sx={checkedStyle}
+          sx={{ color: '#312E43', '&.Mui-checked': { color: '#312E43' }, ...checkedStyle }}
           required
         />
       }

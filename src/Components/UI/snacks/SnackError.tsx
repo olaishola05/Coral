@@ -3,8 +3,8 @@ import { useTheme } from '@mui/material/styles';
 import CustomSnackbar from '../CustomSnackbar';
 
 interface SnackbarErrorProps {
-  value: boolean;
-  message: string;
+  value?: boolean;
+  message?: string | undefined;
   toggle: () => void;
 }
 

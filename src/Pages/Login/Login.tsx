@@ -2,7 +2,7 @@ import React from 'react'
 import AuthenticationPageSplit from '../../Components/Layouts/AuthenticationPageSplit'
 import ImageContainer from '../../Components/UI/ImageContainer'
 import LoginForm from '../../Components/UI/LoginForm'
-import LoginImage from '../../Assets/images/login-container.png'
+import LoginImage from '../../Assets/svg/login.svg'
 import useLogin from '../../hooks/useLogin'
 import useToggle from '../../hooks/useToggle'
 import useMessage from '../../hooks/useMessage'
@@ -43,7 +43,7 @@ const Login = () => {
       success={success}
       message={msg}
       toggle={toggle}
-      leftClassName={{ width: '520px', display: 'flex', alignItems: 'flex-start', flexDirection: 'column', gap: '70px', padding: '100px 100px 150px' }}
+      leftClassName={{ width: '520px', padding: '100px 100px 150px' }}
       rightStyles={{ width: '100%', backgroundColor: '#F5F5F5' }}
       leftSide={<LoginForm submit={handleSubmit} onChange={(data) => setData(data)} />}
       rightSide={<ImageContainer src={LoginImage} alt='login' />}
