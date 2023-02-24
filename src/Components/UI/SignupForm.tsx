@@ -5,8 +5,11 @@ import Typography from '@mui/material/Typography'
 import TextInput from './TextInput'
 import CustomCheckbox from './CustomCheckbox'
 import CustomButton from './CustomButton'
+import { useNavigate } from "react-router-dom";
+import HeaderText from './HeaderText'
 
 const SignupForm = () => {
+  const navigate = useNavigate()
   const [data, setData] = React.useState({
     workspace: '',
     email: '',
@@ -20,14 +23,10 @@ const SignupForm = () => {
 
   return (
     <Container sx={{ width: '422px', display: 'flex', alignItems: 'flex-start', flexDirection: 'column', gap: '20px', order: 1 }}>
-      <Box sx={{ width: '422px', display: 'flex', alignItems: 'flex-start', flexDirection: 'column', gap: '8px', lineHeight: '36px', marginBottom: '20px' }}>
-        <Typography variant="h1" sx={{ fontSize: '24px', fontWeight: 'bold', lineHeight: '56px', color: '#000000' }}>
-          Create your workspace
-        </Typography>
-        <Typography variant="body1" sx={{ fontSize: '14px', fontWeight: 'normal', lineHeight: '18px', color: '#6F6D7B', order: 1, }}>
-          Coraly is the tool to manage your work processes form the same place
-        </Typography>
-      </Box>
+      <HeaderText
+        header='Create your workspace'
+        text='Coraly is the tool to manage your work processes form the same place'
+      />
 
       <Box component='form' sx={{ width: '422px', height: '361px', display: 'flex', alignItems: 'flex-start', flexDirection: 'column', gap: '20px', order: 1 }}>
         <TextInput
@@ -71,7 +70,12 @@ const SignupForm = () => {
           checked={data.terms}
         />
 
-        <CustomButton type="submit" variant="contained" color="success">
+        <CustomButton
+          type="submit"
+          variant="contained"
+          color="success"
+          onClick={() => navigate('/email-verification')}
+        >
           Create now the account
         </CustomButton>
 

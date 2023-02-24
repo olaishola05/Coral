@@ -21,7 +21,7 @@ function AuthenticationPageSplit(props: AuthenticationPageSplitProps): JSX.Eleme
   return (
     <Box sx={{ height: '100vh', width: '100vw', display: 'flex' }}>
       <Box>
-        <Box sx={leftClassName}>
+        <Box sx={{ display: 'flex', alignItems: 'flex-start', flexDirection: 'column', gap: '70px', ...leftClassName }}>
           <img src={Logo} alt={Logo} />
           {leftSide}
         </Box>

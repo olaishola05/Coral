@@ -8,6 +8,7 @@ import { useTheme } from '@mui/material/styles';
 import CustomCheckbox from './CustomCheckbox';
 import { formData } from '../../types/appTypes';
 import { useLoginFormik } from '../../hooks/useFormik';
+import HeaderText from './HeaderText';
 
 
 interface LoginFormProps {
@@ -40,17 +41,12 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
 
   return (
     <Box sx={{ width: '320px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '50px' }}>
-      <Box sx={{ width: '210px', height: '62px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '8px' }}
-      >
-        <Typography variant="h4" component="h4"
-          sx={{ fontWeight: 'bold', fontSize: '24px', lineHeight: '36px', color: `${theme.text.primary.main}` }}>
-          Login
-        </Typography>
+      <HeaderText
+        header="Login"
+        text="Thanks to come back on Coraly"
+        headerStyle={{ marginBottom: '0px' }}
+      />
 
-        <Typography variant="body1" component="p" sx={{ width: '215px', fontSize: '14px', lineHeight: '18px', display: 'flex', alignItems: 'center', order: 1, color: `${theme.text.primary.neutral}` }}>
-          Thanks to come back on Coraly
-        </Typography>
-      </Box>
       <Box component='form' sx={{ width: '320px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '20px' }} onClick={formik.handleSubmit}>
         <Box>
           <TextInput
