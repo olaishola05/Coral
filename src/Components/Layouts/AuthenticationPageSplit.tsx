@@ -1,11 +1,33 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import Logo from '../../Assets/svg/Logo.svg';
+import SnackbarError from '../UI/snacks/SnackError';
+import SnackSuccess from '../UI/snacks/SnackSuccess';
 
-function AuthenticationPageSplit(props: any, ...rest: any): JSX.Element {
+interface AuthenticationPageSplitProps {
+  leftSide: React.ReactNode;
+  rightSide: React.ReactNode;
+  leftClassName?: any;
+  rightStyles?: any;
+  error?: any;
+  message: string;
+  toggle: () => void;
+  value: boolean;
+  success: boolean;
+}
+
+function AuthenticationPageSplit(props: AuthenticationPageSplitProps): JSX.Element {
+  const { leftSide, rightSide, leftClassName, rightStyles, error, message, toggle, value, success } = props;
   return (
-    <Box {...rest}>
-      <Box className={props.leftContainer}>{props.leftSide}</Box>
-      <Box className={props.rightContainer}>{props.rightSide}</Box>
+    <Box sx={{ height: '100vh', width: '100vw', display: 'flex' }}>
+      <Box>
+        <Box sx={leftClassName}>
+          <img src={Logo} alt={Logo} />
+          {leftSide}
+        </Box>
+        {error && <SnackbarError value={value} message={message} toggle={toggle} />}  {success && <SnackSuccess value={false} message={message} toggle={toggle} />}
+      </Box>
+      <Box sx={rightStyles}>{rightSide}</Box>
     </Box>
   )
 

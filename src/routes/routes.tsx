@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
-import Root from "../Pages/Root";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 
 
@@ -10,7 +9,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 const routes = [
   {
     path: "/",
-    element: <Root />,
+    element: <Dashboard />,
     errorElement: <ErrorPage />,
     children: [
       {

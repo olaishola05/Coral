@@ -2,18 +2,24 @@ import React from 'react';
 import { Button } from '@mui/material';
 
 interface CustomButtonProps {
-  label: string;
-  onClick: () => void;
+  onClick?: () => void;
+  children: React.ReactNode;
+  color?: 'primary' | 'secondary' | 'success';
+  variant?: 'text' | 'outlined' | 'contained';
+  btnStyles?: any;
+  type?: 'submit' | 'reset' | 'button';
+  disabled?: boolean;
 }
 
-const CustomButton: React.FC<CustomButtonProps> = ({ label, onClick }, ...rest) => {
+const CustomButton: React.FC<CustomButtonProps> = ({ onClick, children, color, variant, btnStyles }) => {
   return (
     <Button
-      variant="contained"
+      variant={variant}
       onClick={onClick}
-      {...rest}
+      color={color}
+      sx={btnStyles}
     >
-      {label}
+      {children}
     </Button>
   );
 };
