@@ -9,6 +9,7 @@ import ErrorPage from './Pages/Error/ErrorPage';
 import Login from './Pages/Login/Login';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import EmailVerify from './Pages/Signup/EmailVerify';
+import CompleteProfile from './Pages/Signup/CompleteProfile';
 
 const queryClient = new QueryClient()
 
@@ -23,7 +24,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="email-verification" element={<EmailVerify />} />
-          <Route path="complete-profile" element={<div>Profile</div>} />
+          <Route path="complete-profile" element={<CompleteProfile />} />
           <Route path={"/forgetpassword"} element={'forget pssword'} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

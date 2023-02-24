@@ -1,5 +1,4 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
 import AuthenticationPageSplit from '../../Components/Layouts/AuthenticationPageSplit'
 import ImageContainer from '../../Components/UI/ImageContainer'
 import signupImage from '../../Assets/svg/signup.svg'
@@ -14,7 +13,6 @@ const Signup = () => {
         leftSide={<SignupForm />}
         rightSide={<ImageContainer src={signupImage} alt={signupImage} />}
       />
-      <Outlet />
     </>
   )
 }
