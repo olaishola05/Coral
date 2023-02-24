@@ -13,6 +13,9 @@ interface TextInputProps {
   name?: string;
   InputStyles?: any;
   size?: 'small' | 'medium';
+  error?: boolean;
+  helperText?: string;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 const TextInput: React.FC<TextInputProps> = ({ label, value, onChange, placeholder, type, required, color, name, InputStyles, size }) => {

@@ -15,24 +15,15 @@ interface LoginFormProps {
   submit: () => void;
 }
 
-const styles = {
-  width: '320px',
-  height: '42px',
-  alignSelf: 'stretch',
-  borderRadius: '8px',
-  fontSize: '14px',
-  lineHeight: '18px',
-  color: '#5A5869'
-}
-
 const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
   const theme = useTheme();
+  const [emailValid, setEmailValid] = React.useState(false);
+  const [passwordValid, setPasswordValid] = React.useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // Update the form field values in Formik's state
     formik.handleChange(event);
-
-    // Pass the latest form data to the parent component
+    setEmailValid(formik.errors.email ? false : true);
+    setPasswordValid(formik.errors.password ? false : true);
     props.onChange(formik.values);
   };
 
@@ -73,9 +64,12 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             color='secondary'
             size='small'
             InputStyles={styles}
+            onBlur={formik.handleBlur}
+            error={!emailValid}
+            helperText={formik.errors.email}
           />
           {formik.touched.email && formik.errors.email && (
-            <span>{formik.errors.email}</span>
+            <Typography variant="body1" component="span">{formik.errors.email}</Typography>
           )}
         </Box>
         <Box>
@@ -89,10 +83,13 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             required
             color='secondary'
             size='small'
+            onBlur={formik.handleBlur}
             InputStyles={styles}
+            error={!passwordValid}
+            helperText={formik.errors.password}
           />
           {formik.touched.password && formik.errors.password && (
-            <span>{formik.errors.password}</span>
+            <Typography variant="body1" component="span">{formik.errors.password}</Typography>
           )}
         </Box>
         <Box sx={{ width: '320px', display: 'flex', justifyContent: 'space-between' }}>
@@ -130,5 +127,15 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
     </Box>
   );
 };
+
+const styles = {
+  width: '320px',
+  height: '42px',
+  alignSelf: 'stretch',
+  borderRadius: '8px',
+  fontSize: '14px',
+  lineHeight: '18px',
+  color: '#5A5869',
+}
 
 export default LoginForm;
