@@ -26,11 +26,11 @@ function App() {
           {isLoggedIn && <Route path="/board" element={<Dashboard />} />}
           <Route path="/" element={<Login />} />
           <Route path="signup" element={<Signup />} />
-          <Route path="email-verification" element={<EmailVerify />} />
-          <Route path="complete-profile" element={<CompleteProfile />} />
+          <Route path="/signup/email-verification" element={<EmailVerify />} />
+          <Route path="/signup/complete-profile" element={<CompleteProfile />} />
           <Route path="reset-password" element={<ForgotPasswordPage />} />
-          <Route path="email-sent" element={<EmailSentPage />} />
-          <Route path={"confirm-password"} element={<ConfirmPasswordPage />} />
+          <Route path="/reset-password/email-sent" element={<EmailSentPage />} />
+          <Route path="/reset-password/confirm-password" element={<ConfirmPasswordPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </ThemeProvider>
