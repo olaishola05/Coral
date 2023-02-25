@@ -5,11 +5,11 @@ import Typography from '@mui/material/Typography'
 import TextInput from './TextInput'
 import CustomCheckbox from './CustomCheckbox'
 import CustomButton from './CustomButton'
-import { useNavigate } from "react-router-dom";
 import HeaderText from './HeaderText'
+import { useNavigation } from '../../hooks/useNavigation'
 
 const SignupForm = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigation()
   const [data, setData] = React.useState({
     workspace: '',
     email: '',
@@ -39,7 +39,6 @@ const SignupForm = () => {
           value={data.workspace}
           size='small'
           color='secondary'
-          InputStyles={{ width: '100%', fontSize: '12px', fontWeight: 'normal', color: '#5A5869' }}
         />
 
         <TextInput
@@ -52,7 +51,6 @@ const SignupForm = () => {
           value={data.email}
           size='small'
           color='secondary'
-          InputStyles={{ width: '100%', fontSize: '12px', fontWeight: 'normal', color: '#5A5869' }}
         />
 
 
@@ -81,7 +79,8 @@ const SignupForm = () => {
 
         <Typography variant="body1" sx={{ fontSize: '14px', fontWeight: 'normal', lineHeight: '18px', color: '#6F6D7B', order: 1, height: '36px' }}>
           Already have an account?
-          <CustomButton onClick={() => console.log('')}
+          <CustomButton
+            onClick={() => { navigate('/') }}
             color='success'
             variant='text'
             btnStyles={{ width: '67px', color: 'secondary' }}

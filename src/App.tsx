@@ -10,6 +10,9 @@ import Login from './Pages/Login/Login';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import EmailVerify from './Pages/Signup/EmailVerify';
 import CompleteProfile from './Pages/Signup/CompleteProfile';
+import ConfirmPasswordPage from './Pages/Login/ConfirmPasswordPage';
+import ForgotPasswordPage from './Pages/Login/ForgotPasswordPage';
+import EmailSentPage from './Pages/Login/EmailSentPage';
 
 const queryClient = new QueryClient()
 
@@ -23,12 +26,13 @@ function App() {
           {isLoggedIn && <Route path="/board" element={<Dashboard />} />}
           <Route path="/" element={<Login />} />
           <Route path="signup" element={<Signup />} />
-          <Route path="email-verification" element={<EmailVerify />} />
-          <Route path="complete-profile" element={<CompleteProfile />} />
-          <Route path={"/forgetpassword"} element={'forget pssword'} />
+          <Route path="/signup/email-verification" element={<EmailVerify />} />
+          <Route path="/signup/complete-profile" element={<CompleteProfile />} />
+          <Route path="reset-password" element={<ForgotPasswordPage />} />
+          <Route path="/reset-password/email-sent" element={<EmailSentPage />} />
+          <Route path="/reset-password/confirm-password" element={<ConfirmPasswordPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-
       </ThemeProvider>
     </QueryClientProvider>
   );

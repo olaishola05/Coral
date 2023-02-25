@@ -9,6 +9,8 @@ import CustomCheckbox from './CustomCheckbox';
 import { formData } from '../../types/appTypes';
 import { useLoginFormik } from '../../hooks/useFormik';
 import HeaderText from './HeaderText';
+import { useNavigation } from '../../hooks/useNavigation';
+
 
 
 interface LoginFormProps {
@@ -20,6 +22,8 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
   const theme = useTheme();
   const [emailValid, setEmailValid] = React.useState(false);
   const [passwordValid, setPasswordValid] = React.useState(false);
+
+  const navigate = useNavigation();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     formik.handleChange(event);
@@ -58,8 +62,8 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             type='email'
             required
             color='secondary'
+            InputStyles={{ width: '320px' }}
             size='small'
-            InputStyles={styles}
             onBlur={formik.handleBlur}
             error={!emailValid}
             helperText={formik.errors.email}
@@ -78,9 +82,9 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             type='password'
             required
             color='secondary'
+            InputStyles={{ width: '320px' }}
             size='small'
             onBlur={formik.handleBlur}
-            InputStyles={styles}
             error={!passwordValid}
             helperText={formik.errors.password}
           />
@@ -96,7 +100,8 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             onChange={handleChange}
             checkedStyle={{ '&.Mui-checked': { color: '#312E43' } }}
           />
-          <CustomButton onClick={() => console.log('')}
+          <CustomButton
+            onClick={() => { navigate('/forget-password') }}
             color='success'
             variant='text'
             btnStyles={{ color: 'secondary', width: '150px', fontSty: 'normal', fontWeight: '600', lineHeight: '21px' }}
@@ -112,7 +117,9 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
         </CustomButton>
 
         <Typography variant="body1" component="p" sx={{ width: '320px', fontSize: '14px', lineHeight: '18px', display: 'flex', alignItems: 'center', order: 1, color: `${theme.text.primary.neutral}` }}>
-          Don't have an account? <CustomButton onClick={() => console.log('')}
+          Don't have an account?
+          <CustomButton
+            onClick={() => { navigate('/signup') }}
             color='success'
             variant='text'
             btnStyles={{ width: '114px', color: 'secondary' }}
@@ -122,15 +129,5 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
     </Box>
   );
 };
-
-const styles = {
-  width: '320px',
-  height: '42px',
-  alignSelf: 'stretch',
-  borderRadius: '8px',
-  fontSize: '14px',
-  lineHeight: '18px',
-  color: '#5A5869',
-}
 
 export default LoginForm;

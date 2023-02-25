@@ -30,7 +30,7 @@ const TextInput: React.FC<TextInputProps> = ({ label, value, onChange, placehold
       type={type}
       required={required}
       color={color}
-      sx={InputStyles}
+      sx={{ width: '100%', fontSize: '12px', fontWeight: 'normal', color: '#5A5869', ...InputStyles }}
       size={size}
     />
   );
