@@ -12,6 +12,7 @@ import EmailVerify from './Pages/Signup/EmailVerify';
 import CompleteProfile from './Pages/Signup/CompleteProfile';
 import ConfirmPasswordPage from './Pages/Login/ConfirmPasswordPage';
 import ForgotPasswordPage from './Pages/Login/ForgotPasswordPage';
+import EmailSentPage from './Pages/Login/EmailSentPage';
 
 const queryClient = new QueryClient()
 
@@ -28,11 +29,10 @@ function App() {
           <Route path="email-verification" element={<EmailVerify />} />
           <Route path="complete-profile" element={<CompleteProfile />} />
           <Route path="reset-password" element={<ForgotPasswordPage />} />
-          <Route path="email-sent" element={'email sent'} />
+          <Route path="email-sent" element={<EmailSentPage />} />
           <Route path={"confirm-password"} element={<ConfirmPasswordPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-
       </ThemeProvider>
     </QueryClientProvider>
   );
