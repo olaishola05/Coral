@@ -23,14 +23,15 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Routes>
-          {isLoggedIn && <Route path="/board" element={<Dashboard />} />}
-          <Route path="/" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
-          <Route path="/signup/email-verification" element={<EmailVerify />} />
-          <Route path="/signup/complete-profile" element={<CompleteProfile />} />
-          <Route path="reset-password" element={<ForgotPasswordPage />} />
-          <Route path="/reset-password/email-sent" element={<EmailSentPage />} />
-          <Route path="/reset-password/confirm-password" element={<ConfirmPasswordPage />} />
+          {isLoggedIn ? <Route path="dashboard" element={<Dashboard />} /> : <>
+            <Route path="/" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="/signup/email-verification" element={<EmailVerify />} />
+            <Route path="/signup/complete-profile" element={<CompleteProfile />} />
+            <Route path="reset-password" element={<ForgotPasswordPage />} />
+            <Route path="/reset-password/email-sent" element={<EmailSentPage />} />
+            <Route path="/reset-password/confirm-password" element={<ConfirmPasswordPage />} /></>}
+
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </ThemeProvider>

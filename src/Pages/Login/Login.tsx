@@ -6,6 +6,7 @@ import LoginImage from '../../Assets/svg/login.svg'
 import useLogin from '../../hooks/useLogin'
 import useToggle from '../../hooks/useToggle'
 import useMessage from '../../hooks/useMessage'
+import { useNavigation } from '../../hooks/useNavigation'
 
 const Login = () => {
   const [data, setData] = React.useState({
@@ -13,7 +14,7 @@ const Login = () => {
     password: '',
     // rememberMe: false
   })
-
+  const navigate = useNavigation();
   const [value, toggle] = useToggle(false)
   const [msg, setMsg] = useMessage()
   const [error, setError] = React.useState<boolean>()
@@ -25,8 +26,9 @@ const Login = () => {
       onSuccess: (data) => {
         setMsg('Utente autenticato con successo');
         setSuccess(true);
-        // localStorage.setItem('token', data.token);
         toggle();
+        localStorage.setItem('token', data.token);
+        navigate('/dashboard');
       },
       onError: (error) => {
         setMsg('Credenziali non valide');
