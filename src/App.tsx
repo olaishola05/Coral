@@ -13,6 +13,7 @@ import CompleteProfile from './Pages/Signup/CompleteProfile';
 import ConfirmPasswordPage from './Pages/Login/ConfirmPasswordPage';
 import ForgotPasswordPage from './Pages/Login/ForgotPasswordPage';
 import EmailSentPage from './Pages/Login/EmailSentPage';
+import Processes from './Pages/Dashboard/Processes';
 
 const queryClient = new QueryClient()
 
@@ -23,14 +24,19 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Routes>
-          {isLoggedIn ? <Route path="dashboard" element={<Dashboard />} /> : <>
-            <Route path="/" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="/signup/email-verification" element={<EmailVerify />} />
-            <Route path="/signup/complete-profile" element={<CompleteProfile />} />
-            <Route path="reset-password" element={<ForgotPasswordPage />} />
-            <Route path="/reset-password/email-sent" element={<EmailSentPage />} />
-            <Route path="/reset-password/confirm-password" element={<ConfirmPasswordPage />} /></>}
+          {isLoggedIn ?
+            <Route element={<Dashboard />}>
+              <Route index path="/" element={<Processes />} />
+              <Route path="model" element={'Model'} />
+            </Route>
+            : <>
+              <Route path="/login" element={<Login />} />
+              <Route path="signup" element={<Signup />} />
+              <Route path="/signup/email-verification" element={<EmailVerify />} />
+              <Route path="/signup/complete-profile" element={<CompleteProfile />} />
+              <Route path="reset-password" element={<ForgotPasswordPage />} />
+              <Route path="/reset-password/email-sent" element={<EmailSentPage />} />
+              <Route path="/reset-password/confirm-password" element={<ConfirmPasswordPage />} /></>}
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>

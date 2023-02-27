@@ -28,7 +28,7 @@ const Login = () => {
         setSuccess(true);
         toggle();
         localStorage.setItem('token', data.token);
-        navigate('/dashboard');
+        navigate('/process');
       },
       onError: (error) => {
         setMsg('Credenziali non valide');
