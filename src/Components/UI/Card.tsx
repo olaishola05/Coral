@@ -1,21 +1,70 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, Typography, } from '@mui/material';
-
+import { Card, CardContent, CardHeader, Typography, Box, CardActionArea } from '@mui/material';
 interface CardProps {
-  title: string;
-  icon?: React.ReactNode;
-  children: React.ReactNode;
+  item: {
+    id: string;
+    name: string;
+    background: string;
+    icon: string;
+    color?: string;
+    private?: {
+      LockIcon: string;
+      ElipsesIcon: string;
+    }
+  },
+  toggle: () => void;
 }
 
-const CustomCard: React.FC<CardProps> = ({ title, children, icon }, ...rest) => {
+const CustomCard: React.FC<CardProps> = ({ item, toggle }) => {
+  const { name, background, icon, color, id } = item;
+
+  const handleClick = (id: string) => {
+    if (id === '0') {
+      toggle();
+    }
+
+  }
+
   return (
-    <Card {...rest}>
-      <CardHeader title={title} avatar={icon} />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {children}
-        </Typography>
-      </CardContent>
+    <Card
+      sx={{
+        display: 'flex',
+        width: '150px', height: '150px',
+        padding: '12px 12px 30px',
+        backgroundColor: background,
+        border: color ? '1px dotted #D6D5D9' : 'none',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: '8px',
+        order: parseInt(`${id}`),
+      }}>
+      <>
+        {item.private && (
+          <CardHeader
+            action={
+              <Box sx={{ width: '138px', display: 'flex', justifyContent: 'space-between', paddingRight: '5px' }}>
+                <img src={item.private.LockIcon} alt={item.private.LockIcon} />
+                <img src={item.private.ElipsesIcon} alt={item.private.ElipsesIcon} />
+              </Box>
+            }
+          />
+        )}
+      </>
+      <CardActionArea
+        onClick={() => handleClick(id)}
+      >
+        <CardContent
+          sx={{
+            display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center', gap: '10px',
+          }}>
+          <img src={icon} alt={icon} style={{ width: '26.67px', height: '26.67px' }} />
+          <Typography variant="body2" color={color ? color : 'white'} sx={{ textAlign: 'center' }}>
+            {name}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
     </Card>
   );
 };

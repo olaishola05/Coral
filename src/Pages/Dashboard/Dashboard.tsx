@@ -9,7 +9,7 @@ import useToggle from '../../hooks/useToggle';
 import { drawerWidth } from '../../utils/utils';
 import BoardTopbar from '../../Components/Layouts/BoardTopbar';
 import BoardListItems from '../../Components/Layouts/BoardListItems';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -70,11 +70,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 function Dashboard() {
   const [open, toggle] = useToggle(false);
   const [path, setPath] = React.useState<string>('')
-
-
   const location = useLocation()
-  const params = useParams()
-  console.log(params)
+
   React.useEffect(() => {
     if (location.pathname === '/')
       setPath('Process')
@@ -82,6 +79,7 @@ function Dashboard() {
       setPath(location.pathname.split('/')[1])
 
   }, [location.pathname])
+
   return (
     <Box sx={{ display: 'flex' }}>
       <BoardTopbar open={open} toggle={toggle} path={path} />
@@ -99,10 +97,9 @@ function Dashboard() {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
+          // p: 3,
         }}
       >
-
         <DrawerHeader />
         <Outlet />
       </Box>

@@ -59,7 +59,7 @@ const BoardTopbar = ({ open, toggle, path }: BoardTopbarProps) => {
           <img src={MenuIcon} alt="menu" />
         </IconButton>
         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="h6" noWrap component="div" sx={{ fontWeight: '600', fontSize: '20px', lineHeight: '36px' }}>
+          <Typography variant="h6" noWrap component="div" sx={{ fontWeight: '600', fontSize: '20px', lineHeight: '36px', textTransform: 'capitalize' }}>
             {path}
           </Typography>
 
