@@ -5,6 +5,10 @@ import CustomButton from '../CustomButton'
 import TextInput from '../TextInput'
 import Box from '@mui/material/Box'
 import { generateRandomNumber } from '../../../utils/utils'
+import InputAdornment from '@mui/material/InputAdornment';
+import { ReactComponent as RedballIcon } from '../../../Assets/svg/redball.svg'
+import { ReactComponent as PalleteIcon } from '../../../Assets/svg/pallete.svg'
+import IconButton from '@mui/material/IconButton';
 
 
 const styles = {
@@ -106,6 +110,18 @@ const ProcessModal = ({ open, toggle, onChange, submit }: Props) => {
             required
             size='small'
             color='secondary'
+            InputProps={{
+              startAdornment: <InputAdornment position="start" >
+                <IconButton
+                  sx={{ backgroundColor: processName.background }}
+                >
+                  <Box sx={{ width: '10px', height: '10px', borderRadius: '50%' }} />
+                </IconButton>
+              </InputAdornment>,
+              endAdornment: <InputAdornment position="end" >
+                <PalleteIcon />
+              </InputAdornment>,
+            }}
           />
 
           <Box sx={{ width: '150px', display: 'flex', gap: '16px', marginLeft: 'auto' }}>

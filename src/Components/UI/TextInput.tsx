@@ -16,9 +16,10 @@ interface TextInputProps {
   error?: boolean;
   helperText?: string;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  InputProps?: any;
 }
 
-const TextInput: React.FC<TextInputProps> = ({ label, value, onChange, placeholder, type, required, color, name, InputStyles, size }) => {
+const TextInput: React.FC<TextInputProps> = ({ label, value, onChange, placeholder, type, required, color, name, InputStyles, size, InputProps }) => {
   return (
     <TextField
       label={label}
@@ -32,6 +33,7 @@ const TextInput: React.FC<TextInputProps> = ({ label, value, onChange, placehold
       color={color}
       sx={{ width: '100%', fontSize: '12px', fontWeight: 'normal', color: '#5A5869', ...InputStyles }}
       size={size}
+      InputProps={InputProps}
     />
   );
 };
