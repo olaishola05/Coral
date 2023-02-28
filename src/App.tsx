@@ -14,20 +14,22 @@ import ConfirmPasswordPage from './Pages/Login/ConfirmPasswordPage';
 import ForgotPasswordPage from './Pages/Login/ForgotPasswordPage';
 import EmailSentPage from './Pages/Login/EmailSentPage';
 import Processes from './Pages/Dashboard/Processes';
+import ProcessPage from './Pages/Dashboard/ProcessPage';
 
 const queryClient = new QueryClient()
 
 function App() {
   const isLoggedIn = localStorage.getItem('token') ? true : false;
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Routes>
           {isLoggedIn ?
-            <Route path='/' element={<Dashboard />}>
+            <Route element={<Dashboard />}>
               <Route index path="/" element={<Processes />} />
-              <Route path="/:id" element={'Process Id'} />
+              <Route path="/:id" element={<ProcessPage />} />
               <Route path="model" element={'Model'} />
             </Route>
             : <>
