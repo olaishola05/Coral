@@ -135,3 +135,7 @@ export const processList = [
     icon: ProcessIcon,
   },
 ];
+
+export const generateRandomNumber = () => {
+  return String(Math.floor(Math.random() * 100) + 10)
+}
