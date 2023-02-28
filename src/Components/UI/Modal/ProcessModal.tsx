@@ -6,7 +6,6 @@ import TextInput from '../TextInput'
 import Box from '@mui/material/Box'
 import { generateRandomNumber } from '../../../utils/utils'
 import InputAdornment from '@mui/material/InputAdornment';
-import { ReactComponent as RedballIcon } from '../../../Assets/svg/redball.svg'
 import { ReactComponent as PalleteIcon } from '../../../Assets/svg/pallete.svg'
 import IconButton from '@mui/material/IconButton';
 

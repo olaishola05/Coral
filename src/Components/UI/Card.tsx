@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, Typography, Box, CardActionArea } from '@mui/material';
+import { useNavigation } from '../../hooks/useNavigation';
 interface CardProps {
   item: {
     id: string;
@@ -17,10 +18,15 @@ interface CardProps {
 
 const CustomCard: React.FC<CardProps> = ({ item, toggle }) => {
   const { name, background, icon, color, id } = item;
+  const navigate = useNavigation();
 
   const handleClick = (id: string) => {
     if (id === '0') {
       toggle();
+    }
+
+    else {
+      navigate(`/${id}`);
     }
 
   }

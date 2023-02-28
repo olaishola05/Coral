@@ -11,6 +11,10 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '../../Assets/svg/menuIcon.svg'
 import { drawerWidth } from '../../utils/utils';
+import { useParams } from 'react-router-dom';
+import Link from '@mui/material/Link';
+import Stack from '@mui/material/Stack';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
 
 
 interface AppBarProps extends MuiAppBarProps {
@@ -42,6 +46,17 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const BoardTopbar = ({ open, toggle, path }: BoardTopbarProps) => {
+  const { id } = useParams<{ id: string }>()
+
+  const breadcrumb = [
+    <Link underline="hover" key="1" color="inherit" href="/">
+      Process
+    </Link>,
+
+    <Link key="3" color="inherit" href="/:id">
+      Process{id}
+    </Link>,
+  ]
   return (
     <AppBar position="fixed" open={open} color='transparent'>
       <Toolbar>
@@ -59,9 +74,19 @@ const BoardTopbar = ({ open, toggle, path }: BoardTopbarProps) => {
           <img src={MenuIcon} alt="menu" />
         </IconButton>
         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+
+
           <Typography variant="h6" noWrap component="div" sx={{ fontWeight: '600', fontSize: '20px', lineHeight: '36px', textTransform: 'capitalize' }}>
-            {path}
+
+            {path === '/' ? path :
+              <Breadcrumbs separator="›" aria-label="breadcrumb">
+                {breadcrumb}
+              </Breadcrumbs>
+            }
+
           </Typography>
+
+
 
           <Box>
             <IconButton color="inherit" aria-label="open drawer" onClick={toggle} edge="start" sx={{ marginRight: 2, ...(open && { display: 'none' }), }}>

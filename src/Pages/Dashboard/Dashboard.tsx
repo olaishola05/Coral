@@ -96,8 +96,7 @@ function Dashboard() {
       <Box
         component="main"
         sx={{
-          flexGrow: 1,
-          // p: 3,
+          flexGrow: 1
         }}
       >
         <DrawerHeader />

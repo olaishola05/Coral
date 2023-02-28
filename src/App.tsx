@@ -25,8 +25,9 @@ function App() {
         <CssBaseline />
         <Routes>
           {isLoggedIn ?
-            <Route element={<Dashboard />}>
+            <Route path='/' element={<Dashboard />}>
               <Route index path="/" element={<Processes />} />
+              <Route path="/:id" element={'Process Id'} />
               <Route path="model" element={'Model'} />
             </Route>
             : <>

@@ -72,7 +72,7 @@ const SignupForm = () => {
           type="submit"
           variant="contained"
           color="success"
-          onClick={() => navigate('/email-verification')}
+          onClick={() => navigate('/signup/email-verification')}
         >
           Create now the account
         </CustomButton>
@@ -80,7 +80,7 @@ const SignupForm = () => {
         <Typography variant="body1" sx={{ fontSize: '14px', fontWeight: 'normal', lineHeight: '18px', color: '#6F6D7B', order: 1, height: '36px' }}>
           Already have an account?
           <CustomButton
-            onClick={() => { navigate('/') }}
+            onClick={() => { navigate('/login') }}
             color='success'
             variant='text'
             btnStyles={{ width: '67px', color: 'secondary' }}

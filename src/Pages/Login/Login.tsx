@@ -27,8 +27,10 @@ const Login = () => {
         setMsg('Utente autenticato con successo');
         setSuccess(true);
         toggle();
-        localStorage.setItem('token', data.token);
-        navigate('/process');
+        setInterval(() => {
+          localStorage.setItem('token', data.token);
+          navigate('/');
+        }, 6000);
       },
       onError: (error) => {
         setMsg('Credenziali non valide');
