@@ -69,6 +69,9 @@ export const theme = createTheme({
     success: {
       main: "#2CCFBC",
     },
+    warning: {
+      main: '#EF980B'
+    },
   },
 
   typography: {

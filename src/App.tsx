@@ -19,7 +19,8 @@ import ProcessPage from './Pages/Dashboard/ProcessPage';
 const queryClient = new QueryClient()
 
 function App() {
-  const isLoggedIn = localStorage.getItem('token') ? true : false;
+  // const isLoggedIn = localStorage.getItem('token') ? true : false;
+  const isLoggedIn = true;
 
   return (
     <QueryClientProvider client={queryClient}>

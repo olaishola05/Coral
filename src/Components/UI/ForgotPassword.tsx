@@ -35,6 +35,7 @@ const ForgotPassword = () => {
         <CustomButton
           type='submit'
           variant='contained'
+          onClick={() => navigate('email-sent')}
         >
           Resend Password
         </CustomButton>
@@ -43,7 +44,7 @@ const ForgotPassword = () => {
             type='submit'
             variant='text'
             color='success'
-            onClick={() => { navigate('/') }}
+            onClick={() => { navigate('/login') }}
             btnStyles={{ width: '0px', color: 'success' }}
           >
             Login

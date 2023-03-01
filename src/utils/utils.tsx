@@ -11,6 +11,25 @@ import CartIcon from '../Assets/svg/cart.svg';
 import PlusIcon from '../Assets/svg/plus.svg';
 import LockIcon from '../Assets/svg/lock.svg';
 import ElipsesIcon from '../Assets/svg/elipses.svg';
+import { processIconLists, processIconsRightArr } from '../types/appTypes';
+import { ReactComponent as DividerIcon } from '../Assets/svg/Divider.svg';
+import { ReactComponent as ArrowDownIcon } from '../Assets/svg/downarrow.svg';
+import { ReactComponent as ViewsIcon } from '../Assets/svg/views.svg'
+import { ReactComponent as ListsIcon } from '../Assets/svg/lists.svg'
+import { ReactComponent as ColumnIcon } from '../Assets/svg/column.svg'
+import { ReactComponent as FilterIcon } from '../Assets/svg/filter.svg'
+import { ReactComponent as GroupIcon } from '../Assets/svg/group.svg'
+import { ReactComponent as OrderIcon } from '../Assets/svg/arrow.svg'
+import { ReactComponent as PalleteIcon } from '../Assets/svg/pallete.svg'
+import { ReactComponent as HeightIcon } from '../Assets/svg/height.svg'
+
+import { ReactComponent as BagIcon } from '../Assets/svg/bag.svg'
+import { ReactComponent as FileImportIcon } from '../Assets/svg/fileImport.svg'
+import { ReactComponent as FileExportIcon } from '../Assets/svg/fileExport.svg'
+import { ReactComponent as SettingIcon } from '../Assets/svg/setting.svg'
+import { ReactComponent as AddIcon } from '../Assets/svg/add.svg'
+import { ReactComponent as SearchIcon } from '../Assets/svg/lens.svg'
+
 
 export const drawerIconNames = [
   {
@@ -139,3 +158,68 @@ export const processList = [
 export const generateRandomNumber = () => {
   return String(Math.floor(Math.random() * 100) + 10)
 }
+
+export const processIcons: processIconLists[] = [
+  {
+    id: generateRandomNumber(),
+    name: 'Views',
+    icon: <ViewsIcon />,
+    divider: <DividerIcon />,
+  },
+
+  {
+    id: generateRandomNumber(),
+    name: 'Tables',
+    icon: <ListsIcon />,
+    divider: <DividerIcon />,
+    extraIcon: <ArrowDownIcon />,
+  },
+  {
+    id: generateRandomNumber(),
+    name: 'Columns',
+    icon: <ColumnIcon />,
+    divider: <DividerIcon />,
+    background: 'rgba(71, 255, 145, 0.2)',
+  },
+
+  {
+    id: generateRandomNumber(),
+    name: 'Filters',
+    icon: <FilterIcon />,
+  },
+
+  {
+    id: generateRandomNumber(),
+    name: 'Grouped in : Phases',
+    icon: <GroupIcon />,
+    background: 'rgba(108, 71, 255, 0.2)',
+  },
+
+  {
+    id: generateRandomNumber(),
+    name: 'Orders',
+    icon: <OrderIcon />,
+  },
+
+  {
+    id: generateRandomNumber(),
+    name: 'Colors',
+    icon: <PalleteIcon />,
+  },
+
+  {
+    id: generateRandomNumber(),
+    name: 'Heights',
+    icon: <HeightIcon />,
+  },
+
+]
+
+export const processIconRight: processIconsRightArr = [
+  <BagIcon />,
+  <SearchIcon />,
+  <FileImportIcon />,
+  <FileExportIcon />,
+  <SettingIcon />,
+  <AddIcon />,
+];

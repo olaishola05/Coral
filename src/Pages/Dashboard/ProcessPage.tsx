@@ -1,12 +1,43 @@
 import React from 'react'
 import ProcessToolbar from '../../Components/Layouts/ProcessToolbar'
-import Divider from '@mui/material/Divider'
+import CustomTable from '../../Components/UI/CustomTable'
+import useFetch from '../../hooks/useFetch'
+
+const baseUrl = process.env.REACT_APP_BASE_URL
 
 const ProcessPage = () => {
+  const { data, status, error } = useFetch(baseUrl + '/processes')
+
+  console.log(data);
+
+
+  if (status === 'error') {
+    return <div>
+      <>
+        Error: {error}</>
+    </div>
+  }
+
+  if (status === 'loading') {
+    return <div>Loading...</div>
+  }
+
   return (
     <div>
-      {/* <Divider sx={{ width: '100%', height: '1px', backgroundColor: '#D6D5D9', margin: '2px' }} /> */}
       <ProcessToolbar />
+      {data && data.map((process: any, index: string) => {
+        const { id, firstName, lastName, phone, processId, Assignee, createdAt } = process
+        const VOD = `VOD-15${index + 1}`
+        return (
+          <CustomTable
+            key={id}
+            rows={[
+              ['', VOD, `${firstName} ${lastName}`, `+${phone}`, processId, Assignee, createdAt]
+            ]}
+          />
+        )
+      })
+      }
     </div>
   )
 }

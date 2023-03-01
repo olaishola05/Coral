@@ -7,7 +7,6 @@ import useToggle from '../../hooks/useToggle'
 import ProcessModal from '../../Components/UI/Modal/ProcessModal'
 import ProcessIcon from '../../Assets/svg/process.svg'
 
-
 const Processes = () => {
   const [open, toggle] = useToggle(false)
   const [process, setProcess] = React.useState({
