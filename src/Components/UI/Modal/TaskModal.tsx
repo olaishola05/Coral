@@ -2,6 +2,7 @@ import React from 'react'
 import CustomModal from './CustomModal'
 import Box from '@mui/material/Box';
 import DialogueTopbar from '../../Layouts/DialogueTopbar';
+import DialogueContainer from '../DialogueContainer';
 
 interface Props {
   open: boolean
@@ -21,6 +22,7 @@ const TaskModal = ({ open, toggleOpen }: Props) => {
     <CustomModal open={open} onClose={toggleOpen} sx={styles}>
       <Box>
         <DialogueTopbar toggleOpen={toggleOpen} />
+        <DialogueContainer />
       </Box>
     </CustomModal>
   )
