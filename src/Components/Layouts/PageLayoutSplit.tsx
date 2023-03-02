@@ -4,7 +4,7 @@ import Logo from '../../Assets/svg/Logo.svg';
 import SnackbarError from '../UI/snacks/SnackError';
 import SnackSuccess from '../UI/snacks/SnackSuccess';
 
-interface AuthenticationPageSplitProps {
+interface PageLayoutSplitProps {
   leftSide: React.ReactNode;
   rightSide: React.ReactNode;
   leftClassName?: any;
@@ -18,7 +18,7 @@ interface AuthenticationPageSplitProps {
   handleSuccess?: () => void;
 }
 
-function AuthenticationPageSplit(props: AuthenticationPageSplitProps): JSX.Element {
+function PageLayoutSplit(props: PageLayoutSplitProps): JSX.Element {
   const { leftSide, rightSide, leftClassName, rightStyles, error, message, success, value } = props;
 
   const handleError = () => {
@@ -43,4 +43,4 @@ function AuthenticationPageSplit(props: AuthenticationPageSplitProps): JSX.Eleme
   )
 
 }
-export default AuthenticationPageSplit;
+export default PageLayoutSplit;

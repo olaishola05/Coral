@@ -1,5 +1,7 @@
 import React from 'react'
 import CustomModal from './CustomModal'
+import Box from '@mui/material/Box';
+import DialogueTopbar from '../../Layouts/DialogueTopbar';
 
 interface Props {
   open: boolean
@@ -17,9 +19,9 @@ const styles = {
 const TaskModal = ({ open, toggleOpen }: Props) => {
   return (
     <CustomModal open={open} onClose={toggleOpen} sx={styles}>
-      <div>
-        some thins
-      </div>
+      <Box>
+        <DialogueTopbar toggleOpen={toggleOpen} />
+      </Box>
     </CustomModal>
   )
 }

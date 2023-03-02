@@ -1,5 +1,5 @@
 import React from 'react'
-import AuthenticationPageSplit from '../../Components/Layouts/AuthenticationPageSplit'
+import PageLayoutSplit from '../../Components/Layouts/PageLayoutSplit'
 import ImageContainer from '../../Components/UI/ImageContainer'
 import LoginForm from '../../Components/UI/LoginForm'
 import LoginImage from '../../Assets/svg/login.svg'
@@ -38,7 +38,7 @@ const Login = () => {
   };
 
   return (
-    <AuthenticationPageSplit
+    <PageLayoutSplit
       value={value}
       error={error}
       success={success}
