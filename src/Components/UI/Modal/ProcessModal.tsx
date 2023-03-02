@@ -11,18 +11,9 @@ import IconButton from '@mui/material/IconButton';
 
 
 const styles = {
-  position: 'absolute' as 'absolute',
   top: '50%',
   left: '50%',
-  transform: 'translate(-50%, -50%)',
   width: 603,
-  bgcolor: 'background.paper',
-  borderRadius: '15px',
-  boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)',
-  p: 3,
-  display: 'flex',
-  justifyContent: 'center',
-  flexDirection: 'column' as 'column',
 }
 
 interface Props {
