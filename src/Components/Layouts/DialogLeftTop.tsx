@@ -99,7 +99,7 @@ const DialogLeftTop = () => {
         </Box>
 
         <DividerIcon />
-        <Label backgroundColor="#D6D5D9" icon={<DBIcon />} text="#database_object_1" width='186px' color={'#312E43'} />
+        <Label backgroundColor="#D6D5D9" icon={<DBIcon />} text="#database_object_1" width='190px' color={'#312E43'} />
         <Label backgroundColor="#D6D5D9" icon={<DBIcon />} text="#db-oject1" width='128px' color={'#312E43'} />
       </Box>
       <Box sx={{ border: '2px solid #EAEAEC', order: 3 }}></Box></>

@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 interface LabelProps {
   backgroundColor: string
   text: string
-  width: string
+  width?: string
   icon?: any,
   color?: string
 }
@@ -22,8 +22,7 @@ const Label = ({ backgroundColor, text, width, icon, color }: LabelProps) => {
     alignItems: 'center',
     gap: '8px',
     height: '22px',
-    width: width,
-    maxWidth: '184px',
+    width: width ? width : 'auto',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',

@@ -18,8 +18,9 @@ interface ProcessTableProps {
   index: string
   handleClick: (event: React.MouseEvent<HTMLElement>) => void;
   open: boolean;
+  status: string;
 }
-const ProcessTable = ({ process, index, handleClick }: ProcessTableProps) => {
+const ProcessTable = ({ process, index, handleClick, status }: ProcessTableProps) => {
   const { id, firstName, lastName, phone, processId, Assignee, createdAt } = process
   const VOD = `VOD-15${index + 1}`
 
@@ -31,6 +32,7 @@ const ProcessTable = ({ process, index, handleClick }: ProcessTableProps) => {
           ['', VOD, `${firstName} ${lastName}`, `+${phone}`, processId, Assignee, createdAt]
         ]}
         handleClick={handleClick}
+        status={status}
       />
     </Box>
 

@@ -27,13 +27,14 @@ const ProcessPage = () => {
     <Box>
       {open && <TaskModal open={open} toggleOpen={toggle} />}
       <ProcessToolbar />
-      {status === 'loading' ? 'Loading...' : data && data.map((process: any, index: string) => (
+      {data && data.map((process: any, index: string) => (
         <ProcessTable
           process={process}
           index={index}
           key={process.id}
           handleClick={handleClick}
           open={open}
+          status={status}
         />
       ))
       }

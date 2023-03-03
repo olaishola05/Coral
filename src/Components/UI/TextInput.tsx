@@ -17,9 +17,11 @@ interface TextInputProps {
   helperText?: string;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   InputProps?: any;
+  multiline?: boolean;
+  rows?: number;
 }
 
-const TextInput: React.FC<TextInputProps> = ({ label, value, onChange, placeholder, type, required, color, name, InputStyles, size, InputProps }) => {
+const TextInput: React.FC<TextInputProps> = ({ label, value, onChange, placeholder, type, required, color, name, InputStyles, size, InputProps, multiline, rows }) => {
   return (
     <TextField
       label={label}

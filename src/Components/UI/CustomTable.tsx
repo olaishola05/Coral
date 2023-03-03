@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, } from '@mui/material';
+import Skeleton from '@mui/material/Skeleton';
 
 interface CustomTableProps {
   headers?: string[];
@@ -7,9 +8,10 @@ interface CustomTableProps {
   columns?: string[];
   handleClick?: (event: React.MouseEvent<HTMLElement>) => void;
   open?: boolean;
+  status?: string;
 }
 
-const CustomTable: React.FC<CustomTableProps> = ({ headers, rows, handleClick }) => {
+const CustomTable: React.FC<CustomTableProps> = ({ headers, rows, handleClick, status }) => {
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -25,12 +27,12 @@ const CustomTable: React.FC<CustomTableProps> = ({ headers, rows, handleClick })
           </TableHead>
         )}
         <TableBody>
-          {rows && rows.map((row, index) => (
+          {status === 'loading' ? <Skeleton animation="wave" /> : rows && rows.map((row, index) => (
             <TableRow key={index}
               sx={{ display: 'flex', alignItems: 'center' }}
               onClick={handleClick}
             >
-              {row.map((column, index) => (
+              {status === 'loading' ? <Skeleton animation="wave" /> : row.map((column, index) => (
                 <TableCell key={index} align="left" sx={{ padding: '10px 0px 0px 10px', height: '34px', border: '1px solid #EAEAEC', width: column === '' ? '15%' : column[index] === 'Name' ? '200%' : '100%', flexGrow: 1, color: '#312E43' }}>
                   {column}
                 </TableCell>

@@ -10,7 +10,13 @@ interface Props {
 
 const DialogueLeft = ({ dialogueItems }: Props) => {
   return (
-    <Box sx={{ ...dialogueItems, order: 0 }}>
+    <Box sx={{
+      ...dialogueItems,
+      order: 0, padding: '10px',
+      overflowY: 'scroll',
+      border: '1px solid #E5E5E5',
+      height: '600px'
+    }}>
       <DialogueLeftTop />
       <CompanyInfo />
     </Box>
