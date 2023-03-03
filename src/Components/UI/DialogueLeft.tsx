@@ -14,8 +14,7 @@ const DialogueLeft = ({ dialogueItems }: Props) => {
       ...dialogueItems,
       order: 0, padding: '10px',
       overflowY: 'scroll',
-      border: '1px solid #E5E5E5',
-      height: '600px'
+      height: '600px',
     }}>
       <DialogueLeftTop />
       <CompanyInfo />

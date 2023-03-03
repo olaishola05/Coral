@@ -1,11 +1,10 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 import DialogueLeft from './DialogueLeft';
+import DialogueRight from './DialogueRight';
 
 const containerStyles = {
   display: 'flex',
-  flexDirection: 'column',
-  // alignItems: 'center',
   padding: '12px 24px 24px',
   gap: '10px',
   width: '100%',
@@ -33,10 +32,11 @@ const DialogueContainer = () => {
     <Box sx={{ ...containerStyles }}>
       <Box sx={{ ...dialogueBoardStyles }}>
         <DialogueLeft dialogueItems={dialogueItems} />
-        <Box sx={{ ...dialogueItems, order: 1 }}>Right</Box>
+        <Box sx={{ ...dialogueItems, order: 1 }}>
+          <DialogueRight dialogueItems={dialogueItems} />
+        </Box>
+        <Box sx={{ order: 2, ...dialogueItems, width: '30px' }}>TopBar</Box>
       </Box>
-
-      <Box>Footer</Box>
     </Box>
   )
 }

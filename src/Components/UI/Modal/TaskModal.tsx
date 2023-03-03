@@ -3,6 +3,7 @@ import CustomModal from './CustomModal'
 import Box from '@mui/material/Box';
 import DialogueTopbar from '../../Layouts/DialogueTopbar';
 import DialogueContainer from '../DialogueContainer';
+import DialogueFooter from '../../Layouts/DialogueFooter';
 
 interface Props {
   open: boolean
@@ -12,7 +13,7 @@ interface Props {
 const styles = {
   top: '50%',
   left: '52.2%',
-  height: 760,
+  height: 770,
   width: 1350,
   justifyContent: 'flex-start',
 }
@@ -23,6 +24,7 @@ const TaskModal = ({ open, toggleOpen }: Props) => {
       <Box>
         <DialogueTopbar toggleOpen={toggleOpen} />
         <DialogueContainer />
+        <DialogueFooter />
       </Box>
     </CustomModal>
   )
