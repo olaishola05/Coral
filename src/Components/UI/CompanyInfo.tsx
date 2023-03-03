@@ -4,6 +4,8 @@ import TextInput from './TextInput';
 import TextField from '@mui/material/TextField';
 import CustomRadioBtn from './CustomRadioBtn';
 import MiniHeader from './MiniHeader';
+import { ReactComponent as DocumentIcon } from '../../Assets/svg/doc.svg';
+import { ReactComponent as DividerIcon } from '../../Assets/svg/L_divider.svg';
 
 const styles = {
   display: 'flex',
@@ -62,9 +64,10 @@ const CompanyInfo = () => {
 
       <Box sx={{ ...styles, height: '236px', order: 4 }}>
         <MiniHeader text='Company data' />
-        <Box component='form' sx={{ ...styles, width: '100%' }}>
-          <Box>
-            icons
+        <Box component='form' sx={{ ...styles, flexDirection: 'row', width: '100%' }}>
+          <Box sx={{ ...styles, alignItems: 'center', width: '24px', gap: '20px' }}>
+            <DocumentIcon />
+            <DividerIcon />
           </Box>
           <Box sx={{ ...styles, width: '100%', gap: '24px', order: 4 }}>
             <TextInput
