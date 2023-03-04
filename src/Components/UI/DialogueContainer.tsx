@@ -2,6 +2,7 @@ import React from 'react'
 import Box from '@mui/material/Box';
 import DialogueLeft from './DialogueLeft';
 import DialogueRight from './DialogueRight';
+import { ReactComponent as DividerIcon } from '../../Assets/svg/longer-divider.svg';
 
 const containerStyles = {
   display: 'flex',
@@ -22,9 +23,7 @@ const dialogueItems = {
   display: 'flex',
   flexDirection: 'column',
   gap: '24px',
-  width: '100%',
   borderRadius: '8px',
-  // border: '1px solid #E5E5E5',
 }
 
 const DialogueContainer = () => {
@@ -35,7 +34,12 @@ const DialogueContainer = () => {
         <Box sx={{ ...dialogueItems, order: 1 }}>
           <DialogueRight dialogueItems={dialogueItems} />
         </Box>
-        <Box sx={{ order: 2, ...dialogueItems, width: '30px' }}>TopBar</Box>
+        <Box sx={{ order: 3, display: 'flex', ml: 'auto' }}>
+          <Box sx={{ borderLeft: '2px solid #EAEAEC', height: 600 }} />
+          <Box sx={{ padding: '50px 0px 0px' }}>
+            Bar
+          </Box>
+        </Box>
       </Box>
     </Box>
   )

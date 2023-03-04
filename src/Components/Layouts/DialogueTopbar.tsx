@@ -36,7 +36,7 @@ const rightBarStyles = {
   display: 'flex',
   alignItems: 'center',
   order: 1,
-  gap: '24px',
+  gap: '27px',
   width: '403px',
 }
 
@@ -58,20 +58,22 @@ const DialogueTopbar = ({ toggleOpen }: DialogueTopbarProps) => {
           <Typography variant="h6" sx={{ fontWeight: '600', fontSize: '16px', ...display, lineHeight: '24px', textDecoration: 'underline', color: 'primary.main' }}>KO Motivation </Typography>
         </Box>
 
-        <Box sx={{ ...display, gap: '16px', width: '184px', order: 2, cursor: 'pointer', }}>
+        <Box sx={{ ...display, gap: '20px', width: '184px', order: 2, cursor: 'pointer', }}>
           <AnchorIcon />
           <ScanIcon />
           <LinkIcon />
           <PathIcon />
           <TrashIcon />
-          <DividerIcon />
         </Box>
-        <Box sx={{
-          ...display, order: 3, width: '20px', cursor: 'pointer', fontSize: '16px', fontWeight: 'bold', color: '#9897A1'
-        }}
-          onClick={toggleOpen}
-        >
-          X
+        <Box sx={{ ...display, order: 3 }}>
+          <DividerIcon />
+          <Box sx={{
+            ...display, order: 3, width: '20px', cursor: 'pointer', fontSize: '16px', fontWeight: 'bold', color: '#9897A1', border: '1px solid #9897A1s', justifyContent: 'flex-end', gap: '8px'
+          }}
+            onClick={toggleOpen}
+          >
+            X
+          </Box>
         </Box>
       </Box>
     </Box>
