@@ -32,7 +32,7 @@ const DialogueRight = ({ dialogueItems }: Props) => {
   };
 
   return (
-    <Box sx={{ ...dialogueItems, width: '590px', gap: '24px', }}>
+    <Box sx={{ ...dialogueItems, width: '590px', gap: '24px', mr: '8px' }}>
       <MiniHeader
         text='Fields’ Phase'
         textStyle={{ color: '#464356', fontSize: '18px', lineHeight: '27px', fontWeight: '700' }}

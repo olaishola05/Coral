@@ -2,14 +2,14 @@ import React from 'react'
 import Box from '@mui/material/Box';
 import DialogueLeft from './DialogueLeft';
 import DialogueRight from './DialogueRight';
-import { ReactComponent as DividerIcon } from '../../Assets/svg/longer-divider.svg';
+import TabBar from '../Layouts/TabBar';
 
 const containerStyles = {
   display: 'flex',
-  padding: '12px 24px 24px',
+  padding: '12px 0px 24px',
   gap: '10px',
   width: '100%',
-  overflowY: 'scroll'
+  overflowY: 'scroll',
 }
 
 const dialogueBoardStyles = {
@@ -34,11 +34,9 @@ const DialogueContainer = () => {
         <Box sx={{ ...dialogueItems, order: 1 }}>
           <DialogueRight dialogueItems={dialogueItems} />
         </Box>
-        <Box sx={{ order: 3, display: 'flex', ml: 'auto' }}>
+        <Box sx={{ order: 3, display: 'flex' }}>
           <Box sx={{ borderLeft: '2px solid #EAEAEC', height: 600 }} />
-          <Box sx={{ padding: '50px 0px 0px' }}>
-            Bar
-          </Box>
+          <TabBar />
         </Box>
       </Box>
     </Box>
