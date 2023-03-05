@@ -49,7 +49,7 @@ const TabBar = () => {
             }}
             onClick={() => handleTabChange(index)}
           >
-            {activeTab === index && <Box sx={{ width: '2px', height: '24px', backgroundColor: 'primary.main' }} />}
+            {tab && activeTab === index && <Box sx={{ width: '2px', height: '24px', backgroundColor: 'primary.main' }} />}
             {tab}
           </Box>
         ))}

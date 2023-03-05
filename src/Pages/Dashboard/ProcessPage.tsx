@@ -5,12 +5,14 @@ import Box from '@mui/material/Box';
 import ProcessTable from '../../Components/UI/ProcessTable';
 import useToggle from '../../hooks/useToggle';
 import TaskModal from '../../Components/UI/Modal/TaskModal';
+import SettingsModal from '../../Components/UI/Modal/SettingsModal';
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
 const ProcessPage = () => {
   const { data, status, error } = useFetch(baseUrl + '/processes')
   const [open, toggle] = useToggle(false)
+  const [openSettings, toggleSettings] = useToggle(false)
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     toggle()
@@ -26,7 +28,8 @@ const ProcessPage = () => {
   return (
     <Box>
       {open && <TaskModal open={open} toggleOpen={toggle} />}
-      <ProcessToolbar />
+      {openSettings && <SettingsModal open={openSettings} toggleOpen={toggleSettings} />}
+      <ProcessToolbar toggleOpen={toggleSettings} />
       {data && data.map((process: any, index: string) => (
         <ProcessTable
           process={process}

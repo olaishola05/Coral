@@ -11,7 +11,7 @@ import CartIcon from '../Assets/svg/cart.svg';
 import PlusIcon from '../Assets/svg/plus.svg';
 import LockIcon from '../Assets/svg/lock.svg';
 import ElipsesIcon from '../Assets/svg/elipses.svg';
-import { processIconLists, processIconsRightArr } from '../types/appTypes';
+import { membersNavigationLists, processIconLists, processIconsRightArr } from '../types/appTypes';
 import { ReactComponent as DividerIcon } from '../Assets/svg/Divider.svg';
 import { ReactComponent as ArrowDownIcon } from '../Assets/svg/downarrow.svg';
 import { ReactComponent as ViewsIcon } from '../Assets/svg/views.svg'
@@ -29,6 +29,16 @@ import { ReactComponent as FileExportIcon } from '../Assets/svg/fileExport.svg'
 import { ReactComponent as SettingIcon } from '../Assets/svg/setting.svg'
 import { ReactComponent as AddIcon } from '../Assets/svg/add.svg'
 import { ReactComponent as SearchIcon } from '../Assets/svg/lens.svg'
+import { ReactComponent as ListBlackIcon } from '../Assets/svg/blklist.svg'
+import { ReactComponent as SubdirectoryIcon } from '../Assets/svg/subdirectory.svg'
+import { ReactComponent as GridIcon } from '../Assets/svg/grid.svg'
+import { ReactComponent as CardIcon } from '../Assets/svg/card.svg'
+import { ReactComponent as LabelIcon } from '../Assets/svg/label.svg'
+import { ReactComponent as AnchorIcon } from '../Assets/svg/anchor.svg'
+import { ReactComponent as BotIcon } from '../Assets/svg/bot.svg'
+import { ReactComponent as ConnectIcon } from '../Assets/svg/connection.svg'
+import { ReactComponent as MembersIcon } from '../Assets/svg/members.svg'
+import { ReactComponent as ExportIcon } from '../Assets/svg/export.svg'
 
 
 export const drawerIconNames = [
@@ -222,4 +232,70 @@ export const processIconRight: processIconsRightArr = [
   <FileExportIcon />,
   <SettingIcon />,
   <AddIcon />,
+];
+
+export const membersNavigations: membersNavigationLists = [
+  {
+    name: 'Startform',
+    icon: <ListBlackIcon />,
+    path: '',
+  },
+
+  {
+    name: 'Fasi',
+    icon: <SubdirectoryIcon />,
+    path: '',
+  },
+  {
+    name: 'Tabella',
+    icon: <GridIcon />,
+    path: '',
+  },
+  {
+    name: 'Card',
+    icon: <CardIcon />,
+    path: '',
+  },
+  {
+    name: 'Labels',
+    icon: <LabelIcon />,
+    path: '',
+  },
+
+  {
+    name: 'Campi condizionali',
+    icon: <AnchorIcon />,
+    path: '',
+  },
+
+  {
+    name: 'Automazioni',
+    icon: <BotIcon />,
+    path: '',
+  },
+
+  {
+    name: 'Connessioni',
+    icon: <ConnectIcon />,
+    path: '',
+  },
+
+  {
+    name: 'Membri',
+    icon: <MembersIcon />,
+    path: 'settings/members',
+    active: true,
+  },
+
+  {
+    name: 'Esportazione',
+    icon: <ExportIcon />,
+    path: '',
+  },
+
+  {
+    name: 'Generali',
+    icon: <SettingIcon />,
+    path: '',
+  },
 ];

@@ -19,3 +19,14 @@ type processIconsRight = string | React.ReactNode;
 
 export type processIconsRightArr = processIconsRight[]
 
+type membersNavigationList = {
+  id?: string;
+  name: string;
+  icon: string | React.ReactNode;
+  divider?: string | React.ReactNode;
+  path?: string;
+  active?: boolean;
+}
+
+export type membersNavigationLists = membersNavigationList[];
+
