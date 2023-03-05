@@ -1,6 +1,7 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 import MemberNavLeft from '../Layouts/MemberNavLeft';
+import MembersRight from './MembersRight';
 
 const memberStyles = {
   display: 'flex',
@@ -20,6 +21,7 @@ const Member = () => {
   return (
     <Box sx={memberStyles}>
       <MemberNavLeft activeTab={activeTab} handleTabChange={handleTabChange} />
+      <MembersRight />
     </Box>
   )
 }
