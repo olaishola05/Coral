@@ -4,17 +4,10 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './themes/theme';
 import { Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Signup from './Pages/Signup/Signup';
-import ErrorPage from './Pages/Error/ErrorPage';
-import Login from './Pages/Login/Login';
-import Dashboard from './Pages/Dashboard/Dashboard';
-import EmailVerify from './Pages/Signup/EmailVerify';
-import CompleteProfile from './Pages/Signup/CompleteProfile';
-import ConfirmPasswordPage from './Pages/Login/ConfirmPasswordPage';
-import ForgotPasswordPage from './Pages/Login/ForgotPasswordPage';
-import EmailSentPage from './Pages/Login/EmailSentPage';
-import Processes from './Pages/Dashboard/Processes';
-import ProcessPage from './Pages/Dashboard/ProcessPage';
+import ErrorPage from './Pages/Error';
+import { Login, ConfirmPasswordPage, ForgotPasswordPage, EmailSentPage } from './Pages/Login';
+import { Signup, EmailVerify, CompleteProfile } from './Pages/Signup';
+import { Processes, ProcessPage, Dashboard } from './Pages/Dashboard';
 
 const queryClient = new QueryClient()
 
@@ -29,11 +22,9 @@ function App() {
           {isLoggedIn ?
             <Route element={<Dashboard />}>
               <Route index path="/" element={<Processes />} />
-              <Route path="/:id" element={<ProcessPage />}>
-                {/* <Route path="/settings" element={'Settings'}>
-                  <Route path="/members" element={'Profile'} />
-                </Route> */}
-              </Route>
+              <Route path="/:id" element={<ProcessPage />} />
+
+              <Route path="/settings/members" element={'Profile'} />
               <Route path="model" element={'Model'} />
 
             </Route>

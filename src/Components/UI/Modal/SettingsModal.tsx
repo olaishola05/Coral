@@ -24,7 +24,7 @@ const settingsModalStyles = {
 const SettingsModal = ({ open, toggleOpen }: Props) => {
   return (
     <CustomModal open={open} onClose={toggleOpen} sx={{ ...settingsModalStyles }}>
-      <Box sx={{ ...displays, padding: '0px', flexDirection: 'column', border: '1px solid green' }}>
+      <Box sx={{ ...displays, padding: '0px', flexDirection: 'column' }}>
         <SettingsMemberTop handleClose={toggleOpen} />
         <MembersContainer />
       </Box>

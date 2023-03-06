@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import HeaderText from '../../Components/UI/HeaderText'
 import { generateRandomNumber, processList } from '../../utils/utils'
 import CustomCard from '../../Components/UI/Card'
-import useToggle from '../../hooks/useToggle'
+import { useToggle } from '../../hooks'
 import ProcessModal from '../../Components/UI/Modal/ProcessModal'
 import ProcessIcon from '../../Assets/svg/process.svg'
 

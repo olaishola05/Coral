@@ -1,8 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Logo from '../../Assets/svg/Logo.svg';
-import SnackbarError from '../UI/snacks/SnackError';
-import SnackSuccess from '../UI/snacks/SnackSuccess';
+import { SnackbarError, SnackSuccess } from '../UI/snacks';
 
 interface PageLayoutSplitProps {
   leftSide: React.ReactNode;

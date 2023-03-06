@@ -6,9 +6,10 @@ import ProcessBottomBar from './ProcessBottomBar'
 
 interface ProcessBarProps {
   toggleOpen: () => void
+  toggle: any
 }
 
-const ProcessToolbar = ({ toggleOpen }: ProcessBarProps) => {
+const ProcessToolbar = ({ toggleOpen, toggle }: ProcessBarProps) => {
   return (
     <Box sx={{ padding: '12px 0px 0px;', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
 
@@ -17,8 +18,11 @@ const ProcessToolbar = ({ toggleOpen }: ProcessBarProps) => {
           {processIcons.map((icon, index) => {
             const { divider, extraIcon, background, icon: linkIcon, name } = icon
             return (
-              <IconButton key={index} sx={{ padding: '0px', fontSize: '16px', display: 'flex', gap: '10px', borderRadius: 'none', }}>
-                {background ? <Box sx={{ display: 'flex', backgroundColor: background, padding: '4px 8px', gap: '8px', borderRadius: '4px' }}>
+              <IconButton key={index} sx={{ padding: '0px', fontSize: '16px', display: 'flex', gap: '10px', borderRadius: 'none', }}
+                onClick={() => name === 'Heights' ? toggle() : ''}
+              >
+                {background ? <Box sx={{ display: 'flex', backgroundColor: background, padding: '4px 8px', gap: '8px', borderRadius: '4px' }}
+                >
                   {linkIcon}
                   {name}
                 </Box> :
