@@ -299,3 +299,18 @@ export const membersNavigations: membersNavigationLists = [
     path: '',
   },
 ];
+
+
+const createData = (utente: string, email: string, permessi: string, isChecked: boolean) => {
+  return { utente, email, permessi, id: generateRandomNumber(), isChecked: isChecked };
+}
+
+export const rows = [
+  createData('Michele Cimmino', 'michele.cimmino@lastingdynamics.com', 'Admin', false),
+  createData('Marino Panariello', 'marino.panariello@lastingdynamics.com', 'Utente', false),
+  createData('Vincenzo Lavorante', 'vincenzo.lavorante@lastingdynamics.com', 'Venditore', true),
+  createData('Antonio Langella', 'antonio.langella@lastingdynamics.com', 'Solo Lettura', true),
+  createData('Alessandro Durni', 'a.durni@lastingdynamics.com', 'Venditore', false),
+  createData('Andrea', 'andrea@coraly.com', 'Venditore', false),
+  createData('Francesco', 'francesco@coraly.com', 'Utente', false),
+]

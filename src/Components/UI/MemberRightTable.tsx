@@ -11,7 +11,7 @@ import CustomCheckbox from './CustomCheckbox';
 import MiniHeader from './MiniHeader';
 import { ReactComponent as InfoIcon } from '../../Assets/svg/info.svg';
 import { ReactComponent as TrashIcon } from '../../Assets/svg/trash.svg';
-import { generateRandomNumber } from '../../utils/utils';
+import { rows } from '../../utils/utils';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { useTheme } from '@mui/material/styles';
@@ -29,18 +29,7 @@ const tableContainerStyles = {
 }
 
 const MemberRightTable = () => {
-  const createData = (utente: string, email: string, permessi: string, isChecked: boolean) => {
-    return { utente, email, permessi, id: generateRandomNumber(), isChecked: isChecked };
-  }
-  const rows = [
-    createData('Michele Cimmino', 'michele.cimmino@lastingdynamics.com', 'Admin', false),
-    createData('Marino Panariello', 'marino.panariello@lastingdynamics.com', 'Utente', false),
-    createData('Vincenzo Lavorante', 'vincenzo.lavorante@lastingdynamics.com', 'Venditore', true),
-    createData('Antonio Langella', 'antonio.langella@lastingdynamics.com', 'Solo Lettura', true),
-    createData('Alessandro Durni', 'a.durni@lastingdynamics.com', 'Venditore', false),
-    createData('Andrea', 'andrea@coraly.com', 'Venditore', false),
-    createData('Francesco', 'francesco@coraly.com', 'Utente', false),
-  ]
+
 
   const [tableRows, setTableRows] = React.useState(rows);
 
@@ -50,7 +39,6 @@ const MemberRightTable = () => {
         return {
           ...row,
           isChecked: !row.isChecked,
-          // permessi: row.permessi ? 'Utente' : 'Admin' 
         };
       }
       return row;
@@ -101,8 +89,8 @@ const MemberRightTable = () => {
                 <TableCell sx={{ width: '457px', padding: '0px 0px 0px 16px' }}>{row.email}</TableCell>
                 <TableCell sx={{ padding: '0px 0px 0px 16px' }}>
                   <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
+                    labelId="permissi-label"
+                    id="permessi"
                     value={row.permessi}
                     label="Permessi"
                     onChange={(e: SelectChangeEvent) => console.log(e.target.value)}

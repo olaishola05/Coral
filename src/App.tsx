@@ -19,7 +19,6 @@ import ProcessPage from './Pages/Dashboard/ProcessPage';
 const queryClient = new QueryClient()
 
 function App() {
-  // const isLoggedIn = localStorage.getItem('token') ? true : false;
   const isLoggedIn = true;
 
   return (
@@ -30,8 +29,13 @@ function App() {
           {isLoggedIn ?
             <Route element={<Dashboard />}>
               <Route index path="/" element={<Processes />} />
-              <Route path="/:id" element={<ProcessPage />} />
+              <Route path="/:id" element={<ProcessPage />}>
+                {/* <Route path="/settings" element={'Settings'}>
+                  <Route path="/members" element={'Profile'} />
+                </Route> */}
+              </Route>
               <Route path="model" element={'Model'} />
+
             </Route>
             : <>
               <Route path="/login" element={<Login />} />

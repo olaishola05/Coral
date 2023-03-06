@@ -6,6 +6,7 @@ import ProcessTable from '../../Components/UI/ProcessTable';
 import useToggle from '../../hooks/useToggle';
 import TaskModal from '../../Components/UI/Modal/TaskModal';
 import SettingsModal from '../../Components/UI/Modal/SettingsModal';
+import { Outlet } from 'react-router-dom'
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
@@ -41,6 +42,8 @@ const ProcessPage = () => {
         />
       ))
       }
+
+      <Outlet />
     </Box>
   )
 }
