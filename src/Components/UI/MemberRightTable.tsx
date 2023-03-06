@@ -26,18 +26,30 @@ const tableContainerStyles = {
 }
 
 const MemberRightTable = () => {
-  const createData = (utente: string, email: string, permessi: string) => {
-    return { utente, email, permessi, id: generateRandomNumber() };
+  const createData = (utente: string, email: string, permessi: string, isChecked: boolean) => {
+    return { utente, email, permessi, id: generateRandomNumber(), isChecked: isChecked };
   }
   const rows = [
-    createData('Michele Cimmino', 'michele.cimmino@lastingdynamics.com', 'Admin'),
-    createData('Marino Panariello', 'marino.panariello@lastingdynamics.com', 'Utente'),
-    createData('Vincenzo Lavorante', 'vincenzo.lavorante@lastingdynamics.com', 'Venditore'),
-    createData('Antonio Langella', 'antonio.langella@lastingdynamics.com', 'Solo Lettura'),
-    createData('Alessandro Durni', 'a.durni@lastingdynamics.com', 'Venditore'),
-    createData('Andrea', 'andrea@coraly.com', 'Venditore'),
-    createData('Francesco', 'francesco@coraly.com', 'Utente'),
+    createData('Michele Cimmino', 'michele.cimmino@lastingdynamics.com', 'Admin', false),
+    createData('Marino Panariello', 'marino.panariello@lastingdynamics.com', 'Utente', false),
+    createData('Vincenzo Lavorante', 'vincenzo.lavorante@lastingdynamics.com', 'Venditore', true),
+    createData('Antonio Langella', 'antonio.langella@lastingdynamics.com', 'Solo Lettura', true),
+    createData('Alessandro Durni', 'a.durni@lastingdynamics.com', 'Venditore', false),
+    createData('Andrea', 'andrea@coraly.com', 'Venditore', false),
+    createData('Francesco', 'francesco@coraly.com', 'Utente', false),
   ]
+
+  const [tableRows, setTableRows] = React.useState(rows);
+
+  const handleCheckBoxChange = (id: string) => {
+    const updatedRows = tableRows.map(row => {
+      if (row.id === id) {
+        return { ...row, isChecked: !row.isChecked };
+      }
+      return row;
+    });
+    setTableRows(updatedRows);
+  };
 
   return (
     <Box sx={tableContainerStyles}>
@@ -62,16 +74,18 @@ const MemberRightTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {tableRows.map((row, index) => (
               <TableRow
                 key={row.utente}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 }, padding: 0 }}
               >
                 <TableCell component="th" scope="row" sx={{ padding: 0, }}>
                   <CustomCheckbox
-                    checked={false}
-                    onChange={() => { }}
-                    name="Utente"
+                    checked={row.isChecked}
+                    onChange={() => handleCheckBoxChange(row.id)}
+                    name={row.utente}
+                    checkedStyle={{ color: 'secondary.main', '&.Mui-checked': { color: 'primary.main' } }}
+
                   />
                   {row.utente}
                 </TableCell>

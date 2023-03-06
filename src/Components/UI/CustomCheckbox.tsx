@@ -13,6 +13,7 @@ interface CustomCheckboxProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   checkedStyle?: checkedStyle;
   name: string;
+  defaultChecked?: boolean;
 }
 
 const CustomCheckbox: React.FC<CustomCheckboxProps> = ({ label, checked, onChange, checkedStyle, name }) => {
