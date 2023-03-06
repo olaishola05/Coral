@@ -12,6 +12,10 @@ import MiniHeader from './MiniHeader';
 import { ReactComponent as InfoIcon } from '../../Assets/svg/info.svg';
 import { ReactComponent as TrashIcon } from '../../Assets/svg/trash.svg';
 import { generateRandomNumber } from '../../utils/utils';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import { useTheme } from '@mui/material/styles';
+
 
 const tableContainerStyles = {
   display: 'flex',
@@ -21,7 +25,6 @@ const tableContainerStyles = {
   gap: '8px',
   width: 970,
   order: 1,
-  height: '365px',
   borderRadius: '8px',
 }
 
@@ -44,20 +47,25 @@ const MemberRightTable = () => {
   const handleCheckBoxChange = (id: string) => {
     const updatedRows = tableRows.map(row => {
       if (row.id === id) {
-        return { ...row, isChecked: !row.isChecked };
+        return {
+          ...row,
+          isChecked: !row.isChecked,
+          // permessi: row.permessi ? 'Utente' : 'Admin' 
+        };
       }
       return row;
     });
     setTableRows(updatedRows);
   };
 
+  const theme = useTheme();
   return (
     <Box sx={tableContainerStyles}>
       <TableContainer component={Paper}>
         <Table aria-label="memberi">
-          <TableHead >
+          <TableHead>
             <TableRow sx={{ backgroundColor: '#F6F8FA' }}>
-              <TableCell sx={{ width: '186px', display: 'flex', borderBottom: 'none', alignItems: 'center', padding: 0 }}>
+              <TableCell sx={{ width: '186px', display: 'flex', borderBottom: 'none', alignItems: 'center', padding: '0px 13px 0px 16px' }}>
                 <CustomCheckbox
                   checked={false}
                   onChange={() => { }}
@@ -74,26 +82,66 @@ const MemberRightTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {tableRows.map((row, index) => (
+            {tableRows.map((row) => (
               <TableRow
                 key={row.utente}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 }, padding: 0 }}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 }, padding: '0px 5px' }}
               >
-                <TableCell component="th" scope="row" sx={{ padding: 0, }}>
+                <TableCell component="th" scope="row" sx={{ width: '300px', padding: '0px 0px 0px 16px' }}>
                   <CustomCheckbox
                     checked={row.isChecked}
                     onChange={() => handleCheckBoxChange(row.id)}
                     name={row.utente}
-                    checkedStyle={{ color: 'secondary.main', '&.Mui-checked': { color: 'primary.main' } }}
-
+                    checkedStyle={{
+                      '&.Mui-checked': { color: 'primary.main' }
+                    }}
                   />
                   {row.utente}
                 </TableCell>
-                <TableCell align='justify'>{row.email}</TableCell>
-                <TableCell>
-                  {row.permessi}
+                <TableCell sx={{ width: '457px', padding: '0px 0px 0px 16px' }}>{row.email}</TableCell>
+                <TableCell sx={{ padding: '0px 0px 0px 16px' }}>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={row.permessi}
+                    label="Permessi"
+                    onChange={(e: SelectChangeEvent) => console.log(e.target.value)}
+                    sx={{
+                      height: '22px', borderRadius: '8px',
+                      backgroundColor: row.permessi === 'Admin' ? 'primary.main' : row.permessi === 'Utente' ? 'secondary.main' : row.permessi === 'Venditore' ? 'success.main' : `${theme.text.primary.neutral}`,
+                      '& .MuiSelect-select': {
+                        padding: '0px 16px',
+                        color: 'white',
+                        '&:focus': {
+                          backgroundColor: 'transparent'
+                        }
+                      },
+                      '& .MuiSelect-icon': {
+                        color: 'white'
+                      },
+                      '& .MuiSelect-selectMenu': {
+                        height: '40px'
+                      },
+                      '& .MuiSelect-iconOutlined': {
+                        right: '8px'
+                      },
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        border: 'none'
+                      },
+                      '& .MuiSelect-select:focus': {
+                        backgroundColor: 'transparent'
+                      },
+                      padding: '2px 8px'
+                    }}
+                  >
+                    <MenuItem value={'Admin'}>Admin</MenuItem>
+                    <MenuItem value={'Utente'}>Utente</MenuItem>
+                    <MenuItem value={'Venditore'}>Venditore</MenuItem>
+                    <MenuItem value={'Solo Lettura'}>Solo Lettura</MenuItem>
+                  </Select>
+
                 </TableCell>
-                <TableCell>
+                <TableCell sx={{ padding: 0, }}>
                   <TrashIcon />
                 </TableCell>
               </TableRow>

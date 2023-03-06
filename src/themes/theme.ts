@@ -151,4 +151,17 @@ export const theme = createTheme({
     },
   },
 
+  components: {
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          '&.Mui-checked': {
+
+            backgroundColor: 'white',
+          },
+        },
+      },
+    },
+  },
+
 })
