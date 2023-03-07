@@ -1,12 +1,9 @@
 import React from 'react'
-import PageLayoutSplit from '../../Components/Layouts/PageLayoutSplit'
+import { PageLayoutSplit } from '../../Components/Layouts'
 import ImageContainer from '../../Components/UI/ImageContainer'
 import LoginForm from '../../Components/UI/LoginForm'
 import LoginImage from '../../Assets/svg/login.svg'
-import useLogin from '../../hooks/useLogin'
-import useToggle from '../../hooks/useToggle'
-import useMessage from '../../hooks/useMessage'
-import { useNavigation } from '../../hooks/useNavigation'
+import { useLogin, useToggle, useMessage } from '../../hooks'
 
 const Login = () => {
   const [data, setData] = React.useState({
@@ -14,7 +11,6 @@ const Login = () => {
     password: '',
     // rememberMe: false
   })
-  const navigate = useNavigation();
   const [value, toggle] = useToggle(false)
   const [msg, setMsg] = useMessage()
   const [error, setError] = React.useState<boolean>()

@@ -1,7 +1,7 @@
 import React from 'react'
-import CustomModal from './CustomModal'
+import { CustomModal } from './'
 import Box from '@mui/material/Box';
-import SettingsMemberTop from '../../Layouts/SettingsMemberTop';
+import { SettingsMemberTop } from '../../Layouts';
 import MembersContainer from '../MembersContainer';
 
 interface Props {

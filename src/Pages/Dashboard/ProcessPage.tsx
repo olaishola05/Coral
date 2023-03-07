@@ -1,10 +1,8 @@
 import React from 'react'
-import ProcessToolbar from '../../Components/Layouts/ProcessToolbar'
+import { ProcessToolbar } from '../../Components/Layouts'
 import Box from '@mui/material/Box';
 import ProcessTable from '../../Components/UI/ProcessTable';
-import TaskModal from '../../Components/UI/Modal/TaskModal';
-import SettingsModal from '../../Components/UI/Modal/SettingsModal';
-import ListModal from '../../Components/UI/Modal/ListModal';
+import { ListModal, TaskModal, SettingsModal } from '../../Components/UI/Modal';
 import { useFetch, useToggle } from '../../hooks';
 
 const baseUrl = process.env.REACT_APP_BASE_URL

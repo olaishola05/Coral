@@ -4,7 +4,7 @@ import HeaderText from '../../Components/UI/HeaderText'
 import { generateRandomNumber, processList } from '../../utils/utils'
 import CustomCard from '../../Components/UI/Card'
 import { useToggle } from '../../hooks'
-import ProcessModal from '../../Components/UI/Modal/ProcessModal'
+import { ProcessModal } from '../../Components/UI/Modal'
 import ProcessIcon from '../../Assets/svg/process.svg'
 
 const Processes = () => {

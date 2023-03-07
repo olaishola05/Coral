@@ -2,7 +2,7 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import { IconButton } from '@mui/material'
 import { processIcons, processIconRight } from '../../utils/utils'
-import ProcessBottomBar from './ProcessBottomBar'
+import { ProcessBottomBar } from './'
 
 interface ProcessBarProps {
   toggleOpen: () => void

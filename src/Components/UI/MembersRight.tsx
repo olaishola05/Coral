@@ -1,5 +1,5 @@
 import React from 'react'
-import MembersRightTop from '../Layouts/MembersRightTop'
+import { MembersRightTop } from '../Layouts'
 import Box from '@mui/material/Box';
 import MemberRightTable from './MemberRightTable';
 

@@ -5,10 +5,9 @@ import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '../../Assets/svg/menuIcon.svg'
-import useToggle from '../../hooks/useToggle';
+import { useToggle } from '../../hooks';
 import { drawerWidth } from '../../utils/utils';
-import BoardTopbar from '../../Components/Layouts/BoardTopbar';
-import BoardListItems from '../../Components/Layouts/BoardListItems';
+import { BoardListItems, BoardTopbar } from '../../Components/Layouts';
 import { useLocation } from 'react-router-dom';
 
 

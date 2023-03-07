@@ -1,9 +1,9 @@
 import React from 'react'
-import CustomModal from './CustomModal'
+import { CustomModal } from './'
 import Box from '@mui/material/Box';
-import DialogueTopbar from '../../Layouts/DialogueTopbar';
+import { DialogueTopbar } from '../../Layouts';
 import DialogueContainer from '../DialogueContainer';
-import DialogueFooter from '../../Layouts/DialogueFooter';
+import { DialogueFooter } from '../../Layouts';
 
 interface Props {
   open: boolean

@@ -1,5 +1,5 @@
 import React from 'react'
-import PageLayoutSplit from '../../Components/Layouts/PageLayoutSplit'
+import { PageLayoutSplit } from '../../Components/Layouts'
 import ImageContainer from '../../Components/UI/ImageContainer'
 import ResetImage from '../../Assets/svg/resetimg.svg'
 import EmailSent from '../../Components/UI/EmailSent'

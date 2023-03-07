@@ -1,5 +1,5 @@
 import React from 'react'
-import CustomModal from './CustomModal'
+import { CustomModal } from './'
 import { Typography } from '@mui/material'
 import CustomButton from '../CustomButton'
 import TextInput from '../TextInput'

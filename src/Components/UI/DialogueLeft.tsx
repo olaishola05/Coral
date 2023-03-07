@@ -1,6 +1,6 @@
 import React from 'react'
 import Box from '@mui/material/Box';
-import DialogueLeftTop from '../Layouts/DialogLeftTop';
+import { DialogLeftTop } from '../Layouts';
 import CompanyInfo from './CompanyInfo';
 
 interface Props {
@@ -16,7 +16,7 @@ const DialogueLeft = ({ dialogueItems }: Props) => {
       overflowY: 'scroll',
       height: '600px',
     }}>
-      <DialogueLeftTop />
+      <DialogLeftTop />
       <CompanyInfo />
     </Box>
   )

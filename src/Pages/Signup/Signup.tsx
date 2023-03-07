@@ -1,5 +1,5 @@
 import React from 'react'
-import PageLayoutSplit from '../../Components/Layouts/PageLayoutSplit'
+import { PageLayoutSplit } from '../../Components/Layouts'
 import ImageContainer from '../../Components/UI/ImageContainer'
 import signupImage from '../../Assets/svg/signup.svg'
 import SignupForm from '../../Components/UI/SignupForm'

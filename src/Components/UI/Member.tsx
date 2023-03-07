@@ -1,6 +1,6 @@
 import React from 'react'
 import Box from '@mui/material/Box';
-import MemberNavLeft from '../Layouts/MemberNavLeft';
+import { MemberNavLeft } from '../Layouts';
 import MembersRight from './MembersRight';
 
 const memberStyles = {

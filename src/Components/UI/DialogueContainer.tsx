@@ -2,7 +2,7 @@ import React from 'react'
 import Box from '@mui/material/Box';
 import DialogueLeft from './DialogueLeft';
 import DialogueRight from './DialogueRight';
-import TabBar from '../Layouts/TabBar';
+import { TabBar } from '../Layouts';
 
 const containerStyles = {
   display: 'flex',
