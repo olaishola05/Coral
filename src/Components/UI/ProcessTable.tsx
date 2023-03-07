@@ -29,14 +29,16 @@ const ProcessTable = ({ process, index, handleClick, status }: ProcessTableProps
   const { id, firstName, lastName, phone, processId, Assignee, createdAt } = process
   const VOD = `VOD-15${index + 1}`
 
+  console.log(process)
+
   const cellStyles = {
-    padding: '0px',
     height: '30px',
     flexGrow: 1,
     borderBottom: '1px solid #EAEAEC',
     borderRight: '1px solid #EAEAEC',
     borderLeft: '1px solid #EAEAEC',
     color: '#312E43',
+    padding: '6px',
   }
 
   const dateFomatter = new Intl.DateTimeFormat('en-US', {

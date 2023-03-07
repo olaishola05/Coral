@@ -8,9 +8,10 @@ import ListItem from '@mui/material/ListItem';
 
 interface ListModalProps {
   open: boolean
-  toggle: () => void
+  toggle?: (event: React.MouseEvent<HTMLElement>) => void
   anchorEl: HTMLElement | null
   handleClose: () => void
+  id: string | undefined
 }
 
 const styles = {
@@ -24,7 +25,7 @@ const styles = {
   alignItems: 'flex-start'
 }
 
-const ListModal = ({ open, toggle, anchorEl, handleClose }: ListModalProps) => {
+const ListModal = ({ open, toggle, anchorEl, handleClose, id }: ListModalProps) => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const listsOptions = [
     'Solo Card',
@@ -38,9 +39,11 @@ const ListModal = ({ open, toggle, anchorEl, handleClose }: ListModalProps) => {
   return (
     <Box>
       <CustomPopover
+        id={id}
         open={open}
         anchorEl={anchorEl}
         handleClose={handleClose}
+        popStyles={{ position: 'absolute', top: '28px', left: '-5px' }}
       >
         <Box sx={{ ...styles }}>
           <List sx={{ width: '100%', padding: '0px' }}>

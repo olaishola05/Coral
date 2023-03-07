@@ -3,24 +3,43 @@ import Box from '@mui/material/Box'
 import { IconButton } from '@mui/material'
 import { processIcons, processIconRight } from '../../utils/utils'
 import { ProcessBottomBar } from './'
+import { ListModal } from '../UI/Modal'
 
 interface ProcessBarProps {
   toggleOpen: () => void
-  toggle: any
 }
 
-const ProcessToolbar = ({ toggleOpen, toggle }: ProcessBarProps) => {
+const ProcessToolbar = ({ toggleOpen }: ProcessBarProps) => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const handleSettingsClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
   return (
     <Box sx={{ padding: '12px 0px 0px;', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-
       <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', padding: '0px 12px', justifyContent: 'space-between' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', padding: '3px 12px', gap: '10px' }}>
           {processIcons.map((icon, index) => {
             const { divider, extraIcon, background, icon: linkIcon, name } = icon
             return (
-              <IconButton key={index} sx={{ padding: '0px', fontSize: '16px', display: 'flex', gap: '10px', borderRadius: 'none', }}
-                onClick={() => name === 'Heights' ? toggle() : ''}
+              <IconButton key={index} sx={{ padding: '0px', fontSize: '16px', display: 'flex', gap: '10px', borderRadius: 'none', position: 'relative' }}
+                id={id}
+                onClick={(e) => name === 'Heights' ? handleSettingsClick(e) : ''}
               >
+                {open && name === 'Heights' &&
+                  <ListModal
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    handleClose={handleClose}
+                  />}
                 {background ? <Box sx={{ display: 'flex', backgroundColor: background, padding: '4px 8px', gap: '8px', borderRadius: '4px' }}
                 >
                   {linkIcon}

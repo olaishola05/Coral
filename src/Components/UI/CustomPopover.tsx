@@ -8,22 +8,16 @@ interface CustomPopoverProps {
   anchorEl: HTMLElement | null
   handleClose: () => void
   popStyles?: React.CSSProperties
+  id: string | undefined
 }
 
-const CustomPopover = ({ open, anchorEl, handleClose, children, popStyles }: React.PropsWithChildren<CustomPopoverProps>) => {
+const CustomPopover = ({ open, anchorEl, handleClose, children, popStyles, id }: React.PropsWithChildren<CustomPopoverProps>) => {
   return (
     <Popover
+      id={id}
       open={open}
       anchorEl={anchorEl}
       onClose={handleClose}
-      anchorOrigin={{
-        vertical: 110,
-        horizontal: 1010,
-      }}
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'center',
-      }}
       sx={{ ...popStyles }}
     >
       {children}
