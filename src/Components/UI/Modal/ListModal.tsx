@@ -1,31 +1,26 @@
 import React from 'react'
 import Box from '@mui/material/Box'
-import CustomPopover from '../CustomPopover'
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-
-interface ListModalProps {
-  open: boolean
-  toggle?: (event: React.MouseEvent<HTMLElement>) => void
-  anchorEl: HTMLElement | null
-  handleClose: () => void
-  id: string | undefined
-}
+import Check from '@mui/icons-material/Check';
 
 const styles = {
   width: 226,
   height: '104px',
   padding: '4px 0px',
   borderRadius: '8px',
-  boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+  boxShadow: ' 0px 0px 4px rgba(0, 0, 0, 0.15)',
   backgroundColor: 'white',
   display: 'flex',
-  alignItems: 'flex-start'
+  alignItems: 'flex-start',
+  position: 'absolute',
+  top: '100%',
+  left: '-10px'
 }
 
-const ListModal = ({ open, toggle, anchorEl, handleClose, id }: ListModalProps) => {
+const ListModal = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const listsOptions = [
     'Solo Card',
@@ -33,34 +28,25 @@ const ListModal = ({ open, toggle, anchorEl, handleClose, id }: ListModalProps) 
     'Card & Prodotti'
   ]
 
-  const handleListItemClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => {
+  const handleListItemClick = (index: number) => {
     setSelectedIndex(index);
   };
   return (
-    <Box>
-      <CustomPopover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        handleClose={handleClose}
-        popStyles={{ position: 'absolute', top: '28px', left: '-5px' }}
-      >
-        <Box sx={{ ...styles }}>
-          <List sx={{ width: '100%', padding: '0px' }}>
-            {listsOptions.map((option, index) => (
-              <ListItem key={index} sx={{ padding: '0px 0px', height: '32px', display: 'flex', alignItems: 'center', }}>
-                <ListItemIcon
-                  onClick={(event) => handleListItemClick(event, index)}
-                >
-                  {selectedIndex === index ? <img src="./Assets/svg/plus.svg" alt="checked" /> : ''}
-                </ListItemIcon>
-                <ListItemText primary={option} />
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      </CustomPopover>
-    </Box>
+    <>
+
+      <Box sx={{ ...styles }}>
+        <List sx={{ width: '100%', padding: '0px' }}>
+          {listsOptions.map((option, index) => (
+            <ListItem
+              onClick={() => handleListItemClick(index)}
+              key={index} sx={{ padding: '7px 16px', height: '32px', display: 'flex', alignItems: 'center', fontSize: '12px' }}>
+              <ListItemText primary={option} sx={{ fontSize: '12px' }} />
+              {selectedIndex === index ? <Check sx={{ color: '#f93e6c', width: '16px' }} /> : ''}
+            </ListItem>
+          ))}
+        </List>
+      </Box>
+    </>
   )
 }
 

@@ -16,13 +16,20 @@ const membersRightStyles = {
 }
 
 
-const MembersRight = () => {
-  return (
-    <Box sx={membersRightStyles}>
-      <MembersRightTop />
-      <MemberRightTable />
-    </Box>
-  )
+const MembersRight = ({ activeTab }: { activeTab: number }) => {
+  switch (activeTab) {
+    case 8:
+      return (
+        <Box sx={membersRightStyles}>
+          <MembersRightTop />
+          <MemberRightTable />
+        </Box>
+      )
+
+    default:
+      return null
+  }
+
 }
 
 export default MembersRight

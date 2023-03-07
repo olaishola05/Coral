@@ -34,12 +34,7 @@ const ProcessToolbar = ({ toggleOpen }: ProcessBarProps) => {
                 onClick={(e) => name === 'Heights' ? handleSettingsClick(e) : ''}
               >
                 {open && name === 'Heights' &&
-                  <ListModal
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    handleClose={handleClose}
-                  />}
+                  <ListModal />}
                 {background ? <Box sx={{ display: 'flex', backgroundColor: background, padding: '4px 8px', gap: '8px', borderRadius: '4px' }}
                 >
                   {linkIcon}
@@ -62,9 +57,11 @@ const ProcessToolbar = ({ toggleOpen }: ProcessBarProps) => {
           {processIconRight.map((icon, index) => (
             <IconButton
               key={index} sx={{ padding: '0px', fontSize: '16px', display: 'flex', gap: '10px', borderRadius: 'none', }}
-              onClick={() => index === 4 ? toggleOpen() : ''}
+              onClick={() => index === 4 ? toggleOpen() : index === processIconRight.length - 1 ? console.log('add') : ''}
             >
-              {index === processIconRight.length - 1 ? <Box sx={{ height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'primary.main', padding: '0px 12px', borderRadius: '8px', color: 'white', fontSize: '14px', gap: '4px' }}> {icon} Add</Box> : icon}
+              {index === processIconRight.length - 1 ? <Box component='span'
+                sx={{ height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'primary.main', padding: '0px 12px', borderRadius: '8px', color: 'white', fontSize: '14px', gap: '4px' }}
+              > {icon} Aggiungi</Box> : icon}
             </IconButton>
           ))}
 

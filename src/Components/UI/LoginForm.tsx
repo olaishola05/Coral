@@ -36,6 +36,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
     initialValues: {
       email: '',
       password: '',
+
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -65,11 +66,14 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             InputStyles={{ width: '320px' }}
             size='small'
             onBlur={formik.handleBlur}
-            error={!emailValid}
-            helperText={formik.errors.email}
+            error={formik.touched.email && formik.errors.email ? true : false}
           />
           {formik.touched.email && formik.errors.email && (
-            <Typography variant="body1" component="span">{formik.errors.email}</Typography>
+            <Typography
+              variant="body1"
+              component="span"
+              sx={{ color: theme.palette.error.main, fontSize: '15px' }}
+            >{formik.errors.email}</Typography>
           )}
         </Box>
         <Box>
@@ -85,18 +89,19 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             InputStyles={{ width: '320px' }}
             size='small'
             onBlur={formik.handleBlur}
-            error={!passwordValid}
-            helperText={formik.errors.password}
+            error={formik.touched.password && formik.errors.password ? true : false}
           />
           {formik.touched.password && formik.errors.password && (
-            <Typography variant="body1" component="span">{formik.errors.password}</Typography>
+            <Typography variant="body1" component="span"
+              sx={{ color: theme.palette.error.main, fontSize: '15px', }}
+            >{formik.errors.password}</Typography>
           )}
         </Box>
         <Box sx={{ width: '320px', display: 'flex', justifyContent: 'space-between' }}>
           <CustomCheckbox
             label="Remember me"
             name="rememberMe"
-            // checked={data.rememberMe}
+            checked={formik.values.rememberMe}
             onChange={handleChange}
             checkedStyle={{ '&.Mui-checked': { color: '#312E43' } }}
           />
@@ -104,7 +109,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             onClick={() => { navigate('/forget-password') }}
             color='success'
             variant='text'
-            btnStyles={{ color: 'secondary', width: '150px', fontSty: 'normal', fontWeight: '600', lineHeight: '21px' }}
+            btnStyles={{ color: 'secondary', width: '150px', fontStyle: 'normal', fontWeight: '600', lineHeight: '21px' }}
           >Forgot password</CustomButton>
         </Box>
         <CustomButton

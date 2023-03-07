@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@mui/material';
+import { StyledTextField } from '../../styles';
 
 interface TextInputProps {
   label: string;
@@ -14,28 +14,23 @@ interface TextInputProps {
   InputStyles?: any;
   size?: 'small' | 'medium';
   error?: boolean;
-  helperText?: string;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   InputProps?: any;
   multiline?: boolean;
   rows?: number;
 }
 
-const TextInput: React.FC<TextInputProps> = ({ label, value, onChange, placeholder, type, required, color, name, InputStyles, size, InputProps, multiline, rows }) => {
+
+
+
+const TextInput: React.FC<TextInputProps> = ({ label, value, onChange, required, ...otherProps }) => {
   return (
-    <TextField
+    <StyledTextField
       label={label}
-      name={name}
       value={value}
       onChange={onChange}
-      placeholder={placeholder}
-      variant="outlined"
-      type={type}
-      required={required}
-      color={color}
-      sx={{ width: '100%', fontSize: '12px', fontWeight: 'normal', color: '#5A5869', ...InputStyles }}
-      size={size}
-      InputProps={InputProps}
+      sx={{ ...otherProps.InputStyles }}
+      {...otherProps}
     />
   );
 };

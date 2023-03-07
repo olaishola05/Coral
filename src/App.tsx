@@ -12,7 +12,7 @@ import { Processes, ProcessPage, Dashboard } from './Pages/Dashboard';
 const queryClient = new QueryClient()
 
 function App() {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -23,8 +23,6 @@ function App() {
             <Route element={<Dashboard />}>
               <Route index path="/" element={<Processes />} />
               <Route path="/:id" element={<ProcessPage />} />
-
-              <Route path="/settings/members" element={'Profile'} />
               <Route path="model" element={'Model'} />
 
             </Route>

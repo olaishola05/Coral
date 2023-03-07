@@ -23,13 +23,10 @@ interface ProcessTableProps {
   index: string
   handleClick: (event: React.MouseEvent<HTMLElement>) => void;
   open: boolean;
-  status: string;
 }
-const ProcessTable = ({ process, index, handleClick, status }: ProcessTableProps) => {
+const ProcessTable = ({ process, index, handleClick }: ProcessTableProps) => {
   const { id, firstName, lastName, phone, processId, Assignee, createdAt } = process
   const VOD = `VOD-15${index + 1}`
-
-  console.log(process)
 
   const cellStyles = {
     height: '30px',
@@ -38,7 +35,7 @@ const ProcessTable = ({ process, index, handleClick, status }: ProcessTableProps
     borderRight: '1px solid #EAEAEC',
     borderLeft: '1px solid #EAEAEC',
     color: '#312E43',
-    padding: '6px',
+    padding: '6px 0px 6px 6px',
   }
 
   const dateFomatter = new Intl.DateTimeFormat('en-US', {

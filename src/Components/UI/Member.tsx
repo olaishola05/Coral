@@ -12,7 +12,7 @@ const memberStyles = {
 
 const Member = () => {
 
-  const [activeTab, setActiveTab] = React.useState(0)
+  const [activeTab, setActiveTab] = React.useState(8)
 
   const handleTabChange = (index: number) => {
     setActiveTab(index)
@@ -21,7 +21,7 @@ const Member = () => {
   return (
     <Box sx={memberStyles}>
       <MemberNavLeft activeTab={activeTab} handleTabChange={handleTabChange} />
-      <MembersRight />
+      <MembersRight activeTab={activeTab} />
     </Box>
   )
 }

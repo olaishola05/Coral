@@ -9,7 +9,6 @@ const Login = () => {
   const [data, setData] = React.useState({
     email: '',
     password: '',
-    // rememberMe: false
   })
   const [value, toggle] = useToggle(false)
   const [msg, setMsg] = useMessage()
