@@ -12,7 +12,7 @@ import { Processes, ProcessPage, Dashboard } from './Pages/Dashboard';
 const queryClient = new QueryClient()
 
 function App() {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   return (
     <QueryClientProvider client={queryClient}>

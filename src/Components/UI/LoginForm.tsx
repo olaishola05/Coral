@@ -1,15 +1,13 @@
 import React from 'react';
 import TextInput from '../UI/TextInput';
 import CustomButton from './CustomButton';
-import "../../Assets/styles/styles.css"
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import CustomCheckbox from './CustomCheckbox';
 import { formData } from '../../types/appTypes';
-import { useLoginFormik } from '../../hooks/useFormik';
+import { useLoginFormik, useNavigation } from '../../hooks';
 import HeaderText from './HeaderText';
-import { useNavigation } from '../../hooks/useNavigation';
 
 
 
@@ -20,15 +18,10 @@ interface LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
   const theme = useTheme();
-  const [emailValid, setEmailValid] = React.useState(false);
-  const [passwordValid, setPasswordValid] = React.useState(false);
-
   const navigate = useNavigation();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     formik.handleChange(event);
-    setEmailValid(formik.errors.email ? false : true);
-    setPasswordValid(formik.errors.password ? false : true);
     props.onChange(formik.values);
   };
 

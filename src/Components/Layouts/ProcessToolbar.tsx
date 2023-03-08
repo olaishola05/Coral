@@ -4,24 +4,29 @@ import { IconButton } from '@mui/material'
 import { processIcons, processIconRight } from '../../utils/utils'
 import { ProcessBottomBar } from './'
 import { ListModal } from '../UI/Modal'
+import { useToggle } from '../../hooks'
 
 interface ProcessBarProps {
   toggleOpen: () => void
 }
 
 const ProcessToolbar = ({ toggleOpen }: ProcessBarProps) => {
+  const [open, setOpen] = useToggle(false)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-  const handleSettingsClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleSettingsClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setOpen()
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
+    setOpen()
     setAnchorEl(null);
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  const openModal = Boolean(anchorEl);
+  const id = openModal ? 'list popover' : undefined;
+
   return (
     <Box sx={{ padding: '12px 0px 0px;', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
       <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', padding: '0px 12px', justifyContent: 'space-between' }}>
@@ -30,11 +35,11 @@ const ProcessToolbar = ({ toggleOpen }: ProcessBarProps) => {
             const { divider, extraIcon, background, icon: linkIcon, name } = icon
             return (
               <IconButton key={index} sx={{ padding: '0px', fontSize: '16px', display: 'flex', gap: '10px', borderRadius: 'none', position: 'relative' }}
-                id={id}
                 onClick={(e) => name === 'Heights' ? handleSettingsClick(e) : ''}
+                id={name === 'Heights' ? id : ''}
               >
-                {open && name === 'Heights' &&
-                  <ListModal />}
+                {open && name === 'Heights' ?
+                  <ListModal handleClose={handleClose} /> : ''}
                 {background ? <Box sx={{ display: 'flex', backgroundColor: background, padding: '4px 8px', gap: '8px', borderRadius: '4px' }}
                 >
                   {linkIcon}

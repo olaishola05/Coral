@@ -1,6 +1,5 @@
 import React from 'react'
 import Box from '@mui/material/Box'
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -17,11 +16,15 @@ const styles = {
   alignItems: 'flex-start',
   position: 'absolute',
   top: '100%',
-  left: '-10px'
+  left: '-45px'
 }
 
-const ListModal = () => {
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+interface ListModalProps {
+  handleClose: () => void
+}
+
+const ListModal = ({ handleClose }: ListModalProps) => {
+  const [selectedIndex, setSelectedIndex] = React.useState(2);
   const listsOptions = [
     'Solo Card',
     'Solo Prodotti',
@@ -34,12 +37,14 @@ const ListModal = () => {
   return (
     <>
 
-      <Box sx={{ ...styles }}>
+      <Box sx={{ ...styles }}
+        onClick={handleClose}
+      >
         <List sx={{ width: '100%', padding: '0px' }}>
           {listsOptions.map((option, index) => (
             <ListItem
               onClick={() => handleListItemClick(index)}
-              key={index} sx={{ padding: '7px 16px', height: '32px', display: 'flex', alignItems: 'center', fontSize: '12px' }}>
+              key={index} sx={{ height: '32px', display: 'flex', alignItems: 'center', fontSize: '12px' }}>
               <ListItemText primary={option} sx={{ fontSize: '12px' }} />
               {selectedIndex === index ? <Check sx={{ color: '#f93e6c', width: '16px' }} /> : ''}
             </ListItem>

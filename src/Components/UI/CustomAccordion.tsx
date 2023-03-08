@@ -1,5 +1,3 @@
-// create a resuable accordion component using material ui accordion
-
 import React from 'react'
 import Box from '@mui/material/Box';
 import Accordion from '@mui/material/Accordion';
