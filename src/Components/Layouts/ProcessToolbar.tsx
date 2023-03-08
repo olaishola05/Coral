@@ -5,6 +5,7 @@ import { processIcons, processIconRight } from '../../utils/utils'
 import { ProcessBottomBar } from './'
 import { ListModal } from '../UI/Modal'
 import { useToggle } from '../../hooks'
+import AddDrawer from '../AddDrawer'
 
 interface ProcessBarProps {
   toggleOpen: () => void
@@ -13,6 +14,7 @@ interface ProcessBarProps {
 const ProcessToolbar = ({ toggleOpen }: ProcessBarProps) => {
   const [open, setOpen] = useToggle(false)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [openDrawer, setOpenDrawer] = useToggle(false);
 
   const handleSettingsClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setOpen()
@@ -23,6 +25,15 @@ const ProcessToolbar = ({ toggleOpen }: ProcessBarProps) => {
     setOpen()
     setAnchorEl(null);
   };
+
+  const handleOpenDrawer = () => {
+    setOpenDrawer()
+  }
+
+  const handleCloseDrawer = () => {
+    setOpenDrawer()
+  }
+
 
   const openModal = Boolean(anchorEl);
   const id = openModal ? 'list popover' : undefined;
@@ -62,10 +73,11 @@ const ProcessToolbar = ({ toggleOpen }: ProcessBarProps) => {
           {processIconRight.map((icon, index) => (
             <IconButton
               key={index} sx={{ padding: '0px', fontSize: '16px', display: 'flex', gap: '10px', borderRadius: 'none', }}
-              onClick={() => index === 4 ? toggleOpen() : index === processIconRight.length - 1 ? console.log('add') : ''}
+              onClick={() => index === 4 ? toggleOpen() : index === processIconRight.length - 1 ? handleOpenDrawer() : ''}
             >
+              {openDrawer && index === processIconRight.length - 1 && <AddDrawer open={openDrawer} onClose={handleCloseDrawer} />}
               {index === processIconRight.length - 1 ? <Box component='span'
-                sx={{ height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'primary.main', padding: '0px 12px', borderRadius: '8px', color: 'white', fontSize: '14px', gap: '4px' }}
+                sx={{ height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'primary.main', padding: '0px 12px', borderRadius: '8px', color: 'white', fontSize: '14px', gap: '4px', position: 'relative' }}
               > {icon} Aggiungi</Box> : icon}
             </IconButton>
           ))}
