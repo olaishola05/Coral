@@ -5,7 +5,7 @@ import { processIcons, processIconRight } from '../../utils/utils'
 import { ProcessBottomBar } from './'
 import { ListModal } from '../UI/Modal'
 import { useToggle } from '../../hooks'
-import AddDrawer from '../AddDrawer'
+import { AddDrawer } from '..'
 
 interface ProcessBarProps {
   toggleOpen: () => void
