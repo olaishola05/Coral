@@ -9,9 +9,11 @@ interface Props {
   expanded: boolean
   onChange: (event: React.ChangeEvent<{}>, isExpanded: boolean) => void
   summaryChildren?: any
+  background?: string
+  summaryStyles?: any
 }
 
-const CustomAccordion = ({ children, expanded, onChange, summaryChildren }: Props) => {
+const CustomAccordion = ({ children, expanded, onChange, summaryChildren, background, summaryStyles }: Props) => {
   return (
     <Box sx={{ width: '100%' }}>
       <Accordion
@@ -23,7 +25,7 @@ const CustomAccordion = ({ children, expanded, onChange, summaryChildren }: Prop
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
-          sx={{ padding: '3px', backgroundColor: '#F6F8FA', display: 'flex', alignItems: 'center', gap: '10px', mb: '16px', }}
+          sx={{ padding: '0px 3px', backgroundColor: background ? background : '#F6F8FA', display: 'flex', alignItems: 'center', gap: '10px', ...summaryStyles }}
         >
           {summaryChildren}
         </AccordionSummary>

@@ -21,7 +21,7 @@ const accordionChildrenStyles = {
   flexDirection: 'column',
   gap: '24px',
   alignItems: 'flex-start',
-  padding: '0px 0px 0px 16px'
+  padding: '0px 0px 0px 16px',
 }
 
 const DialogueRight = ({ dialogueItems }: Props) => {
@@ -42,6 +42,7 @@ const DialogueRight = ({ dialogueItems }: Props) => {
         <CustomAccordion
           expanded={expanded === 'panel1'}
           onChange={handleChange('panel1')}
+          summaryStyles={{ mb: '16px' }}
           summaryChildren={
             <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <Box sx={{ ...AccordionSummaryStyles }}>
@@ -83,6 +84,7 @@ const DialogueRight = ({ dialogueItems }: Props) => {
       <CustomAccordion
         expanded={expanded === 'panel2'}
         onChange={handleChange('panel2')}
+        summaryStyles={{ mb: '16px' }}
         summaryChildren={
           <Box sx={{ ...AccordionSummaryStyles }}>
             <DoubleArrowIcon />
@@ -107,6 +109,7 @@ const DialogueRight = ({ dialogueItems }: Props) => {
       <CustomAccordion
         expanded={expanded === 'panel3'}
         onChange={handleChange('panel3')}
+        summaryStyles={{ mb: '16px' }}
         summaryChildren={
           <Box sx={{ ...AccordionSummaryStyles }}>
             <StartIcon />
