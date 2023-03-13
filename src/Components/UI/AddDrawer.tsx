@@ -10,17 +10,18 @@ import { StyledButton } from '../../styles'
 
 const StyledContainer = styled(Box)(() => ({
   width: 400,
-  height: 675,
+  height: 700,
   position: 'absolute',
   left: '-310%',
   right: 0,
   top: '126%',
   backgroundColor: 'white',
-  border: '1px solid red',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   gap: '24px',
+  padding: '24px 0px',
+  border: '1px solid #D6D5D9'
 }))
 
 const StyledContainerContents = styled(Box)(() => ({
@@ -32,17 +33,17 @@ const StyledContainerContents = styled(Box)(() => ({
   justifyContent: 'space-between',
   padding: '0px 24px',
   backgroundColor: 'white',
-  border: '1px solid red',
 }))
 
 const StyledContainerTop = styled(Box)(() => ({
   width: '333px',
-  height: '306px',
+  height: '100%',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
   padding: '3px 0px',
   gap: '24px',
+  overflowY: 'scroll',
 }))
 
 const StyledContainerInput = styled(TextInput)(({ color, size }) => ({
@@ -89,7 +90,7 @@ const StyledAccordionDetails = styled(Box)(() => ({
 
 const StyledAccordionChildren = styled(Box)(() => ({
   width: '100%',
-  height: '174px',
+  // height: '174px',
   display: 'flex',
   alignItems: 'flex-start',
   gap: '18px',
@@ -98,12 +99,9 @@ const StyledAccordionChildren = styled(Box)(() => ({
 
 const StyledButtonContainer = styled(Box)(() => ({
   width: '100%',
-  height: '80px',
   display: 'flex',
-  alignItems: 'flex-start',
-  justifyContent: 'flex-end',
   gap: '16px',
-  // order: 2,
+  padding: '0px 24px',
 }))
 
 
@@ -293,28 +291,28 @@ const AddDrawer = ({ onClose, ...props }: { open: boolean, onClose: () => void }
           </StyledAccordion>
         </StyledContainerTop>
 
-        <StyledButtonContainer>
-          <StyledButton
-            variant="text"
-            color="secondary"
-            size='small'
-            onClick={onClose}
-            sx={{ width: '77px', height: '40px', border: `1px solid ${theme.palette.secondary.main}` }}
-          >
-            Annulla
-          </StyledButton>
-
-          <StyledButton
-            variant="contained"
-            color="success"
-            size='small'
-            onClick={onClose}
-            sx={{ width: '62px', height: '40px' }}
-          >
-            Salva
-          </StyledButton>
-        </StyledButtonContainer>
       </StyledContainerContents>
+      <StyledButtonContainer>
+        <StyledButton
+          variant="text"
+          color="secondary"
+          size='small'
+          onClick={onClose}
+          sx={{ width: '77px', height: '40px', border: `1px solid ${theme.palette.secondary.main}` }}
+        >
+          Annulla
+        </StyledButton>
+
+        <StyledButton
+          variant="contained"
+          color="success"
+          size='small'
+          onClick={onClose}
+          sx={{ width: '62px', height: '40px' }}
+        >
+          Salva
+        </StyledButton>
+      </StyledButtonContainer>
     </StyledContainer >
   )
 }
