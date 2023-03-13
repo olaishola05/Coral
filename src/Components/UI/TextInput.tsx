@@ -23,13 +23,13 @@ interface TextInputProps {
 
 
 
-const TextInput: React.FC<TextInputProps> = ({ label, value, onChange, required, ...otherProps }) => {
+const TextInput: React.FC<TextInputProps> = ({ label, value, onChange, required, InputStyles, ...otherProps }) => {
   return (
     <StyledTextField
       label={label}
       value={value}
       onChange={onChange}
-      sx={{ ...otherProps.InputStyles }}
+      sx={{ ...InputStyles }}
       {...otherProps}
     />
   );

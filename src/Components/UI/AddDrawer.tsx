@@ -10,7 +10,7 @@ import { StyledButton } from '../../styles'
 
 const StyledContainer = styled(Box)(() => ({
   width: 400,
-  height: 700,
+  height: 680,
   position: 'absolute',
   left: '-310%',
   right: 0,
@@ -20,7 +20,7 @@ const StyledContainer = styled(Box)(() => ({
   flexDirection: 'column',
   alignItems: 'center',
   gap: '24px',
-  padding: '24px 0px',
+  padding: '10px 0px',
   border: '1px solid #D6D5D9'
 }))
 
@@ -142,10 +142,8 @@ const AddDrawer = ({ onClose, ...props }: { open: boolean, onClose: () => void }
     setSelectedIndex(index);
   };
 
-  const handleSelectChange = (event: SelectChangeEvent<typeof selectedValue>) => {
-    const {
-      target: { value },
-    } = event;
+  const handleSelectChange = (event: SelectChangeEvent) => {
+    const { value } = event.target
 
     setSelectedValue(typeof value === 'string' ? value : value,);
   };

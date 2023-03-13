@@ -13,7 +13,6 @@ import MenuIcon from '../../Assets/svg/menuIcon.svg'
 import { drawerWidth } from '../../utils/utils';
 import { useParams } from 'react-router-dom';
 import Link from '@mui/material/Link';
-import Stack from '@mui/material/Stack';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 
 
@@ -49,13 +48,13 @@ const BoardTopbar = ({ open, toggle, path }: BoardTopbarProps) => {
   const { id } = useParams<{ id: string }>()
 
   const breadcrumb = [
-    <Link underline="hover" key="1" color="inherit" href="/">
+    <Link underline="hover" key='1' color="inherit" href="/">
       Process
     </Link>,
 
-    <Link key="3" color="inherit" href="/:id">
-      Process{id}
-    </Link>,
+    <Typography key="2" color='secondary'>
+      Process {id}
+    </Typography>,
   ]
   return (
     <AppBar position="fixed" open={open} color='transparent'>
@@ -78,11 +77,12 @@ const BoardTopbar = ({ open, toggle, path }: BoardTopbarProps) => {
 
           <Typography variant="h6" noWrap component="div" sx={{ fontWeight: '600', fontSize: '20px', lineHeight: '36px', textTransform: 'capitalize' }}>
 
-            {path === '/' ? path :
-              <Breadcrumbs separator="›" aria-label="breadcrumb">
-                {breadcrumb}
-              </Breadcrumbs>
-            }
+            {path === 'Process' ? <Link underline="hover" color="inherit" href="/">
+              {path}
+            </Link> : <Breadcrumbs separator="›" aria-label="breadcrumb">
+              {breadcrumb}
+            </Breadcrumbs>}
+
 
           </Typography>
 

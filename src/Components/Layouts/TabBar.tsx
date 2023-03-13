@@ -8,7 +8,7 @@ import { ReactComponent as LinkIcon } from '../../Assets/svg/link.svg';
 import { ReactComponent as ListIcon } from '../../Assets/svg/list.svg';
 
 const TabBar = () => {
-  const [activeTab, setActiveTab] = React.useState(0)
+  const [activeTab, setActiveTab] = React.useState(1)
 
   const handleTabChange = (index: number) => {
     setActiveTab(index)
@@ -39,9 +39,9 @@ const TabBar = () => {
             sx={{
               display: 'flex',
               flexDirection: 'row',
-              alignItems: 'flex-start',
+              alignItems: 'center',
               cursor: 'pointer',
-              gap: '17.33px',
+              gap: '17px',
               color: activeTab === index ? 'primary.main' : '',
               '&:hover': {
                 color: 'primary.main',
@@ -49,7 +49,7 @@ const TabBar = () => {
             }}
             onClick={() => handleTabChange(index)}
           >
-            {tab && activeTab === index && <Box sx={{ width: '2px', height: '24px', backgroundColor: 'primary.main' }} />}
+            {tab && activeTab === index && <Box sx={{ width: '2px', height: '11px', backgroundColor: 'primary.main' }} />}
             {tab}
           </Box>
         ))}
