@@ -80,7 +80,6 @@ export const drawerIconNames = [
   {
     name: 'Logout',
     icon: LogoutIcon,
-    path: '/logout',
   }
 ];
 

@@ -99,7 +99,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             checkedStyle={{ '&.Mui-checked': { color: '#312E43' } }}
           />
           <CustomButton
-            onClick={() => { navigate('/forget-password') }}
+            onClick={() => { navigate('/reset-password') }}
             color='success'
             variant='text'
             btnStyles={{ color: 'secondary', width: '150px', fontStyle: 'normal', fontWeight: '600', lineHeight: '21px' }}

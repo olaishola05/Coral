@@ -14,11 +14,32 @@ import { Link } from 'react-router-dom';
 
 interface BoardListItemsProps {
   open: boolean;
+  activeTab: number;
+  setActiveTab: (index: number) => void;
 }
 
-const BoardListItems = ({ open }: BoardListItemsProps) => {
+const BoardListItems = ({ open, activeTab, setActiveTab }: BoardListItemsProps) => {
   const theme = useTheme();
   const navigate = useNavigation();
+
+
+  const handleActiveTab = (index: number) => {
+    setActiveTab(index);
+  }
+  const handleLogout = () => {
+    if (activeTab === 7) {
+      localStorage.removeItem('token');
+      navigate('/login');
+    }
+  }
+  const tabCompare = (tab: number): string => {
+    switch (tab) {
+      case 0:
+        return 'Process';
+      default:
+        return '';
+    }
+  }
 
   return (
     <List>
@@ -35,14 +56,16 @@ const BoardListItems = ({ open }: BoardListItemsProps) => {
       </ListItem>
       <Box sx={{ height: '580px' }}>
         {drawerIconNames.map((text, index) => (
-          <ListItem component={Link} to={text.path} key={text.name} disablePadding sx={{ display: 'block' }}>
+          <ListItem key={text.name} disablePadding sx={{ display: 'block' }}>
             <ListItemButton
               sx={{
                 minHeight: 48,
                 justifyContent: open ? 'initial' : 'center',
                 px: 2.5,
+                backgroundColor: activeTab === index ? 'rgba(255, 255, 255, 0.05)' : '',
               }}
-              onClick={() => navigate(text.path)}
+              onClick={
+                () => handleActiveTab(index)}
             >
               <ListItemIcon
                 sx={{
@@ -50,6 +73,7 @@ const BoardListItems = ({ open }: BoardListItemsProps) => {
                   mr: open ? 3 : 'auto',
                   justifyContent: 'center',
                 }}
+                onClick={handleLogout}
               >
                 <img src={text.icon} alt={text.name} />
               </ListItemIcon>

@@ -144,7 +144,6 @@ const AddDrawer = ({ onClose, ...props }: { open: boolean, onClose: () => void }
 
   const handleSelectChange = (event: SelectChangeEvent) => {
     const { value } = event.target
-
     setSelectedValue(typeof value === 'string' ? value : value,);
   };
 

@@ -3,7 +3,7 @@ import { PageLayoutSplit } from '../../Components/Layouts'
 import ImageContainer from '../../Components/UI/ImageContainer'
 import LoginForm from '../../Components/UI/LoginForm'
 import LoginImage from '../../Assets/svg/login.svg'
-import { useLogin, useToggle, useMessage, useLocalStorage } from '../../hooks'
+import { useLogin, useToggle, useMessage, useLocalStorage, useNavigation } from '../../hooks'
 
 const Login = () => {
   const [data, setData] = React.useState({
@@ -17,6 +17,7 @@ const Login = () => {
   const [success, setSuccess] = React.useState<boolean>(false)
   const loginMutation = useLogin('https://reqres.in/api/login')
   const [, setTokenValue] = useLocalStorage('token', '')
+  const navigate = useNavigation()
 
   const handleSubmit = () => {
     loginMutation.mutate(data, {
@@ -25,6 +26,7 @@ const Login = () => {
         setSuccess(true);
         toggle();
         setTokenValue(data.token);
+        navigate('/')
       },
       onError: (error) => {
         setMsg('Credenziali non valide');

@@ -9,6 +9,7 @@ import { useToggle } from '../../hooks';
 import { drawerWidth } from '../../utils/utils';
 import { BoardListItems, BoardTopbar } from '../../Components/Layouts';
 import { useLocation } from 'react-router-dom';
+import Processes from './Processes';
 
 
 
@@ -70,6 +71,7 @@ function Dashboard() {
   const [open, toggle] = useToggle(false);
   const [path, setPath] = React.useState<string>('')
   const location = useLocation()
+  const [activeTab, setActiveTab] = React.useState(0);
 
   React.useEffect(() => {
     if (location.pathname === '/')
@@ -89,7 +91,7 @@ function Dashboard() {
             <img src={MenuIcon} alt="menu" />
           </IconButton>
         </DrawerHeader>
-        <BoardListItems open={open} />
+        <BoardListItems open={open} activeTab={activeTab} setActiveTab={setActiveTab} />
       </Drawer>
 
       <Box
