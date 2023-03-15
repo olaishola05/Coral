@@ -109,7 +109,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
           color='secondary'
           variant='contained'
           type='submit'
-          disabled={isSubmitting}
+          disabled={isSubmitting ? true : false}
         >
           {isSubmitting ? 'Loggin...' : 'Login'}
         </CustomButton>

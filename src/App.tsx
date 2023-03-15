@@ -32,9 +32,8 @@ function App() {
           <Route path="reset-password/confirm-password" element={<ConfirmPasswordPage />} />
           {isLoggedIn &&
             <>
-              <Route element={<Dashboard />}>
-                <Route index path="/" element={<Processes />} />
-                <Route path="/:id" element={<ProcessPage />} />
+              <Route path='/board' element={<Dashboard />}>
+                <Route path="process/:id" element={<ProcessPage />} />
               </Route>
             </>}
 

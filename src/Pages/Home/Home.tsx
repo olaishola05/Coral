@@ -8,7 +8,7 @@ const Home = () => {
   console.log(token)
   return (
     <>
-      {!token ? <Login /> : <Dashboard />}
+      {token ? <Dashboard /> : <Login />}
     </>
   )
 }

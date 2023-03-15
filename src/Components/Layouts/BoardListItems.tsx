@@ -26,18 +26,10 @@ const BoardListItems = ({ open, activeTab, setActiveTab }: BoardListItemsProps) 
   const handleActiveTab = (index: number) => {
     setActiveTab(index);
   }
-  const handleLogout = () => {
-    if (activeTab === 7) {
+  const handleLogout = (index: number) => {
+    if (index === 7) {
       localStorage.removeItem('token');
       navigate('/login');
-    }
-  }
-  const tabCompare = (tab: number): string => {
-    switch (tab) {
-      case 0:
-        return 'Process';
-      default:
-        return '';
     }
   }
 
@@ -73,7 +65,7 @@ const BoardListItems = ({ open, activeTab, setActiveTab }: BoardListItemsProps) 
                   mr: open ? 3 : 'auto',
                   justifyContent: 'center',
                 }}
-                onClick={handleLogout}
+                onClick={() => handleLogout(index)}
               >
                 <img src={text.icon} alt={text.name} />
               </ListItemIcon>

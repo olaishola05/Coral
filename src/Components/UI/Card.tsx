@@ -26,7 +26,7 @@ const CustomCard: React.FC<CardProps> = ({ item, toggle }) => {
     }
 
     else {
-      navigate(`/${id}`);
+      navigate(`/process/${id}`);
     }
 
   }

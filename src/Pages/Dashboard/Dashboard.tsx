@@ -1,6 +1,6 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
 import { styled, Theme, CSSObject } from '@mui/material/styles';
+import { Outlet } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
@@ -81,6 +81,19 @@ function Dashboard() {
 
   }, [location.pathname])
 
+  const componentByActiveTab = (activeTab: number) => {
+    switch (activeTab) {
+      case 0:
+        return <Processes />
+      case 1:
+        return 'Model page'
+      case 2:
+        return 'Databases page'
+      default:
+        return <Outlet />
+    }
+  }
+
   return (
     <Box sx={{ display: 'flex' }}>
       <BoardTopbar open={open} toggle={toggle} path={path} />
@@ -101,7 +114,7 @@ function Dashboard() {
         }}
       >
         <DrawerHeader />
-        <Outlet />
+        {componentByActiveTab(activeTab)}
       </Box>
     </Box>
   )
