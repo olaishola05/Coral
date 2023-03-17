@@ -90,7 +90,7 @@ function Dashboard() {
       case 2:
         return 'Databases page'
       default:
-        return <Outlet />
+        return null
     }
   }
 
