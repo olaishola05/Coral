@@ -33,7 +33,8 @@ function App() {
           {isLoggedIn &&
             <>
               <Route path='/board' element={<Dashboard />}>
-                <Route path="process/:id" element={<ProcessPage />} />
+                <Route path="process" element={<Processes />} />
+                <Route path="rocess/:id" element={<ProcessPage />} />
               </Route>
             </>}
 
