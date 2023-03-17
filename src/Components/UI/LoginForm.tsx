@@ -1,15 +1,13 @@
 import React from 'react';
 import TextInput from '../UI/TextInput';
 import CustomButton from './CustomButton';
-import "../../Assets/styles/styles.css"
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import CustomCheckbox from './CustomCheckbox';
 import { formData } from '../../types/appTypes';
-import { useLoginFormik } from '../../hooks/useFormik';
+import { useLoginFormik, useNavigation } from '../../hooks';
 import HeaderText from './HeaderText';
-import { useNavigation } from '../../hooks/useNavigation';
 
 
 
@@ -20,15 +18,10 @@ interface LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
   const theme = useTheme();
-  const [emailValid, setEmailValid] = React.useState(false);
-  const [passwordValid, setPasswordValid] = React.useState(false);
-
   const navigate = useNavigation();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     formik.handleChange(event);
-    setEmailValid(formik.errors.email ? false : true);
-    setPasswordValid(formik.errors.password ? false : true);
     props.onChange(formik.values);
   };
 
@@ -36,6 +29,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
     initialValues: {
       email: '',
       password: '',
+
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -65,11 +59,14 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             InputStyles={{ width: '320px' }}
             size='small'
             onBlur={formik.handleBlur}
-            error={!emailValid}
-            helperText={formik.errors.email}
+            error={formik.touched.email && formik.errors.email ? true : false}
           />
           {formik.touched.email && formik.errors.email && (
-            <Typography variant="body1" component="span">{formik.errors.email}</Typography>
+            <Typography
+              variant="body1"
+              component="span"
+              sx={{ color: theme.palette.error.main, fontSize: '15px' }}
+            >{formik.errors.email}</Typography>
           )}
         </Box>
         <Box>
@@ -85,33 +82,34 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             InputStyles={{ width: '320px' }}
             size='small'
             onBlur={formik.handleBlur}
-            error={!passwordValid}
-            helperText={formik.errors.password}
+            error={formik.touched.password && formik.errors.password ? true : false}
           />
           {formik.touched.password && formik.errors.password && (
-            <Typography variant="body1" component="span">{formik.errors.password}</Typography>
+            <Typography variant="body1" component="span"
+              sx={{ color: theme.palette.error.main, fontSize: '15px', }}
+            >{formik.errors.password}</Typography>
           )}
         </Box>
         <Box sx={{ width: '320px', display: 'flex', justifyContent: 'space-between' }}>
           <CustomCheckbox
             label="Remember me"
             name="rememberMe"
-            // checked={data.rememberMe}
+            checked={formik.values.rememberMe}
             onChange={handleChange}
             checkedStyle={{ '&.Mui-checked': { color: '#312E43' } }}
           />
           <CustomButton
-            onClick={() => { navigate('/forget-password') }}
+            onClick={() => { navigate('/reset-password') }}
             color='success'
             variant='text'
-            btnStyles={{ color: 'secondary', width: '150px', fontSty: 'normal', fontWeight: '600', lineHeight: '21px' }}
+            btnStyles={{ color: 'secondary', width: '150px', fontStyle: 'normal', fontWeight: '600', lineHeight: '21px' }}
           >Forgot password</CustomButton>
         </Box>
         <CustomButton
           color='secondary'
           variant='contained'
           type='submit'
-          disabled={isSubmitting}
+          disabled={isSubmitting ? true : false}
         >
           {isSubmitting ? 'Loggin...' : 'Login'}
         </CustomButton>

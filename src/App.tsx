@@ -4,33 +4,39 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './themes/theme';
 import { Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Signup from './Pages/Signup/Signup';
-import ErrorPage from './Pages/Error/ErrorPage';
-import Login from './Pages/Login/Login';
-import Dashboard from './Pages/Dashboard/Dashboard';
-import EmailVerify from './Pages/Signup/EmailVerify';
-import CompleteProfile from './Pages/Signup/CompleteProfile';
-import ConfirmPasswordPage from './Pages/Login/ConfirmPasswordPage';
-import ForgotPasswordPage from './Pages/Login/ForgotPasswordPage';
-import EmailSentPage from './Pages/Login/EmailSentPage';
+import ErrorPage from './Pages/Error';
+import { Login, ConfirmPasswordPage, ForgotPasswordPage, EmailSentPage } from './Pages/Login';
+import { Signup, EmailVerify, CompleteProfile } from './Pages/Signup';
+import { Processes, ProcessPage, Dashboard } from './Pages/Dashboard';
+import { useLocalStorage } from './hooks';
+import Home from './Pages/Home';
 
 const queryClient = new QueryClient()
 
 function App() {
-  const isLoggedIn = localStorage.getItem('token') ? true : false;
+  const [token] = useLocalStorage('token', '')
+  const isLoggedIn = !!token
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Routes>
-          {isLoggedIn && <Route path="/board" element={<Dashboard />} />}
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
-          <Route path="/signup/email-verification" element={<EmailVerify />} />
-          <Route path="/signup/complete-profile" element={<CompleteProfile />} />
+          <Route path="signup/email-verification" element={<EmailVerify />} />
+          <Route path="signup/complete-profile" element={<CompleteProfile />} />
           <Route path="reset-password" element={<ForgotPasswordPage />} />
-          <Route path="/reset-password/email-sent" element={<EmailSentPage />} />
-          <Route path="/reset-password/confirm-password" element={<ConfirmPasswordPage />} />
+          <Route path="reset-password/email-sent" element={<EmailSentPage />} />
+          <Route path="reset-password/confirm-password" element={<ConfirmPasswordPage />} />
+          {isLoggedIn &&
+            <>
+              <Route path='/board' element={<Dashboard />}>
+                <Route path="process/:id" element={<ProcessPage />} />
+              </Route>
+            </>}
+
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </ThemeProvider>

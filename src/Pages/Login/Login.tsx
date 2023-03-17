@@ -1,17 +1,14 @@
 import React from 'react'
-import AuthenticationPageSplit from '../../Components/Layouts/AuthenticationPageSplit'
+import { PageLayoutSplit } from '../../Components/Layouts'
 import ImageContainer from '../../Components/UI/ImageContainer'
 import LoginForm from '../../Components/UI/LoginForm'
 import LoginImage from '../../Assets/svg/login.svg'
-import useLogin from '../../hooks/useLogin'
-import useToggle from '../../hooks/useToggle'
-import useMessage from '../../hooks/useMessage'
+import { useLogin, useToggle, useMessage, useLocalStorage } from '../../hooks'
 
 const Login = () => {
   const [data, setData] = React.useState({
     email: '',
     password: '',
-    // rememberMe: false
   })
 
   const [value, toggle] = useToggle(false)
@@ -19,14 +16,15 @@ const Login = () => {
   const [error, setError] = React.useState<boolean>()
   const [success, setSuccess] = React.useState<boolean>(false)
   const loginMutation = useLogin('https://reqres.in/api/login')
+  const [, setTokenValue] = useLocalStorage('token', '')
 
   const handleSubmit = () => {
     loginMutation.mutate(data, {
       onSuccess: (data) => {
         setMsg('Utente autenticato con successo');
         setSuccess(true);
-        // localStorage.setItem('token', data.token);
         toggle();
+        setTokenValue(data.token);
       },
       onError: (error) => {
         setMsg('Credenziali non valide');
@@ -37,7 +35,7 @@ const Login = () => {
   };
 
   return (
-    <AuthenticationPageSplit
+    <PageLayoutSplit
       value={value}
       error={error}
       success={success}

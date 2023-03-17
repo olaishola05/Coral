@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@mui/material';
+import { StyledButton } from '../../styles';
 
 interface CustomButtonProps {
   onClick?: () => void;
@@ -13,14 +13,14 @@ interface CustomButtonProps {
 
 const CustomButton: React.FC<CustomButtonProps> = ({ onClick, children, color, variant, btnStyles }) => {
   return (
-    <Button
+    <StyledButton
       variant={variant}
       onClick={onClick}
       color={color}
-      sx={{ width: '100%', height: '40px', borderRadius: '8px', fontSize: '14px', lineHeight: '18px', textTransform: 'none', color: 'white', ...btnStyles }}
+      sx={{ ...btnStyles }}
     >
       {children}
-    </Button>
+    </StyledButton>
   );
 };
 

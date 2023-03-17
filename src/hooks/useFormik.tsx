@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 interface FormData {
   email: string;
   password: string;
+  rememberMe?: boolean;
 }
 
 const initialValues: FormData = {
@@ -31,7 +32,6 @@ export function useLoginFormik(props: FormikConfig<FormData>, onSubmit: () => vo
       try {
         // Make API call to login user here
         await onSubmit();
-        console.log(values);
         resetForm();
       } catch (error) {
         console.error(error);

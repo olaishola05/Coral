@@ -1,5 +1,3 @@
-// create a reusable hook to show messages
-
 import { useState } from 'react';
 
 const useMessage = () => {

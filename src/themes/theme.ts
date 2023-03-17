@@ -17,6 +17,12 @@ declare module "@mui/material/styles" {
       width: string;
       height: string;
 
+    },
+
+    neutral: {
+      main: string;
+      light: string;
+      dark: string;
     }
   }
 
@@ -35,7 +41,13 @@ declare module "@mui/material/styles" {
       snackSuccess?: React.CSSProperties["color"];
       width?: string;
       height?: string;
-    }
+    },
+
+    neutral?: {
+      main?: React.CSSProperties["color"];
+      light?: React.CSSProperties["color"];
+      dark?: React.CSSProperties["color"];
+    },
   }
 }
 
@@ -56,6 +68,12 @@ export const theme = createTheme({
     height: "56px",
   },
 
+  neutral: {
+    main: "#F9F9F9",
+    light: "#C1C0C7",
+    dark: "#464356",
+  },
+
   palette: {
     primary: {
       main: "#F93E6C",
@@ -68,6 +86,9 @@ export const theme = createTheme({
     },
     success: {
       main: "#2CCFBC",
+    },
+    warning: {
+      main: '#EF980B'
     },
   },
 
@@ -145,6 +166,19 @@ export const theme = createTheme({
       fontWeight: 400,
       lineHeight: 1.2,
       letterSpacing: "0.03333em",
+    },
+  },
+
+  components: {
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          '&.Mui-checked': {
+
+            backgroundColor: 'white',
+          },
+        },
+      },
     },
   },
 

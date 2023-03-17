@@ -8,7 +8,7 @@ interface SnackSuccessProps {
   value?: boolean
 }
 
-const SnackSuccess: React.FC<SnackSuccessProps> = ({ message, toggle, value }) => {
+const SnackSuccess: React.FC<SnackSuccessProps> = ({ message, value, toggle }) => {
   const theme = useTheme()
   return (
     <CustomSnackbar

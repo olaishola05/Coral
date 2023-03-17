@@ -8,7 +8,8 @@ interface SnackbarErrorProps {
   toggle: () => void;
 }
 
-const SnackbarError = ({ value, message, toggle }: SnackbarErrorProps) => {
+
+const SnackbarError = ({ message, value, toggle }: SnackbarErrorProps) => {
   const theme = useTheme();
   return (
     <CustomSnackbar
