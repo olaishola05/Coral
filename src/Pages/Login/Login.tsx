@@ -25,6 +25,8 @@ const Login = () => {
         setSuccess(true);
         toggle();
         setTokenValue(data.token);
+        window.history.pushState({}, '', '/board');
+        window.location.reload();
       },
       onError: (error) => {
         setMsg('Credenziali non valide');
