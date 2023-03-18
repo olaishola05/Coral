@@ -1,10 +1,10 @@
 import React from 'react'
 import { ProcessToolbar } from '../../Components/Layouts'
-import Box from '@mui/material/Box';
 import ProcessTable from '../../Components/UI/ProcessTable';
 import { TaskModal, SettingsModal } from '../../Components/UI/Modal';
 import { useFetch, useToggle } from '../../hooks';
 import Skeleton from '@mui/material/Skeleton';
+import { Dashboard } from '../Dashboard';
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
@@ -29,10 +29,9 @@ const ProcessPage = () => {
   }
 
   return (
-    <Box>
+    <Dashboard>
       {open && <TaskModal open={open} toggleOpen={toggle} />}
       {openSettings && <SettingsModal open={openSettings} toggleOpen={toggleSettings} />}
-
       <ProcessToolbar toggleOpen={toggleSettings} />
       {data && data.map((process: any, index: string) => (
         <ProcessTable
@@ -44,7 +43,7 @@ const ProcessPage = () => {
         />
       ))
       }
-    </Box>
+    </Dashboard>
   )
 }
 

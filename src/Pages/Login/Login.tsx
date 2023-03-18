@@ -25,7 +25,7 @@ const Login = () => {
         setSuccess(true);
         toggle();
         setTokenValue(data.token);
-        window.history.pushState({}, '', '/board');
+        window.history.pushState({}, '', '/');
         window.location.reload();
       },
       onError: (error) => {
