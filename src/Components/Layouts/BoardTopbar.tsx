@@ -48,8 +48,8 @@ const BoardTopbar = ({ open, toggle, path }: BoardTopbarProps) => {
   const { id } = useParams<{ id: string }>()
 
   const breadcrumb = [
-    <Link underline="hover" key='1' color="inherit" href="/">
-      Process
+    <Link underline="hover" key='1' color="inherit" href={path}>
+      {path}
     </Link>,
 
     <Typography key="2" color='secondary'>
@@ -77,7 +77,7 @@ const BoardTopbar = ({ open, toggle, path }: BoardTopbarProps) => {
 
           <Typography variant="h6" noWrap component="div" sx={{ fontWeight: '600', fontSize: '20px', lineHeight: '36px', textTransform: 'capitalize' }}>
 
-            {path === 'Process' ? <Link underline="hover" color="inherit" href="/">
+            {path ? <Link underline="hover" color="inherit" href={path}>
               {path}
             </Link> : <Breadcrumbs separator="›" aria-label="breadcrumb">
               {breadcrumb}

@@ -71,7 +71,7 @@ function Dashboard({ children }: { children: React.ReactNode }) {
   const [activeTab, setActiveTab] = React.useState(0);
 
   React.useEffect(() => {
-    if (location.pathname === '/board')
+    if (location.pathname === '/')
       setPath('Process')
     else
       setPath(location.pathname.split('/')[1])

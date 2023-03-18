@@ -24,12 +24,11 @@ const ProcessPage = () => {
     </div>
   }
 
-  if (status === 'loading') {
-    return <Skeleton variant="rectangular" width={1350} height={770} />
-  }
+  const loading = status === 'loading'
 
   return (
     <Dashboard>
+      {loading && <Skeleton variant="rectangular" width={1350} height={770} />}
       {open && <TaskModal open={open} toggleOpen={toggle} />}
       {openSettings && <SettingsModal open={openSettings} toggleOpen={toggleSettings} />}
       <ProcessToolbar toggleOpen={toggleSettings} />
