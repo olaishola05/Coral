@@ -41,7 +41,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
     <Box sx={{ width: '320px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '50px' }}>
       <HeaderText
         header="Login"
-        text="Thanks to come back on Coraly"
+        text="Thanks for coming back on Coraly"
         headerStyle={{ marginBottom: '0px' }}
       />
 
@@ -124,6 +124,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
           >Sign up now</CustomButton>
         </Typography>
       </Box>
+      <>Test run</>
     </Box>
   );
 };

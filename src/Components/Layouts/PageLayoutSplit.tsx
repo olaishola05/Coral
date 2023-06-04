@@ -29,15 +29,15 @@ function PageLayoutSplit(props: PageLayoutSplitProps): JSX.Element {
   }
 
   return (
-    <Box sx={{ height: '100vh', width: '100vw', display: 'flex' }}>
-      <Box>
+    <Box sx={{ width: '100vw', display: 'flex' }}>
+      <Box sx={{height: '100vh'}}>
         <Box sx={{ display: 'flex', alignItems: 'flex-start', flexDirection: 'column', gap: '70px', ...leftClassName }}>
           <img src={Logo} alt={Logo} />
           {leftSide}
         </Box>
         {error && <SnackbarError value={value} message={message} toggle={handleError} />}  {success && <SnackSuccess value={value} message={message} toggle={handleSuccess} />}
       </Box>
-      <Box sx={rightStyles}>{rightSide}</Box>
+      <Box sx={{height: '100vh', ...rightStyles}}>{rightSide}</Box>
     </Box>
   )
 

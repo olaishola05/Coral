@@ -43,7 +43,7 @@ const Login = () => {
       success={success}
       message={msg}
       toggle={toggle}
-      leftClassName={{ width: '520px', padding: '100px 100px 150px' }}
+      leftClassName={{ width: '100%', padding: '80px 100px'}}
       rightStyles={{ width: '100%', backgroundColor: '#F5F5F5' }}
       leftSide={<LoginForm submit={handleSubmit} onChange={(data) => setData(data)} />}
       rightSide={<ImageContainer src={LoginImage} alt='login' />}
