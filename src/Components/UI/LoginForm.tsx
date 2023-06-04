@@ -27,20 +27,24 @@ const LoginFormContainer = styled(Box)(({ theme }) => ({
     color: theme.palette.text.primary,
     fontSize: '15px',
   },
+
+  form: {
+    width: '320px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '20px',
+
+  },
   
   [theme.breakpoints.down('sm')]: {
     width: '100%',
     gap: '20px',
-    padding: '20px 10px',
-    border: '1px solid #E5E5E5',
+    padding: '10px',
 
     form : {
       width: '100%',
-      border: '1px solid red',
+      gap: '15px',
 
-      input: {
-        width: '100% !important',
-      }
     },
     '& .MuiTypography-body1': {
       fontSize: '14px',
@@ -81,7 +85,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
         headerStyle={{ marginBottom: '0px' }}
       />
 
-      <Box component='form' sx={{ width: '320px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '20px' }} onClick={formik.handleSubmit}>
+      <Box component='form' onClick={formik.handleSubmit}>
         <Box>
           <TextInput
             label="Email"
@@ -92,7 +96,6 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             type='email'
             required
             color='secondary'
-            InputStyles={{ width: '320px' }}
             size='small'
             onBlur={formik.handleBlur}
             error={formik.touched.email && formik.errors.email ? true : false}
@@ -115,7 +118,6 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             type='password'
             required
             color='secondary'
-            InputStyles={{ width: '320px' }}
             size='small'
             onBlur={formik.handleBlur}
             error={formik.touched.password && formik.errors.password ? true : false}

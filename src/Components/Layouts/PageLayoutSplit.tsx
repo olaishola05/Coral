@@ -54,8 +54,6 @@ const PageLayoutSplitLeftContainer = styled(Box)(({ theme }) => ({
     width: '100%',
     gap: '30px',
     padding: '40px 5px',
-    // alignItems: 'center',
-    border: '1px solid yellow',
   },
 }));
 
