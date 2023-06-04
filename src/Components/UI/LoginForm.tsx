@@ -39,6 +39,10 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
 
   return (
     <Box sx={{ width: '320px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '50px' }}>
+      <Box sx={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
+        <Typography variant="body1" component="span" sx={{ color: theme.palette.text.primary, fontSize: '15px' }}>Email: eve.holt@reqres.in</Typography>
+        <Typography variant="body1" component="span" sx={{ color: theme.palette.text.primary, fontSize: '15px' }}>Password: cityslicka</Typography>
+      </Box>
       <HeaderText
         header="Login"
         text="Thanks for coming back on Coraly"
@@ -124,7 +128,6 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
           >Sign up now</CustomButton>
         </Typography>
       </Box>
-      <>Test run</>
     </Box>
   );
 };
