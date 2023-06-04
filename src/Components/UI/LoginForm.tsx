@@ -8,6 +8,7 @@ import CustomCheckbox from './CustomCheckbox';
 import { formData } from '../../types/appTypes';
 import { useLoginFormik, useNavigation } from '../../hooks';
 import HeaderText from './HeaderText';
+import { styled } from '@mui/material/styles';
 
 
 
@@ -15,6 +16,37 @@ interface LoginFormProps {
   onChange: (data: formData) => void;
   submit: () => void;
 }
+
+const LoginFormContainer = styled(Box)(({ theme }) => ({
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  gap: '50px',
+  '& .MuiTypography-body1': {
+    color: theme.palette.text.primary,
+    fontSize: '15px',
+  },
+  
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    gap: '20px',
+    padding: '20px 10px',
+    border: '1px solid #E5E5E5',
+
+    form : {
+      width: '100%',
+      border: '1px solid red',
+
+      input: {
+        width: '100% !important',
+      }
+    },
+    '& .MuiTypography-body1': {
+      fontSize: '14px',
+    },
+  },
+}));
 
 const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
   const theme = useTheme();
@@ -38,7 +70,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
   }, props.submit);
 
   return (
-    <Box sx={{ width: '320px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '50px' }}>
+    <LoginFormContainer>
       <Box sx={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
         <Typography variant="body1" component="span" sx={{ color: theme.palette.text.primary, fontSize: '15px' }}>Email: eve.holt@reqres.in</Typography>
         <Typography variant="body1" component="span" sx={{ color: theme.palette.text.primary, fontSize: '15px' }}>Password: cityslicka</Typography>
@@ -128,7 +160,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
           >Sign up now</CustomButton>
         </Typography>
       </Box>
-    </Box>
+    </LoginFormContainer>
   );
 };
 
