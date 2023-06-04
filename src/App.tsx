@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ErrorPage from './Pages/Error';
 import { Login, ConfirmPasswordPage, ForgotPasswordPage, EmailSentPage } from './Pages/Login';
 import { Signup, EmailVerify, CompleteProfile } from './Pages/Signup';
-import { Processes, ProcessPage, Dashboard } from './Pages/Dashboard';
+import { Processes, ProcessPage, Models, Databases, Macro, Venditori, Automation, Support } from './Pages/Dashboard';
 import { useLocalStorage } from './hooks';
 import Home from './Pages/Home';
 
@@ -32,9 +32,14 @@ function App() {
           <Route path="reset-password/confirm-password" element={<ConfirmPasswordPage />} />
           {isLoggedIn &&
             <>
-              <Route path='/board' element={<Dashboard />}>
-                <Route path="process/:id" element={<ProcessPage />} />
-              </Route>
+              <Route path='/' element={<Processes />} />
+              <Route path='process/:id' element={<ProcessPage />} />
+              <Route path='models' element={<Models />} />
+              <Route path='databases' element={<Databases />} />
+              <Route path='macrofasi' element={<Macro />} />
+              <Route path='venditori' element={<Venditori />} />
+              <Route path='automazioni' element={<Automation />} />
+              <Route path='supporto' element={<Support />} />
             </>}
 
           <Route path="*" element={<ErrorPage />} />

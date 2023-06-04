@@ -8,6 +8,7 @@ import CustomCheckbox from './CustomCheckbox';
 import { formData } from '../../types/appTypes';
 import { useLoginFormik, useNavigation } from '../../hooks';
 import HeaderText from './HeaderText';
+import { styled } from '@mui/material/styles';
 
 
 
@@ -15,6 +16,41 @@ interface LoginFormProps {
   onChange: (data: formData) => void;
   submit: () => void;
 }
+
+const LoginFormContainer = styled(Box)(({ theme }) => ({
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  gap: '50px',
+  '& .MuiTypography-body1': {
+    color: theme.palette.text.primary,
+    fontSize: '15px',
+  },
+
+  form: {
+    width: '320px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '20px',
+
+  },
+  
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    gap: '20px',
+    padding: '10px',
+
+    form : {
+      width: '100%',
+      gap: '15px',
+
+    },
+    '& .MuiTypography-body1': {
+      fontSize: '14px',
+    },
+  },
+}));
 
 const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
   const theme = useTheme();
@@ -38,14 +74,18 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
   }, props.submit);
 
   return (
-    <Box sx={{ width: '320px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '50px' }}>
+    <LoginFormContainer>
+      <Box sx={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
+        <Typography variant="body1" component="span" sx={{ color: theme.palette.text.primary, fontSize: '15px' }}>Email: eve.holt@reqres.in</Typography>
+        <Typography variant="body1" component="span" sx={{ color: theme.palette.text.primary, fontSize: '15px' }}>Password: cityslicka</Typography>
+      </Box>
       <HeaderText
         header="Login"
-        text="Thanks to come back on Coraly"
+        text="Thanks for coming back on Coraly"
         headerStyle={{ marginBottom: '0px' }}
       />
 
-      <Box component='form' sx={{ width: '320px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '20px' }} onClick={formik.handleSubmit}>
+      <Box component='form' onClick={formik.handleSubmit}>
         <Box>
           <TextInput
             label="Email"
@@ -56,7 +96,6 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             type='email'
             required
             color='secondary'
-            InputStyles={{ width: '320px' }}
             size='small'
             onBlur={formik.handleBlur}
             error={formik.touched.email && formik.errors.email ? true : false}
@@ -79,7 +118,6 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             type='password'
             required
             color='secondary'
-            InputStyles={{ width: '320px' }}
             size='small'
             onBlur={formik.handleBlur}
             error={formik.touched.password && formik.errors.password ? true : false}
@@ -124,7 +162,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
           >Sign up now</CustomButton>
         </Typography>
       </Box>
-    </Box>
+    </LoginFormContainer>
   );
 };
 

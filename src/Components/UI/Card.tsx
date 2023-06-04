@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, Typography, Box, CardActionArea } from '@mui/material';
 import { useNavigation } from '../../hooks/useNavigation';
-import { ProcessPage } from '../../Pages/Dashboard';
+
 interface CardProps {
   item: {
     id: string;
@@ -27,7 +27,7 @@ const CustomCard: React.FC<CardProps> = ({ item, toggle }) => {
     }
 
     else {
-      navigate(`/process/${id}`);
+      navigate(`process/${id}`);
     }
 
   }

@@ -24,8 +24,8 @@ const StyledButton = styled(Button)<{ variant?: 'text' | 'outlined' | 'contained
   }),
 );
 
-const StyledTextField = styled(TextField)({
-  width: '100%',
+const StyledTextField = styled(TextField)(({ theme }) =>({
+  width: '320px',
   fontSize: '12px',
   fontWeight: 'normal',
   color: 'theme.neutral.light',
@@ -40,7 +40,11 @@ const StyledTextField = styled(TextField)({
       borderColor: 'theme.palette.secondary.main',
     },
   },
-});
+
+  [theme.breakpoints.down('sm')]:{
+    width: '100%',
+  }
+}));
 
 
 export { StyledButton, StyledTextField }

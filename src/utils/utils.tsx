@@ -45,30 +45,37 @@ export const drawerIconNames = [
   {
     name: 'Processi',
     icon: BoxIcon,
+    path: '/'
   },
   {
     name: 'Modelli',
     icon: Model,
+    path: '/models'
   },
   {
     name: 'Database',
     icon: Database,
+    path: '/databases'
   },
   {
     name: 'Macro Fasi',
     icon: MacroFasi,
+    path: '/macrofasi'
   },
   {
     name: 'Venditori',
     icon: Network,
+    path: '/venditori'
   },
   {
     name: 'Automazioni',
     icon: Robot,
+    path: '/automazioni'
   },
   {
     name: 'Supporto',
     icon: Support,
+    path: '/supporto'
   },
   {
     name: 'Logout',

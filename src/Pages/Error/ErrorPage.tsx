@@ -7,6 +7,12 @@ import { useNavigation } from '../../hooks/useNavigation';
 
 export default function ErrorPage() {
   const navigate = useNavigation()
+  const token = localStorage.getItem('token')
+
+  const handleGoBack = () => {
+    token ? navigate('/') : navigate('/')
+  }
+
   return (
     <Box sx={{ width: '607px', height: '318px', position: 'absolute', left: '397px', top: '150px' }}>
       <img src={Error404} alt={Error404} />
@@ -23,7 +29,7 @@ export default function ErrorPage() {
           type='button'
           variant='contained'
           color='secondary'
-          onClick={() => navigate('/')}
+          onClick={handleGoBack}
           btnStyles={{ width: '90px', padding: '0px 12px;' }}
         >
           Go back

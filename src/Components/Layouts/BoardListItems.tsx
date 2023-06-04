@@ -10,7 +10,6 @@ import LastingDIcon from '../../Assets/svg/LastinD.svg'
 import LogoIcon from '../../Assets/svg/Logo.svg'
 import Box from '@mui/material/Box';
 import { useNavigation } from '../../hooks/useNavigation';
-import { Link } from 'react-router-dom';
 
 interface BoardListItemsProps {
   open: boolean;
@@ -33,6 +32,13 @@ const BoardListItems = ({ open, activeTab, setActiveTab }: BoardListItemsProps) 
     }
   }
 
+  const handleNavigate = (path: any) => {
+    if (path === 'undefined') {
+      return
+    }
+    navigate(path)
+  }
+
   return (
     <List>
       <ListItem disablePadding sx={{ display: 'block' }}>
@@ -48,7 +54,9 @@ const BoardListItems = ({ open, activeTab, setActiveTab }: BoardListItemsProps) 
       </ListItem>
       <Box sx={{ height: '580px' }}>
         {drawerIconNames.map((text, index) => (
-          <ListItem key={text.name} disablePadding sx={{ display: 'block' }}>
+          <ListItem key={text.name} disablePadding sx={{ display: 'block' }}
+            onClick={() => handleNavigate(text.path)}
+          >
             <ListItemButton
               sx={{
                 minHeight: 48,

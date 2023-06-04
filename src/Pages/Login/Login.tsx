@@ -25,6 +25,8 @@ const Login = () => {
         setSuccess(true);
         toggle();
         setTokenValue(data.token);
+        window.history.pushState({}, '', '/');
+        window.location.reload();
       },
       onError: (error) => {
         setMsg('Credenziali non valide');
@@ -41,7 +43,6 @@ const Login = () => {
       success={success}
       message={msg}
       toggle={toggle}
-      leftClassName={{ width: '520px', padding: '100px 100px 150px' }}
       rightStyles={{ width: '100%', backgroundColor: '#F5F5F5' }}
       leftSide={<LoginForm submit={handleSubmit} onChange={(data) => setData(data)} />}
       rightSide={<ImageContainer src={LoginImage} alt='login' />}

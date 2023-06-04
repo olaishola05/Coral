@@ -1,6 +1,5 @@
 import React from 'react'
 import { styled, Theme, CSSObject } from '@mui/material/styles';
-import { Outlet } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
@@ -9,8 +8,6 @@ import { useToggle } from '../../hooks';
 import { drawerWidth } from '../../utils/utils';
 import { BoardListItems, BoardTopbar } from '../../Components/Layouts';
 import { useLocation } from 'react-router-dom';
-import Processes from './Processes';
-
 
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -67,7 +64,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-function Dashboard() {
+function Dashboard({ children }: { children: React.ReactNode }) {
   const [open, toggle] = useToggle(false);
   const [path, setPath] = React.useState<string>('')
   const location = useLocation()
@@ -80,19 +77,6 @@ function Dashboard() {
       setPath(location.pathname.split('/')[1])
 
   }, [location.pathname])
-
-  const componentByActiveTab = (activeTab: number) => {
-    switch (activeTab) {
-      case 0:
-        return <Processes />
-      case 1:
-        return 'Model page'
-      case 2:
-        return 'Databases page'
-      default:
-        return null
-    }
-  }
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -114,7 +98,7 @@ function Dashboard() {
         }}
       >
         <DrawerHeader />
-        {componentByActiveTab(activeTab)}
+        {children}
       </Box>
     </Box>
   )

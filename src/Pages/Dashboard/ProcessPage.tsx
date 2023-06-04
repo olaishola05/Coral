@@ -1,10 +1,10 @@
 import React from 'react'
 import { ProcessToolbar } from '../../Components/Layouts'
-import Box from '@mui/material/Box';
 import ProcessTable from '../../Components/UI/ProcessTable';
 import { TaskModal, SettingsModal } from '../../Components/UI/Modal';
 import { useFetch, useToggle } from '../../hooks';
 import Skeleton from '@mui/material/Skeleton';
+import { Dashboard } from '../Dashboard';
 
 const baseUrl = process.env.REACT_APP_BASE_URL
 
@@ -24,15 +24,13 @@ const ProcessPage = () => {
     </div>
   }
 
-  if (status === 'loading') {
-    return <Skeleton variant="rectangular" width={1350} height={770} />
-  }
+  const loading = status === 'loading'
 
   return (
-    <Box>
+    <Dashboard>
+      {loading && <Skeleton variant="rectangular" width={1350} height={770} />}
       {open && <TaskModal open={open} toggleOpen={toggle} />}
       {openSettings && <SettingsModal open={openSettings} toggleOpen={toggleSettings} />}
-
       <ProcessToolbar toggleOpen={toggleSettings} />
       {data && data.map((process: any, index: string) => (
         <ProcessTable
@@ -44,7 +42,7 @@ const ProcessPage = () => {
         />
       ))
       }
-    </Box>
+    </Dashboard>
   )
 }
 
