@@ -3,17 +3,31 @@ import HeaderText from './HeaderText'
 import Box from '@mui/material/Box';
 import TextInput from './TextInput';
 import CustomButton from './CustomButton';
+import { styled } from '@mui/material/styles';
+
+const StyledContainerDiv = styled('div')(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    padding: '10px 20px',
+
+    form : {
+      width: '100%',
+      alignItems: 'center',
+      gap: '15px',
+    },
+  },
+}))
 
 const Profile = () => {
   return (
-    <div>
+    <StyledContainerDiv>
       <HeaderText
         header='Complete your profile'
         text='Insert all your info to proceed with your workspace'
-        headerStyle={{ marginBottom: '50px' }}
+        headerStyle={{ marginBottom: '30px' }}
       />
       <Box component='form' sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: '10px' }}>
           <TextInput
             label='Name'
             placeholder='Marino'
@@ -69,7 +83,7 @@ const Profile = () => {
           Complete now
         </CustomButton>
       </Box>
-    </div>
+    </StyledContainerDiv>
   )
 }
 

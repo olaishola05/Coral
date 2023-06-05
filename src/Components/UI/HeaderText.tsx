@@ -33,9 +33,11 @@ const HeaderTextContainer = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     width: '100%',
     gap: '20px',
+    marginBottom: '10px',
     '& .MuiTypography-body1': {
       fontSize: '12px',
     },
+    
   },
 
   [theme.breakpoints.down('xs')]: {
