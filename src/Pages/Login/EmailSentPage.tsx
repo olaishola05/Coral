@@ -9,7 +9,6 @@ const EmailSentPage = () => {
   return (
     <PageLayoutSplit
       leftClassName={{ width: '520px', gap: '82px', padding: '100px 100px 100px' }}
-      rightStyles={{ width: '100%' }}
       leftSide={<EmailSent />}
       rightSide={<ImageContainer src={ResetImage} alt={ResetImage} />}
     />

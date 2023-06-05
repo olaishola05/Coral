@@ -3,6 +3,20 @@ import HeaderText from './HeaderText'
 import Box from '@mui/material/Box';
 import TextInput from './TextInput';
 import CustomButton from './CustomButton';
+import { styled } from '@mui/material/styles';
+
+const StyledContainerDiv = styled('div')(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    padding: '10px 20px',
+
+    form : {
+      width: '100%',
+      alignItems: 'center',
+      gap: '20px',
+    },
+  },
+}))
 
 const ConfirmPassword
   = () => {
@@ -12,7 +26,7 @@ const ConfirmPassword
     }
 
     return (
-      <>
+      <StyledContainerDiv>
         <HeaderText
           header='Insert new password'
           text="Enter your new password to access the platform"
@@ -52,7 +66,7 @@ const ConfirmPassword
             Confirm new password
           </CustomButton>
         </Box>
-      </>
+      </StyledContainerDiv>
     )
   }
 
