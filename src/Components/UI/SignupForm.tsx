@@ -7,6 +7,40 @@ import CustomCheckbox from './CustomCheckbox'
 import CustomButton from './CustomButton'
 import HeaderText from './HeaderText'
 import { useNavigation } from '../../hooks/useNavigation'
+import { styled } from '@mui/material/styles'
+
+
+const StyledContainer = styled(Container)(({ theme }) => ({
+  width: '422px',
+  display: 'flex',
+  alignItems: 'flex-start',
+  flexDirection: 'column',
+  gap: '20px',
+  order: 1,
+
+  form : {
+    width: '422px',
+    height: '361px',
+    display: 'flex',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+    gap: '20px',
+    order: 1,
+  },
+
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    alignItems: 'center',
+    gap: '10px',
+    padding: '0 20px',
+
+    form: {
+      width: '100%',
+      alignItems: 'center',
+      gap: '10px',
+    },
+  },
+}))
 
 const SignupForm = () => {
   const navigate = useNavigation()
@@ -22,13 +56,13 @@ const SignupForm = () => {
   }
 
   return (
-    <Container sx={{ width: '422px', display: 'flex', alignItems: 'flex-start', flexDirection: 'column', gap: '20px', order: 1 }}>
+    <StyledContainer>
       <HeaderText
         header='Create your workspace'
         text='Coraly is the tool to manage your work processes form the same place'
       />
 
-      <Box component='form' sx={{ width: '422px', height: '361px', display: 'flex', alignItems: 'flex-start', flexDirection: 'column', gap: '20px', order: 1 }}>
+      <Box component='form'>
         <TextInput
           label="Workspace Name"
           placeholder="Enter your workspace name"
@@ -88,7 +122,7 @@ const SignupForm = () => {
         </Typography>
       </Box>
 
-    </Container>
+    </StyledContainer>
   )
 }
 

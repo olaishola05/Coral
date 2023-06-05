@@ -1,12 +1,20 @@
 import React from 'react';
-import { Checkbox, FormControlLabel } from '@mui/material';
+import { Checkbox, FormControlLabel, styled } from '@mui/material';
 
-type checkedStyle = {
-  color?: string;
-  '&.Mui-checked': {
-    color: string;
-  };
-};
+const StyledFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
+  '& .MuiFormControlLabel-label': {
+    fontSize: '14px',
+    lineHeight: '17px',
+    color: '#312E43',
+    fontWeight: '500',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '12px',
+      lineHeight: '15px',
+      textAlign: 'justify',
+    },
+  },
+}));
+
 interface CustomCheckboxProps {
   label?: string | React.ReactNode;
   checked?: boolean;
@@ -18,7 +26,7 @@ interface CustomCheckboxProps {
 
 const CustomCheckbox: React.FC<CustomCheckboxProps> = ({ label, checked, onChange, checkedStyle, name, color }) => {
   return (
-    <FormControlLabel
+    <StyledFormControlLabel
       control={
         <Checkbox
           color={color}
