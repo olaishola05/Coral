@@ -25,7 +25,7 @@ const StyledButton = styled(Button)<{ variant?: 'text' | 'outlined' | 'contained
 );
 
 const StyledTextField = styled(TextField)(({ theme }) =>({
-  width: '320px',
+  width: '100%',
   fontSize: '12px',
   fontWeight: 'normal',
   color: 'theme.neutral.light',

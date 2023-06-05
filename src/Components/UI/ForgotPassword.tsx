@@ -5,22 +5,37 @@ import TextInput from './TextInput';
 import CustomButton from './CustomButton';
 import Typography from '@mui/material/Typography';
 import { useNavigation } from '../../hooks/useNavigation';
+import { styled } from '@mui/material/styles';
+
+const StyledContainer = styled('div')(({ theme }) => ({
+  form:{
+    width: '320px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '32px'
+  },
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    padding: '10px 20px',
+
+    form : {
+      width: '100%',
+      alignItems: 'center',
+      gap: '20px',
+    },
+  },
+}))
 
 
 const ForgotPassword = () => {
   const header = (<span>Do you forgot your<br /> password?</span>)
   const navigate = useNavigation();
   return (
-    <div>
+    <StyledContainer>
       <HeaderText
         header={header}
         text='Insert your email and we will send you a link in your email box to reset your password.'
         headerStyle={{ width: '320px', marginBottom: '50px' }}
         customStyles={{ fontSize: '24px', lineHeight: '36px' }}
       />
-      <Box component='form' sx={{
-        width: '320px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '32px'
-      }}>
+      <Box component='form' sx={{}}>
         <TextInput
           label='Email'
           value=''
@@ -52,7 +67,7 @@ const ForgotPassword = () => {
         </Typography>
       </Box>
 
-    </div>
+    </StyledContainer>
   )
 }
 
