@@ -8,7 +8,7 @@ const StyledFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
     color: '#312E43',
     fontWeight: '500',
     [theme.breakpoints.down('sm')]: {
-      fontSize: '11px',
+      fontSize: '11.5px',
       lineHeight: '15px',
       textAlign: 'justify',
     },

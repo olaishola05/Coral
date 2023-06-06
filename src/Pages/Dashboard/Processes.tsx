@@ -7,6 +7,36 @@ import { useToggle } from '../../hooks'
 import { ProcessModal } from '../../Components/UI/Modal'
 import ProcessIcon from '../../Assets/svg/process.svg'
 import { Dashboard } from '../Dashboard'
+import { styled } from '@mui/material'
+
+
+const StyledProcessBox = styled(Box)(({ theme }) => ({
+  width: '100%',
+  height: '90vh',
+  backgroundColor: '#F5F5F5',
+  padding: '30px 10px 24px 24px',
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    height: 'auto',
+    padding: '30px 10px 24px 10px',
+    border: '1px solid red',
+
+  },
+}))
+
+const StyledCardBox = styled(Box)(({ theme }) => ({
+  width: '95%', 
+  display: 'flex', 
+  alignItems: 'center', 
+  gap: '24px', 
+  flexWrap: 'wrap',
+
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+  },
+}))
 
 const Processes = () => {
   const [open, toggle] = useToggle(false)
@@ -29,7 +59,7 @@ const Processes = () => {
 
   return (
     <Dashboard>
-      <Box sx={{ width: '100%', height: '90vh', backgroundColor: '#F5F5F5', padding: '30px 10px 24px 24px' }}>
+      <StyledProcessBox>
         <ProcessModal open={open} toggle={toggle} onChange={handleChange} submit={handleCreate} />
         <HeaderText
           header='Welcome, Fabrizio Nillo'
@@ -37,14 +67,14 @@ const Processes = () => {
           customStyles={{ fontSize: '36px', color: '#464356', fontWeight: '700', lineHeight: '45px' }}
         />
 
-        <Box sx={{ width: '95%', display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
+        <StyledCardBox>
           {processes.map((item, index) => (
             <Box key={index}>
               <CustomCard item={item} toggle={toggle} />
             </Box>
           ))}
-        </Box>
-      </Box>
+        </StyledCardBox>
+      </StyledProcessBox>
     </Dashboard>
   )
 }

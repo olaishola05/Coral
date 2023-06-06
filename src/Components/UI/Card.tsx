@@ -1,6 +1,21 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, Typography, Box, CardActionArea } from '@mui/material';
+import { Card, CardContent, CardHeader, Typography, Box, CardActionArea, styled } from '@mui/material';
 import { useNavigation } from '../../hooks/useNavigation';
+
+const StyledCard = styled(Card)(({ theme }) => ({
+  width: '150px',
+  height: '150px',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderRadius: '8px',
+  padding: '12px 12px 30px',
+
+  [theme.breakpoints.down('sm')]: {
+    width: '130px',
+    height: '150px',
+  },
+}))
 
 interface CardProps {
   item: {
@@ -33,17 +48,10 @@ const CustomCard: React.FC<CardProps> = ({ item, toggle }) => {
   }
 
   return (
-    <Card
+    <StyledCard
       sx={{
-        display: 'flex',
-        width: '150px', height: '150px',
-        padding: '12px 12px 30px',
         backgroundColor: background,
         border: color ? '1px dotted #D6D5D9' : 'none',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: '8px',
         order: parseInt(`${id}`),
       }}>
       <>
@@ -72,7 +80,7 @@ const CustomCard: React.FC<CardProps> = ({ item, toggle }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-    </Card>
+    </StyledCard>
   );
 };
 
