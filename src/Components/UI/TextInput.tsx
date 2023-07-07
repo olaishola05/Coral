@@ -18,6 +18,7 @@ interface TextInputProps {
   InputProps?: any;
   multiline?: boolean;
   rows?: number;
+  helperText?: string;
 }
 
 

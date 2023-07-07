@@ -19,8 +19,6 @@ const StyledProcessBox = styled(Box)(({ theme }) => ({
     width: '100%',
     height: 'auto',
     padding: '30px 10px 24px 10px',
-    border: '1px solid red',
-
   },
 }))
 

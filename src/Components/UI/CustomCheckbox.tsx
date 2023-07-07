@@ -20,8 +20,11 @@ interface CustomCheckboxProps {
   checked?: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   checkedStyle?: any;
-  name: string;
+  name?: string;
   color?: any;
+  error?: boolean;
+  helperText?: string;
+  value?: boolean;
 }
 
 const CustomCheckbox: React.FC<CustomCheckboxProps> = ({ label, checked, onChange, checkedStyle, name, color }) => {
@@ -31,13 +34,13 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({ label, checked, onChang
         <Checkbox
           color={color}
           checked={checked}
-          name={name}
-          onChange={onChange}
           inputProps={{ 'aria-label': 'controlled' }}
           sx={{ color: '#312E43', '&.Mui-checked': { color: '#312E43' }, ...checkedStyle }}
           required
-        />
-      }
+          onChange={onChange}
+          />
+        }
+      name={name}
       label={label}
     />
   );

@@ -9,7 +9,8 @@ import { Dashboard } from '../Dashboard';
 const baseUrl = process.env.REACT_APP_BASE_URL
 
 const ProcessPage = () => {
-  const { data, status, error } = useFetch(baseUrl + '/processes')
+  // const { data, status, error } = useFetch(baseUrl + '/processes')
+  // console.log(data)
   const [open, toggle] = useToggle(false)
   const [openSettings, toggleSettings] = useToggle(false)
 
@@ -17,22 +18,22 @@ const ProcessPage = () => {
     toggle()
   };
 
-  if (error) {
-    return <div>
-      <>
-        Error: {error}</>
-    </div>
-  }
+  // if (error) {
+  //   return <div>
+  //     <>
+  //       Error: {error}</>
+  //   </div>
+  // }
 
-  const loading = status === 'loading'
+  // const loading = status === 'loading'
 
   return (
     <Dashboard>
-      {loading && <Skeleton variant="rectangular" width={1350} height={770} />}
+      {/* {loading && <Skeleton variant="rectangular" width={1350} height={770} />} */}
       {open && <TaskModal open={open} toggleOpen={toggle} />}
       {openSettings && <SettingsModal open={openSettings} toggleOpen={toggleSettings} />}
       <ProcessToolbar toggleOpen={toggleSettings} />
-      {data && data.map((process: any, index: string) => (
+      {/* {data && data.map((process: any, index: string) => (
         <ProcessTable
           process={process}
           index={index}
@@ -41,7 +42,7 @@ const ProcessPage = () => {
           open={open}
         />
       ))
-      }
+      } */}
     </Dashboard>
   )
 }
