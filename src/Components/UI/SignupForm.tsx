@@ -106,7 +106,7 @@ const SignupForm = () => {
           type="submit"
           variant="contained"
           color="success"
-          onClick={() => navigate('/signup/email-verification')}
+          onClick={() => navigate('/signup/complete-profile', { state: data })}
         >
           Create now the account
         </CustomButton>
