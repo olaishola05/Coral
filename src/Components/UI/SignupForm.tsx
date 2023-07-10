@@ -72,7 +72,6 @@ const SignupForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values)
       navigate('/signup/complete-profile', { state: values })
     },
   });

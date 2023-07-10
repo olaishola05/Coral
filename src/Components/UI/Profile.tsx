@@ -1,9 +1,13 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom';
 import HeaderText from './HeaderText'
 import Box from '@mui/material/Box';
 import TextInput from './TextInput';
 import CustomButton from './CustomButton';
 import { styled } from '@mui/material/styles';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import { useNavigation } from '../../hooks'
 
 const StyledContainerDiv = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
@@ -18,7 +22,51 @@ const StyledContainerDiv = styled('div')(({ theme }) => ({
   },
 }))
 
+const validationSchema = yup.object({
+  name: yup
+    .string()
+    .min(3, 'Name should be of minimum 3 characters length')
+    .required('Name is required'),
+  surname: yup
+    .string()
+    .min(3, 'Surname should be of minimum 3 characters length')
+    .required('Surname is required'),
+  password: yup
+    .string()
+    .min(8, 'Password should be of minimum 8 characters length')
+    .required('Password is required'),
+  confirmPassword: yup
+    .string()
+    .min(8, 'Password should be of minimum 8 characters length')
+    .required('Password is required'),
+})
+
 const Profile = () => {
+  const location = useLocation()
+  const { state } = location
+  const navigate  = useNavigation()
+
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      surname: '',
+      password: '',
+      confirmPassword: '',
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      const formData = {
+        ...values,
+        email: state.email,
+        workspace: state.workspace,
+        terms: state.terms,
+        authorization: state.authorization,
+      }
+      console.log(formData)
+      navigate('/signup/email-verification')
+    },
+  });
+
   return (
     <StyledContainerDiv>
       <HeaderText
@@ -32,10 +80,14 @@ const Profile = () => {
             label='Name'
             placeholder='Marino'
             type='text'
-            value=''
             size='small'
             color='secondary'
-            onChange={() => { }}
+            name='name'
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+            helperText={formik.touched.name && formik.errors.name ? formik.errors.name : ''}
             required
             InputStyles={{ width: '199px' }}
           />
@@ -44,10 +96,14 @@ const Profile = () => {
             label='Surname'
             placeholder='Lasting'
             type='text'
-            value=''
+            value={formik.values.surname}
             size='small'
             color='secondary'
-            onChange={() => { }}
+            name='surname'
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.surname && Boolean(formik.errors.surname)}
+            helperText={formik.touched.surname && formik.errors.surname ? formik.errors.surname : ''}
             required
             InputStyles={{ width: '199px' }}
           />
@@ -55,22 +111,30 @@ const Profile = () => {
         <TextInput
           label='Password'
           placeholder='Password'
-          type='text'
-          value=''
+          name='password'
+          type='password'
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password ? formik.errors.password : ''}
           size='small'
           color='secondary'
-          onChange={() => { }}
           required
         />
 
         <TextInput
-          label='Reset Password'
-          placeholder='Reset Password'
-          type='text'
-          value=''
+          label='Confirm Password'
+          placeholder='Confirm Password'
+          type='password'
           size='small'
           color='secondary'
-          onChange={() => { }}
+          name='confirmPassword'
+          value={formik.values.confirmPassword}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+          helperText={formik.touched.confirmPassword && formik.errors.confirmPassword ? formik.errors.confirmPassword : ''}
           required
         />
 
@@ -78,7 +142,7 @@ const Profile = () => {
           color='success'
           variant='contained'
           type='submit'
-          onClick={() => { }}
+          onClick={() => formik.handleSubmit()}
         >
           Complete now
         </CustomButton>
