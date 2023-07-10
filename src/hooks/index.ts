@@ -5,6 +5,7 @@ import useMessage from "./useMessage";
 import { useNavigation } from "./useNavigation";
 import useToggle from "./useToggle";
 import useLocalStorage from "./useLocalStorage";
+import usePost from "./usePost";
 
 
 export {
@@ -15,4 +16,5 @@ export {
   useNavigation,
   useToggle,
   useLocalStorage,
+  usePost
 };

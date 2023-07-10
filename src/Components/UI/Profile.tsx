@@ -7,7 +7,7 @@ import CustomButton from './CustomButton';
 import { styled } from '@mui/material/styles';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { useNavigation } from '../../hooks'
+import { useNavigation, usePost } from '../../hooks'
 
 const StyledContainerDiv = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
@@ -42,9 +42,11 @@ const validationSchema = yup.object({
 })
 
 const Profile = () => {
+  const baseUrl = process.env.REACT_APP_API_URL
   const location = useLocation()
   const { state } = location
   const navigate  = useNavigation()
+  const { status, mutate } = usePost(baseUrl + 'auth/signup')
 
   const formik = useFormik({
     initialValues: {
@@ -61,9 +63,11 @@ const Profile = () => {
         workspace: state.workspace,
         terms: state.terms,
         authorization: state.authorization,
+        role: 'ADMIN'
       }
       console.log(formData)
-      navigate('/signup/email-verification')
+      mutate(formData)
+      status === 'success' && navigate('/signup/email-verification')
     },
   });
 
