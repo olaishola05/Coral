@@ -66,7 +66,6 @@ const Profile = () => {
         workspace: state.workspace,
         role: 'ADMIN'
       }
-      console.log(formData)
       mutate(formData)
       status === 'success' && navigate('/signup/email-verification')
     },
