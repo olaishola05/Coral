@@ -6,7 +6,7 @@ import TextInput from './TextInput';
 import CustomButton from './CustomButton';
 import { styled } from '@mui/material/styles';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
+import * as Yup from 'yup';
 import { useNavigation, usePost } from '../../hooks'
 
 const StyledContainerDiv = styled('div')(({ theme }) => ({
@@ -22,23 +22,24 @@ const StyledContainerDiv = styled('div')(({ theme }) => ({
   },
 }))
 
-const validationSchema = yup.object({
-  name: yup
+const validationSchema = Yup.object().shape({
+  firstName: Yup
     .string()
     .min(3, 'Name should be of minimum 3 characters length')
     .required('Name is required'),
-  surname: yup
+  lastName: Yup
     .string()
     .min(3, 'Surname should be of minimum 3 characters length')
     .required('Surname is required'),
-  password: yup
+  password: Yup
     .string()
     .min(8, 'Password should be of minimum 8 characters length')
     .required('Password is required'),
-  confirmPassword: yup
+  confirmPassword: Yup
     .string()
+    .oneOf([Yup.ref('password')], 'Passwords must match')
     .min(8, 'Password should be of minimum 8 characters length')
-    .required('Password is required'),
+    .required('Confirm Password is required'),
 })
 
 const Profile = () => {
@@ -50,8 +51,8 @@ const Profile = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: '',
-      surname: '',
+      firstName: '',
+      lastName: '',
       password: '',
       confirmPassword: '',
     },
@@ -60,9 +61,9 @@ const Profile = () => {
       const formData = {
         ...values,
         email: state.email,
-        workspace: state.workspace,
         terms: state.terms,
         authorization: state.authorization,
+        workspace: state.workspace,
         role: 'ADMIN'
       }
       console.log(formData)
@@ -86,12 +87,12 @@ const Profile = () => {
             type='text'
             size='small'
             color='secondary'
-            name='name'
-            value={formik.values.name}
+            name='firstName'
+            value={formik.values.firstName}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.name && Boolean(formik.errors.name)}
-            helperText={formik.touched.name && formik.errors.name ? formik.errors.name : ''}
+            error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+            helperText={formik.touched.firstName && formik.errors.firstName ? formik.errors.firstName : ''}
             required
             InputStyles={{ width: '199px' }}
           />
@@ -100,14 +101,14 @@ const Profile = () => {
             label='Surname'
             placeholder='Lasting'
             type='text'
-            value={formik.values.surname}
+            value={formik.values.lastName}
             size='small'
             color='secondary'
-            name='surname'
+            name='lastName'
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.surname && Boolean(formik.errors.surname)}
-            helperText={formik.touched.surname && formik.errors.surname ? formik.errors.surname : ''}
+            error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+            helperText={formik.touched.lastName && formik.errors.lastName ? formik.errors.lastName : ''}
             required
             InputStyles={{ width: '199px' }}
           />
