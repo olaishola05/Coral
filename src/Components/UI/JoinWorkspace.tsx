@@ -35,6 +35,10 @@ const validationSchema = Yup.object().shape({
     .string()
     .min(3, 'Workspace name should be of minimum 3 characters length')
     .required('Workspace name is required'),
+  email: Yup
+    .string()
+    .email('Enter a valid email')
+    .required('Email is required'),
   password: Yup
     .string()
     .min(8, 'Password should be of minimum 8 characters length')
@@ -56,6 +60,7 @@ const JoinWorkspace = () => {
       firstName: '',
       lastName: '',
       workspace: '',
+      email: '',
       password: '',
       confirmPassword: '',
     },
@@ -121,6 +126,20 @@ const JoinWorkspace = () => {
           />
         </Box>
         <TextInput
+          label='Email'
+          placeholder='email@something.com'
+          name='email'
+          type='email'
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email ? formik.errors.email : ''}
+          size='small'
+          color='secondary'
+          required
+        />
+        <TextInput
           label='Workspace Name'
           placeholder='E.g. Coraly or Tesla'
           name='workspace'
@@ -177,7 +196,7 @@ const JoinWorkspace = () => {
       <Typography variant="body1" sx={{ fontSize: '14px', fontWeight: 'normal', lineHeight: '18px', color: '#6F6D7B', order: 1, height: '36px' }}>
         Already have an account?
         <CustomButton
-          onClick={() => { navigate('/login') }}
+          onClick={() => { navigate('/auth/login') }}
           color='success'
           variant='text'
           btnStyles={{ width: '67px', color: 'secondary' }}

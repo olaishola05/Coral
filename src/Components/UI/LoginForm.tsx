@@ -147,7 +147,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             error={formik.touched.rememberMe && formik.errors.rememberMe ? true : false}
           />
           <CustomButton
-            onClick={() => { navigate('/reset-password') }}
+            onClick={() => { navigate('/auth/reset-password') }}
             color='success'
             variant='text'
             btnStyles={{ color: 'secondary', width: '150px', fontStyle: 'normal', fontWeight: '600', lineHeight: '21px' }}
@@ -166,7 +166,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
         <Typography variant="body1" component="p" sx={{ width: '320px', fontSize: '14px', lineHeight: '18px', display: 'flex', alignItems: 'center', order: 1, color: `${theme.text.primary.neutral}` }}>
           Don't have an account?
           <CustomButton
-            onClick={() => { navigate('/signup') }}
+            onClick={() => { navigate('/auth/signup') }}
             color='success'
             variant='text'
             btnStyles={{ width: '114px', color: 'secondary' }}

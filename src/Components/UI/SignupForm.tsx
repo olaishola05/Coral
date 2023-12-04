@@ -20,7 +20,7 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   gap: '20px',
   order: 1,
 
-  form : {
+  form: {
     width: '422px',
     height: '361px',
     display: 'flex',
@@ -145,13 +145,23 @@ const SignupForm = () => {
         <Typography variant="body1" sx={{ fontSize: '14px', fontWeight: 'normal', lineHeight: '18px', color: '#6F6D7B', order: 1, height: '36px' }}>
           Already have an account?
           <CustomButton
-            onClick={() => { navigate('/login') }}
+            onClick={() => { navigate('/auth/login') }}
             color='success'
             variant='text'
             btnStyles={{ width: '67px', color: 'secondary' }}
           >Sign in</CustomButton>
         </Typography>
+
       </Box>
+      <Typography variant="body1" sx={{ fontSize: '14px', fontWeight: 'normal', lineHeight: '18px', color: '#6F6D7B', order: 1, height: '36px' }}>
+        Do you want to join a workspace?
+        <CustomButton
+          onClick={() => { navigate('/auth/join-workspace') }}
+          color='success'
+          variant='text'
+          btnStyles={{ width: '140px', color: 'secondary' }}
+        >Join Workspace</CustomButton>
+      </Typography>
 
     </StyledContainer>
   )

@@ -8,14 +8,14 @@ import { useNavigation } from '../../hooks/useNavigation';
 import { styled } from '@mui/material/styles';
 
 const StyledContainer = styled('div')(({ theme }) => ({
-  form:{
+  form: {
     width: '320px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '32px'
   },
   [theme.breakpoints.down('sm')]: {
     width: '100%',
     padding: '10px 20px',
 
-    form : {
+    form: {
       width: '100%',
       alignItems: 'center',
       gap: '20px',
@@ -59,7 +59,7 @@ const ForgotPassword = () => {
             type='submit'
             variant='text'
             color='success'
-            onClick={() => { navigate('/login') }}
+            onClick={() => { navigate('/auth/login') }}
             btnStyles={{ width: '0px', color: 'success' }}
           >
             Login
