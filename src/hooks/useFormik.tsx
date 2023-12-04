@@ -30,7 +30,6 @@ export function useLoginFormik(props: FormikConfig<FormData>, onSubmit: () => vo
     onSubmit: async (values, { resetForm }) => {
       setIsSubmitting(true);
       try {
-        // Make API call to login user here
         await onSubmit();
         resetForm();
       } catch (error) {

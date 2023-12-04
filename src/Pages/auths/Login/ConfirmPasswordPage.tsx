@@ -1,8 +1,8 @@
 import React from 'react'
-import { PageLayoutSplit } from '../../Components/Layouts'
-import ResetImage from '../../Assets/svg/resetimg.svg'
-import ImageContainer from '../../Components/UI/ImageContainer'
-import ResetPaswword from '../../Components/UI/ConfirmPassword'
+import { PageLayoutSplit } from '../../../Components/Layouts'
+import ResetImage from '../../../Assets/svg/resetimg.svg'
+import ImageContainer from '../../../Components/UI/ImageContainer'
+import ResetPaswword from '../../../Components/UI/ConfirmPassword'
 
 const ConfirmPasswordPage = () => {
   return (

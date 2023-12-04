@@ -1,5 +1,4 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom';
 import HeaderText from './HeaderText'
 import Box from '@mui/material/Box';
 import TextInput from './TextInput';
@@ -7,14 +6,15 @@ import CustomButton from './CustomButton';
 import { styled } from '@mui/material/styles';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useNavigation, usePost } from '../../hooks'
+import { usePost, useNavigation } from '../../hooks'
+import { Typography } from '@mui/material';
 
 const StyledContainerDiv = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     width: '100%',
     padding: '10px 20px',
 
-    form : {
+    form: {
       width: '100%',
       alignItems: 'center',
       gap: '15px',
@@ -31,6 +31,10 @@ const validationSchema = Yup.object().shape({
     .string()
     .min(3, 'Surname should be of minimum 3 characters length')
     .required('Surname is required'),
+  workspace: Yup
+    .string()
+    .min(3, 'Workspace name should be of minimum 3 characters length')
+    .required('Workspace name is required'),
   password: Yup
     .string()
     .min(8, 'Password should be of minimum 8 characters length')
@@ -42,17 +46,16 @@ const validationSchema = Yup.object().shape({
     .required('Confirm Password is required'),
 })
 
-const Profile = () => {
+const JoinWorkspace = () => {
   const baseUrl = process.env.REACT_APP_API_URL
-  const location = useLocation()
-  const { state } = location
-  const navigate  = useNavigation()
-  const { status, error, mutate } = usePost(baseUrl + 'auth/signup')
+  const { status, error, mutate } = usePost(baseUrl + 'auth/join-workspace')
+  const navigate = useNavigation()
 
   const formik = useFormik({
     initialValues: {
       firstName: '',
       lastName: '',
+      workspace: '',
       password: '',
       confirmPassword: '',
     },
@@ -60,17 +63,14 @@ const Profile = () => {
     onSubmit: (values) => {
       const formData = {
         ...values,
-        email: state.email,
-        terms: state.terms,
-        authorization: state.authorization,
-        workspace: state.workspace,
-        role: 'ADMIN'
+        role: 'USER'
       }
 
       mutate(formData)
 
       if (status === 'success') {
-        navigate('/signup/email-verification')
+        console.log('success')
+        // navigate('/signup/email-verification')
       }
 
       if (error) {
@@ -82,8 +82,8 @@ const Profile = () => {
   return (
     <StyledContainerDiv>
       <HeaderText
-        header='Complete your profile'
-        text='Insert all your info to proceed with your workspace'
+        header='Join your workspace'
+        text='Insert all your info to proceed to your workspace'
         headerStyle={{ marginBottom: '30px' }}
       />
       <Box component='form' sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -121,6 +121,20 @@ const Profile = () => {
           />
         </Box>
         <TextInput
+          label='Workspace Name'
+          placeholder='E.g. Coraly or Tesla'
+          name='workspace'
+          type='text'
+          value={formik.values.workspace}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.workspace && Boolean(formik.errors.workspace)}
+          helperText={formik.touched.workspace && formik.errors.workspace ? formik.errors.workspace : ''}
+          size='small'
+          color='secondary'
+          required
+        />
+        <TextInput
           label='Password'
           placeholder='Password'
           name='password'
@@ -156,11 +170,21 @@ const Profile = () => {
           type='submit'
           onClick={() => formik.handleSubmit()}
         >
-          Complete now
+          Join Workspace
         </CustomButton>
       </Box>
+
+      <Typography variant="body1" sx={{ fontSize: '14px', fontWeight: 'normal', lineHeight: '18px', color: '#6F6D7B', order: 1, height: '36px' }}>
+        Already have an account?
+        <CustomButton
+          onClick={() => { navigate('/login') }}
+          color='success'
+          variant='text'
+          btnStyles={{ width: '67px', color: 'secondary' }}
+        >Sign in</CustomButton>
+      </Typography>
     </StyledContainerDiv>
   )
 }
 
-export default Profile
+export default JoinWorkspace

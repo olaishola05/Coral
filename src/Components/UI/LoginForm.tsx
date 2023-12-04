@@ -35,13 +35,13 @@ const LoginFormContainer = styled(Box)(({ theme }) => ({
     gap: '20px',
 
   },
-  
+
   [theme.breakpoints.down('sm')]: {
     width: '100%',
     gap: '20px',
     padding: '10px',
 
-    form : {
+    form: {
       width: '100%',
       gap: '15px',
 
@@ -57,6 +57,12 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
   const navigate = useNavigation();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked, type } = event.target;
+
+    if (type === 'checkbox') {
+      formik.setFieldValue(name, checked);
+      return;
+    }
     formik.handleChange(event);
     props.onChange(formik.values);
   };
@@ -65,17 +71,20 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
     initialValues: {
       email: '',
       password: '',
+      rememberMe: false,
 
     },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      props.submit();
+    onSubmit: (values: any) => {
+      // alert(JSON.stringify(values, null, 2));
+      // props.submit();
+      console.log(values);
+
     },
   }, props.submit);
 
   return (
     <LoginFormContainer>
-      <Box sx={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
         <Typography variant="body1" component="span" sx={{ color: theme.palette.text.primary, fontSize: '15px' }}>Email: eve.holt@reqres.in</Typography>
         <Typography variant="body1" component="span" sx={{ color: theme.palette.text.primary, fontSize: '15px' }}>Password: cityslicka</Typography>
       </Box>
@@ -85,7 +94,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
         headerStyle={{ marginBottom: '0px' }}
       />
 
-      <Box component='form' onClick={formik.handleSubmit}>
+      <Box component='form'>
         <Box>
           <TextInput
             label="Email"
@@ -133,8 +142,9 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
             label="Remember me"
             name="rememberMe"
             checked={formik.values.rememberMe}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             checkedStyle={{ '&.Mui-checked': { color: '#312E43' } }}
+            error={formik.touched.rememberMe && formik.errors.rememberMe ? true : false}
           />
           <CustomButton
             onClick={() => { navigate('/reset-password') }}
@@ -148,6 +158,7 @@ const LoginForm: React.FC<LoginFormProps> = (props: LoginFormProps) => {
           variant='contained'
           type='submit'
           disabled={isSubmitting ? true : false}
+          onClick={formik.handleSubmit}
         >
           {isSubmitting ? 'Loggin...' : 'Login'}
         </CustomButton>

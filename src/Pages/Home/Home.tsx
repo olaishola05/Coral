@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLocalStorage } from '../../hooks';
 import { Dashboard, Processes } from '../Dashboard';
-import { Login } from '../Login';
+import { Login } from '../auths/Login';
 
 const Home = () => {
   const [token,] = useLocalStorage('token', '')

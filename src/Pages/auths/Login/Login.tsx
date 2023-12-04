@@ -1,9 +1,9 @@
 import React from 'react'
-import { PageLayoutSplit } from '../../Components/Layouts'
-import ImageContainer from '../../Components/UI/ImageContainer'
-import LoginForm from '../../Components/UI/LoginForm'
-import LoginImage from '../../Assets/svg/login.svg'
-import { useLogin, useToggle, useMessage, useLocalStorage } from '../../hooks'
+import { PageLayoutSplit } from '../../../Components/Layouts'
+import ImageContainer from '../../../Components/UI/ImageContainer'
+import LoginForm from '../../../Components/UI/LoginForm'
+import LoginImage from '../../../Assets/svg/login.svg'
+import { useLogin, useToggle, useMessage, useLocalStorage } from '../../../hooks'
 
 const Login = () => {
   const [data, setData] = React.useState({
@@ -21,7 +21,7 @@ const Login = () => {
   const handleSubmit = () => {
     loginMutation.mutate(data, {
       onSuccess: (data) => {
-        setMsg('Utente autenticato con successo');
+        setMsg('Login successful');
         setSuccess(true);
         toggle();
         setTokenValue(data.token);
@@ -29,7 +29,7 @@ const Login = () => {
         window.location.reload();
       },
       onError: (error) => {
-        setMsg('Credenziali non valide');
+        setMsg('Invalid email or password');
         toggle();
         setError(true);
       }
