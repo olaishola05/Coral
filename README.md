@@ -2,7 +2,7 @@
 
 ## Description
 
-Coral is a frontend dashboard for managing tasks, issues, processes, and more. It is built with React, TypeScript Material UI, and some backend services.
+Coral is a frontend dashboard for managing tasks, issues, processes, and more. It is built with React, TypeScript, Material UI, and simulated backend APIs. Integrated authentication with Reqres and CRUD workflows using Mockend. Focused on modular architecture, form validation with Formik/Yup, and real-world UX for admin systems
 
 ## This project is bootstrapped with React create app
 
